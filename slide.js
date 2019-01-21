@@ -1,0 +1,1 @@
+slide = new XMLHttpRequest();
