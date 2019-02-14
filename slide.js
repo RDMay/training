@@ -9,7 +9,7 @@ var svgWindow = document.getElementById("main");
 var svg = d3.select(svgContent);
 function redraw(){
 	var width = svgWindow.clientWidth;
-	var height = svgWindow.clientHeight;
+	var height = svgWindow.clientHeight - 10;
 	svg
 		.attr("width", width)
 		.attr("height", height);
@@ -21,8 +21,6 @@ window.addEventListener("resize", redraw);
 var slideTl = new TimelineMax({onUpdate:updateSlider, paused:true});
 
 
-
-//Audio
 //Player Controls
 var audioKnob=Draggable.create(sliderKnob, {
 	type: "x",
