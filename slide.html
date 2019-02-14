@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Apprentice - Basic Electricity</title>
+  <meta charset="UTF-8">
+  <!DOCTYPE html>
+  <style type="text/css">
+  body {
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+    background: #262626;
+    overflow: hidden;
+  }
+  .mainWindow {
+    position: fixed;
+    left: 0%;
+    top: 0%
+    margin: auto;
+    padding:0;
+    width: 100%;
+    height:100vh;
+    overflow: hidden;
+    opacity: 0;
+  }
+   .htmlArea {
+    position: absolute;
+    left: 0%;
+    top: 0%
+    /*margin: auto;*/
+    margin:10px;
+    padding:20px;
+    /*width: 100%;*/
+    text-align: left;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+   .playerControls {
+    position: absolute;
+    left: 0%;
+    bottom:0px;
+    margin: auto;
+    width: 100%;
+  }
+  .hidden{
+  	display: none;
+  }
+  .visible{
+  	display:block;
+  }
+  h2{
+  	text-align: center;
+  }
+  li{
+  	font-size: large
+  }
+#checkBox1{
+	position: absolute;
+    left: 10%;
+    bottom:100px;
+    margin: auto;
+    border:solid #000000 1px;
+    padding: 10px
+}
+
+.loader {
+  position: absolute;
+  left: 40%;
+  top: 40%;
+    margin: auto;
+    padding:0;
+    width: 100%;
+    overflow: hidden;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid gray;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+#cover{
+   position: absolute;
+   margin: auto;
+    width: 100%;
+    height:100vh;
+    background-color: black;
+}
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+</style>
+</head>
+<body onload="showPage()">
+  <div id="main" class="mainWindow" style="align-content: center;">
+  	
+  </div>
+
+
+
+
+
+  
+  <div id="htmlArea" class="htmlArea"></div>
+ <audio id='slideAudio' ' class="playerControls" src="slide.mp3" ></audio>
+
+<div id= "cover">
+<div id="myLoader" class="loader" ></div>
+</div>
+</body>
+<script>
+	
+
+  function myFunction() {
+  myVar = setTimeout(showPage, 3000);
+}
+function showPage() {
+  document.getElementById("cover").style.display = "none";
+  document.getElementById("main").style.opacity = 1;
+}
+
+
+</script>
+<script src=JavaScripts/jquery.js></script>
+<script src="JavaScripts/d3.min.js"></script>
+<script src="JavaScripts/TweenMax.min.js"></script>
+<script src="JavaScripts/draggable.js"></script>
+<script src="JavaScripts/DrawSVGPlugin.min.js"></script>
+<script src="JavaScripts/MorphSVGPlugin.js"></script>
+<script src="slide.js"></script>
+</html>
