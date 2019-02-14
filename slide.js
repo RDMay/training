@@ -5,19 +5,19 @@
 // var slide= document.getElementById("main").appendChild(slide.responseXML.documentElement);
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// var svgWindow = document.getElementById("main");
-// var svg = d3.select(svgContent);
-// function redraw(){
-// 	var width = svgWindow.clientWidth;
-// 	var height = svgWindow.clientHeight;
-// 	svg
-// 		.attr("width", width)
-// 		.attr("height", height);
-// 		console.log(width)
+var svgWindow = document.getElementById("main");
+var svg = d3.select(svgContent);
+function redraw(){
+	var width = svgWindow.clientWidth;
+	var height = svgWindow.clientHeight;
+	svg
+		.attr("width", width)
+		.attr("height", height);
+		console.log(width)
 	
-// }
-// redraw();
-// window.addEventListener("resize", redraw);
+}
+redraw();
+window.addEventListener("resize", redraw);
 var slideTl = new TimelineMax({onUpdate:updateSlider, paused:true});
 
 
