@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>loading</title>
+    <meta charset="UTF-8">
+    <!DOCTYPE html>
+    <link rel="icon" type="image/png" href="https://example.com/favicon.png"/>
+    <link rel="stylesheet" href="../../../JavaScriptLibraries/interactiveSchematic.css">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="../../../JavaScriptLibraries/svgPanZoom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.12.0/d3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.1/TweenMax.min.js"></script>
+  </head>
+<body>
+  <div id="mainWindow"></div>
+    <span style="position: fixed; top: 10px; left: 5px; width: 20%; margin: 0; padding: 0; z-index: 1; display: inline-block;">
+       <a href="../../../diagramTut.html" target="_blank">Help Tutorial</a>
+      <br><br>
+      Highlight the condenser fan motor circuit.
+      <br><br>
+      <select id="colorPicker" onChange="colorPickerChange(this.selectedIndex);">
+        <option value="#000000">L1</option>
+        <option value="#ffa500">Energized Load</option>
+        <option value="#0000FF">Neutral</option>
+      </select>
+      <br><br>
+      <button id="getWireColors" onclick="getColors()">Get Wire Colors CTRL+Shift To Hide This Button</button>
+
+      <button type="button" id="clearDiagram" onclick="clearHighlights()" style="cursor:pointer;display:block;";><center>Clear Diagram</center></button>
+      <br>
+      <button type="button" id="clearDiagram" onclick="checkAnswer()" style="cursor:pointer;display:block;"><center>Submit</center></button>
+    </span>
+</body>
+<script src="javaScript.js"></script>
+<script>
+        var eventsHandler;
+        eventsHandler = {
+          haltEventListeners: ['touchstart', 'touchend', 'touchmove', 'touchleave', 'touchcancel']
+        , init: function(options) {
+            var instance = options.instance
+              , initialScale = 1
+              , pannedX = 0
+              , pannedY = 0
+              this.hammer = Hammer(options.svgElement, {
+              inputClass: Hammer.SUPPORT_POINTER_EVENTS ? Hammer.PointerEventInput : Hammer.TouchInput
+            })
+            this.hammer.get('pinch').set({enable: true})
+            this.hammer.on('doubletap', function(ev){
+              instance.zoomIn()
+            })
+            this.hammer.on('panstart panmove', function(ev){
+              if (ev.type === 'panstart') {
+                pannedX = 0
+                pannedY = 0
+              }
+              instance.panBy({x: ev.deltaX - pannedX, y: ev.deltaY - pannedY})
+              pannedX = ev.deltaX
+              pannedY = ev.deltaY
+            })
+            this.hammer.on('pinchstart pinchmove', function(ev){
+              if (ev.type === 'pinchstart') {
+                initialScale = instance.getZoom()
+                instance.zoomAtPoint(initialScale * ev.scale, {x: ev.center.x, y: ev.center.y})
+              }
+              instance.zoomAtPoint(initialScale * ev.scale, {x: ev.center.x, y: ev.center.y})
+            })
+            options.svgElement.addEventListener('touchmove', function(e){ e.preventDefault(); });
+          }
+        , destroy: function(){
+            this.hammer.destroy()
+          }
+        }
+
+
+        window.panZoom = svgPanZoom(schematic, {
+          zoomEnabled: true
+        , controlIconsEnabled: true
+        , fit: 1
+        , center: 1
+        , customEventsHandler: eventsHandler
+        });
+
+    </script>
+</html>
