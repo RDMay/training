@@ -57,7 +57,7 @@ for(i=0; i<diagram1PathsLength; i++){
     path.style['stroke-linecap']="round";
     path.setAttribute("d", diagram1Paths[i].getAttribute("d"));
     diagram1.appendChild(path);
-    path.style["stroke-width"]= 3;
+    path.style["stroke-width"]= 5;
 }
 
 function colorPickerChange(e){
