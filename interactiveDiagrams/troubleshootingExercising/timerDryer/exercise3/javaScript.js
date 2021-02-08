@@ -1,5 +1,5 @@
-document.title = "Exercise 2"
-complaintField.innerHTML = "Long dry time. Dryer is running and set to high heat. Inlet temp is at ambient."
+document.title = "Exercise 3"
+complaintField.innerHTML = "No heat. Dryer is running and but no heat is produced."
 
 var originalLineSize = "1px";
 var highlightedWidth = "2px";
@@ -175,7 +175,7 @@ function wireClicked(wire){
     wire2.style["stroke-width"]= originalLineSize;
     wire2.style["stroke"]= "rgb(0, 0, 0)";
   }
-  if(answer == "Inner_Coil"){
+  if(answer == "Motor_Cent_2"){
     failedComponent.innerHTML = "Correct! Code = " + answer
   }else{
     failedComponent.innerHTML = "Incorrect, try again!"
@@ -344,3 +344,5 @@ redLead.checked = true;
 ac.checked = true;
 
 l1_11.id = 'neutral_11c';
+l2_2.id = "l1_2c"
+l2_3.id = "l1_3c"

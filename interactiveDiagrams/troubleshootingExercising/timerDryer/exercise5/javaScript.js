@@ -1,5 +1,5 @@
-document.title = "Exercise 2"
-complaintField.innerHTML = "Long dry time. Dryer is running and set to high heat. Inlet temp is at ambient."
+document.title = "Exercise 5"
+complaintField.innerHTML = "Timer wont advance in auto cycle. Dryer is running and temperatures are too hot."
 
 var originalLineSize = "1px";
 var highlightedWidth = "2px";
@@ -175,7 +175,7 @@ function wireClicked(wire){
     wire2.style["stroke-width"]= originalLineSize;
     wire2.style["stroke"]= "rgb(0, 0, 0)";
   }
-  if(answer == "Inner_Coil"){
+  if(answer == "Drum_Outlet"){
     failedComponent.innerHTML = "Correct! Code = " + answer
   }else{
     failedComponent.innerHTML = "Incorrect, try again!"
@@ -343,4 +343,9 @@ function toggleTestPoints(){
 redLead.checked = true;
 ac.checked = true;
 
-l1_11.id = 'neutral_11c';
+l1_24.id = "l2_24c";
+l1_23.id = "l2_23c";
+l1_26.id = "l2_26c";
+l1_22.id = "l2_22c";
+l1_21.id = "l2_21c";
+l1_20.id = "l2_20c";

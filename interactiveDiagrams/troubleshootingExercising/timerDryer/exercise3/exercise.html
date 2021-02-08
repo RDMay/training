@@ -18,13 +18,10 @@
 <body style="font-family: arial">
   <div id="mainWindow"></div>
     <span id="uiDiv" class="uiClass">
-      <h4>Complaint: Motor will not start.</h4>
-      <hr>
-      <h4>Test Points:</h4>
-      <input type="radio" id="tpOff" name="tpStatus" value="VAC" checked="true" onclick="readMeter()">
-      <label for="male">Off</label>&nbsp&nbsp&nbsp
-      <input type="radio" id="tpOn" name="tpStatus" value="VDC" onclick="readMeter()">
-      <label for="female">On</label>
+      <a href="https://www.youtube.com/watch?v=4vPE70rqeMw&feature=youtu.be" target="_blank" style="color:white">Help Tutorial</a>
+      <br><br>
+      <h4>Complaint:</h4>
+      <span id="complaintField"></span>
       <hr>
 
       <h4>Select Meter Lead:</h4>
@@ -34,7 +31,7 @@
       <label for="female">Black Lead</label>
       <hr>
       <h4>Select Voltage Measurement Type:</h4>
-      
+
       <input type="radio" id="ac" name="readingType" value="VAC" checked="true" onclick="readMeter()">
       <label for="male">AC Voltage</label>&nbsp&nbsp&nbsp
       <input type="radio" id="dc" name="readingType" value="VDC" onclick="readMeter()">
@@ -49,7 +46,7 @@
       <!-- <button type="button" id="clearDiagram" onclick="checkAnswer()" style="cursor:pointer;display:block;"><center>Submit</center></button> -->
 
       <h4>Failed Component:</h4>
-      <div class="uiSubDiv">
+      <div class="uiSubDiv" id="failedComponent">
            No Component Selected
       </div>
 

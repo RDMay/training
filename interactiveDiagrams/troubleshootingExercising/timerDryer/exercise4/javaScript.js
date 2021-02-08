@@ -1,5 +1,5 @@
-document.title = "Exercise 2"
-complaintField.innerHTML = "Long dry time. Dryer is running and set to high heat. Inlet temp is at ambient."
+document.title = "Exercise 4"
+complaintField.innerHTML = "Long dry time. Dryer is running and drum outlet temp is 85 degrees."
 
 var originalLineSize = "1px";
 var highlightedWidth = "2px";
@@ -175,7 +175,7 @@ function wireClicked(wire){
     wire2.style["stroke-width"]= originalLineSize;
     wire2.style["stroke"]= "rgb(0, 0, 0)";
   }
-  if(answer == "Inner_Coil"){
+  if(answer == "Safety_Thermo_Left"){
     failedComponent.innerHTML = "Correct! Code = " + answer
   }else{
     failedComponent.innerHTML = "Incorrect, try again!"
@@ -343,4 +343,12 @@ function toggleTestPoints(){
 redLead.checked = true;
 ac.checked = true;
 
-l1_11.id = 'neutral_11c';
+
+l1_23.id = "l2_23";
+l1_24.id = "l2_24";
+l1_22.id = "l2_22";
+l1_21.id = "l2_21";
+l1_20.id = "l2_20";
+l1_19.id = "l2_19";
+l1_18.id = "l2_18";
+l1_26.id = "l2_26";
