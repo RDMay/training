@@ -6,62 +6,54 @@
     <!DOCTYPE html>
     <link rel="icon" type="image/png" href="https://example.com/favicon.png"/>
     <link rel="stylesheet" href="../../../../JavaScriptLibraries/interactiveSchematic.css">
+    <link rel="stylesheet" href="../../troubleshootingExercise.css">
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <script src="../../../../JavaScriptLibraries/svgPanZoom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.12.0/d3.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.1/TweenMax.min.js"></script>
+
   </head>
-<body>
+<body style="font-family: arial">
   <div id="mainWindow"></div>
-    <span style="position: fixed; top: 10px; left: 5px; width: 20%; padding: 5px; z-index: 1; display: inline-block; background-color:white; border-style: solid; border-width: thin;">
-      No cool, no airflow.<br>
-      FF1: 52º<br>
-      FZ: 35º<br>
-      FZ Evap: -18º<br>
+    <span id="uiDiv" class="uiClass">
+      <h4>Complaint: Motor will not start.</h4>
       <hr>
-      Operating Modes:
-      <br>
-      <input type="radio" id="loadsOffBtn" name="serviceMode">
-      <label for="male">Defrost</label><br>
-      <input type="radio" id="evapFanMotorBtn" name="serviceMode">
-      <label for="male">Evaporator Fan Motor</label><br>
-      <input type="radio" id="condenserFanMotorBtn" name="serviceMode" onclick="readMeter()">
-      <label for="female">Condeser Fan Motor</label><br>
-      <input type="radio" id="freshFoodFanMotorBtn" name="serviceMode" onclick="readMeter()">
-      <label for="female">Fresh Food Fan Motor</label><br>
-      <input type="radio" id="customCoolFanMotorBtn" name="serviceMode" onclick="readMeter()">
-      <label for="female">Custom Cool Fan Motor</label><br>
-      <input type="radio" id="compressorBtn" name="serviceMode" onclick="readMeter()">
-      <label for="female">Compressor</label><br>
-      <input type="radio" id="defrostHeaterBtn" name="serviceMode" onclick="readMeter()">
-      <label for="female">Defrost Heater</label><br>
-      <input type="radio" id="cubeSolenoidBtn" name="serviceMode" onclick="readMeter()">
-      <label for="female">Cube Solenoid</label><br>
-      <input type="radio" id="augerMotorBtn" name="serviceMode" onclick="readMeter()">
-      <label for="female">Auger Motor</label><br>
-      <br><br>
-      Select Meter Lead:<br>
+      <h4>Test Points:</h4>
+      <input type="radio" id="tpOff" name="tpStatus" value="VAC" checked="true" onclick="readMeter()">
+      <label for="male">Off</label>&nbsp&nbsp&nbsp
+      <input type="radio" id="tpOn" name="tpStatus" value="VDC" onclick="readMeter()">
+      <label for="female">On</label>
+      <hr>
+
+      <h4>Select Meter Lead:</h4>
       <input type="radio" id="redLead" name="leadColors" checked="true" onclick="readMeter()">
       <label for="male">Red Lead</label>&nbsp&nbsp&nbsp
       <input type="radio" id="blackLead" name="leadColors" onclick="readMeter()">
       <label for="female">Black Lead</label>
-
-
-      <br><br>
-      Select Voltage Measurement Type:<br>
+      <hr>
+      <h4>Select Voltage Measurement Type:</h4>
+      
       <input type="radio" id="ac" name="readingType" value="VAC" checked="true" onclick="readMeter()">
       <label for="male">AC Voltage</label>&nbsp&nbsp&nbsp
       <input type="radio" id="dc" name="readingType" value="VDC" onclick="readMeter()">
       <label for="female">DC Voltage</label>
-      <br><br>
+      <hr>
+      <h4>Meter Reading:</h4>
+      <div class="uiSubDiv">
+      <span id="meterReading"> 0.000 VAC</span>
+    </div>
+    <hr>
 
-      <span id="meterReading">Meter Reading: 0.000 VAC</span>
-      <br><br>
-      <button type="button" id="clearDiagram" onclick="checkAnswer()" style="cursor:pointer;display:block;"><center>Submit</center></button>
-      <br>
-      <button type="button" onclick="toggleTestPoints()">Toggle Test Points</button>
+      <!-- <button type="button" id="clearDiagram" onclick="checkAnswer()" style="cursor:pointer;display:block;"><center>Submit</center></button> -->
+
+      <h4>Failed Component:</h4>
+      <div class="uiSubDiv">
+           No Component Selected
+      </div>
+
+      <!-- <button type="button" onclick="toggleTestPoints()">Toggle Test Points</button> -->
     </span>
 </body>
 <script src="javaScript.js"></script>

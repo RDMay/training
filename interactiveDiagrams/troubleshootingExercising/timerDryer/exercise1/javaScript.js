@@ -91,18 +91,18 @@ for(i=0; i<mainSvg.childNodes.length; i++){
   }
 }
 
-var dcPlusPointsLayer;
+var l2PointsLayer;
 for(i=0; i<mainSvg.childNodes.length; i++){
   var myLabel = $(mainSvg.childNodes[i]).attr('inkscape:label');
-  if(myLabel == 'dcPlusPoints'){
+  if(myLabel == 'l2Points'){
     for(a=0; a<mainSvg.childNodes[i].childNodes.length; a++){
-      dcPlusPointsLayer = mainSvg.childNodes[i];
-      dcPlusPointsLayer.style.display = 'inline';
+      l2PointsLayer = mainSvg.childNodes[i];
+      l2PointsLayer.style.display = 'inline';
       mainSvg.childNodes[i].setAttribute('onclick','testPointClicked();');
       mainSvg.childNodes[i].setAttribute('onmouseover','this.style.cursor = "default";');
       mainSvg.childNodes[i].childNodes[a].style.stroke = "green";
       mainSvg.childNodes[i].childNodes[a].style.fill = "green";
-      mainSvg.childNodes[i].childNodes[a].id = "dcPlus_" + a;
+      mainSvg.childNodes[i].childNodes[a].id = "l2_" + a;
     }
   }
 }
@@ -182,10 +182,7 @@ for(i=0; i<layers.length; i++){
 
 var neutralArray = document.getElementById("neutralPoints").childNodes;
 var l1Array = document.getElementById("l1Points").childNodes;
-var dcPlusArray = document.getElementById("dcPlusPoints").childNodes;
-var dcMinusArray = document.getElementById("dcMinusPoints").childNodes;
-var commArray = document.getElementById("commPoints").childNodes;
-var dcPulseArray = document.getElementById("dcPulsePoints").childNodes;
+var l2Array = document.getElementById("l2Points").childNodes;
 var tpArray = [];
 for(i=0; i<neutralArray.length; i++){
   tpArray.push(neutralArray[i]);
@@ -193,18 +190,10 @@ for(i=0; i<neutralArray.length; i++){
 for(i=0; i<l1Array.length; i++){
   tpArray.push(l1Array[i]);
 }
-for(i=0; i<dcPlusArray.length; i++){
-  tpArray.push(dcPlusArray[i]);
+for(i=0; i<l2Array.length; i++){
+  tpArray.push(l2Array[i]);
 }
-for(i=0; i<dcMinusArray.length; i++){
-  tpArray.push(dcMinusArray[i]);
-}
-for(i=0; i<commArray.length; i++){
-  tpArray.push(commArray[i]);
-}
-for(i=0; i<dcPulseArray.length; i++){
-  tpArray.push(dcPulseArray[i]);
-}
+
 var redLeadPot;
 var blackLeadPot;
 var readingType;
@@ -268,61 +257,43 @@ function readMeter(){
     }
     break;
 
-    case "dcPlusdcMinus":
-    if(readingType == "VDC"){
-      meterReading.innerHTML = "Meter Reading: 13.60" + readingType;
+    case "l2neutral":
+    if(readingType == "VAC"){
+      meterReading.innerHTML = "Meter Reading: 120" + readingType;
     }else{
       meterReading.innerHTML = "Meter Reading: 0.000" + readingType;
     }
     break;
 
-    case "dcMinusdcPlus":
-    if(readingType == "VDC"){
-      meterReading.innerHTML = "Meter Reading: -13.60" + readingType;
+    case "neutrall2":
+    if(readingType == "VAC"){
+      meterReading.innerHTML = "Meter Reading: 120" + readingType;
     }else{
       meterReading.innerHTML = "Meter Reading: 0.000" + readingType;
     }
     break;
 
-    case "dcPlusdcPulse":
-    if(readingType == "VDC"){
-      meterReading.innerHTML = "Meter Reading: -4.30" + readingType;
+    case "l1l2":
+    if(readingType == "VAC"){
+      meterReading.innerHTML = "Meter Reading: 240.0" + readingType;
     }else{
       meterReading.innerHTML = "Meter Reading: 0.000" + readingType;
     }
     break;
 
-    case "dcPulsedcPlus":
-    if(readingType == "VDC"){
-      meterReading.innerHTML = "Meter Reading: 4.30" + readingType;
+    case "l2l1":
+    if(readingType == "VAC"){
+      meterReading.innerHTML = "Meter Reading: 240.0" + readingType;
     }else{
       meterReading.innerHTML = "Meter Reading: 0.000" + readingType;
     }
     break;
-
-    case "dcMinusdcPulse":
-    if(readingType == "VDC"){
-      meterReading.innerHTML = "Meter Reading: -4.30" + readingType;
-    }else{
-      meterReading.innerHTML = "Meter Reading: 0.000" + readingType;
-    }
-    break;
-
-    case "dcPulsedcMinus":
-    if(readingType == "VDC"){
-      meterReading.innerHTML = "Meter Reading: 4.30" + readingType;
-    }else{
-      meterReading.innerHTML = "Meter Reading: 0.000" + readingType;
-    }
-    break;
-
-
 
     default:
     if(readingType == "VAC"){
-      meterReading.innerHTML = "Meter Reading - 0" + readingType;
+      meterReading.innerHTML = "Meter Reading: 0" + readingType;
     }else{
-      meterReading.innerHTML = "Meter Reading - 0" + readingType;
+      meterReading.innerHTML = "Meter Reading: 0" + readingType;
     }
 
 }
@@ -340,20 +311,7 @@ function changeDropDown(e){
   }
 }
 
-function clearHighlights(){
-  for(i=0; i<diagram1Paths.length; i++){
-    part = diagram1Paths[i].id;
-    part = part.split("copy")
 
-    if(part.length === 1){
-    diagram1Paths[i].style['stroke-linecap']="round";
-    diagram1Paths[i].style.stroke = "#000000";
-    diagram1Paths[i].style["stroke-width"]= originalLineSize;
-    }
-  }
-}
-
-clearHighlights();
 
 function getColors(){
 
@@ -372,10 +330,10 @@ function toggleTestPoints(){
     l1PointsLayer.style.display = "inline"
   }
 
-  if(dcPlusPointsLayer.style.display == "inline"){
-    dcPlusPointsLayer.style.display = "none"
+  if(l2PointsLayer.style.display == "inline"){
+    l2PointsLayer.style.display = "none"
   }else{
-    dcPlusPointsLayer.style.display = "inline"
+    l2PointsLayer.style.display = "inline"
   }
 
   if(dcMinusPointsLayer.style.display == "inline"){
@@ -399,8 +357,9 @@ function toggleTestPoints(){
 
 redLead.checked = true;
 ac.checked = true;
-loadsOffBtn.checked = true;
 
-
-neutral_3.id = "l1_3c";
-neutral_4.id = "l1_4c";
+l2_3.id = 'l1_3c';
+l2_2.id = 'l1_2c';
+l1_11.id = 'n_11c';
+neutral_1.id = 'l1_1c';
+neutral_4.id = 'l1_4c';

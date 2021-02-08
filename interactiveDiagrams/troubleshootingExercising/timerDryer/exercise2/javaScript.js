@@ -1,7 +1,7 @@
 document.title = "Exercise 1"
 
-var originalLineSize = "0.25px";
-var highlightedWidth = "1px";
+var originalLineSize = "1px";
+var highlightedWidth = "2px";
 
 var deviceType = "not mobile";
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
@@ -57,7 +57,34 @@ function logKey(e) {
 var diagram1Paths = document.getElementById("diagram1").getElementsByTagName("path");
 var diagram1PathsLength = diagram1Paths.length;
 
+for(i=0; i<diagram1PathsLength; i++){
+  diagram1Paths[i].style['stroke-linecap']="round";
+  diagram1Paths[i].style.stroke = "Black";
+  diagram1Paths[i].style.strokeWidth = originalLineSize;
+  var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  path.setAttribute('stroke','blue');
+  path.setAttribute('fill','none');
+  path.setAttribute('opacity',0);
+  path.setAttribute('id',diagram1Paths[i].id + 'copy');
 
+  if(deviceType == "mobile"){
+    path.setAttribute('onclick','wireClicked(this);');
+    path.setAttribute('ontouchstart','wireClicked(this);');
+    path.setAttribute('ontouchend','wireClicked(this);');
+    path.setAttribute('onmouseover','wireClicked(this);');
+    }else{
+      path.setAttribute('onclick','wireClicked(this);');
+      path.setAttribute('onmouseover','this.style.cursor = "default";');
+    }
+    path.style['stroke-linecap']="round";
+    path.setAttribute("d", diagram1Paths[i].getAttribute("d"));
+    diagram1.appendChild(path);
+    path.style["stroke-width"]= 12;
+}
+
+//Set Path Codes
+var diagram1Paths = document.getElementById("diagram1").getElementsByTagName("path");
+var diagram1PathsLength = diagram1Paths.length;
 
 var neutralPointsLayer;
 for(i=0; i<mainSvg.childNodes.length; i++){
@@ -91,66 +118,18 @@ for(i=0; i<mainSvg.childNodes.length; i++){
   }
 }
 
-var dcPlusPointsLayer;
+var l2PointsLayer;
 for(i=0; i<mainSvg.childNodes.length; i++){
   var myLabel = $(mainSvg.childNodes[i]).attr('inkscape:label');
-  if(myLabel == 'dcPlusPoints'){
+  if(myLabel == 'l2Points'){
     for(a=0; a<mainSvg.childNodes[i].childNodes.length; a++){
-      dcPlusPointsLayer = mainSvg.childNodes[i];
-      dcPlusPointsLayer.style.display = 'inline';
+      l2PointsLayer = mainSvg.childNodes[i];
+      l2PointsLayer.style.display = 'inline';
       mainSvg.childNodes[i].setAttribute('onclick','testPointClicked();');
       mainSvg.childNodes[i].setAttribute('onmouseover','this.style.cursor = "default";');
       mainSvg.childNodes[i].childNodes[a].style.stroke = "green";
       mainSvg.childNodes[i].childNodes[a].style.fill = "green";
-      mainSvg.childNodes[i].childNodes[a].id = "dcPlus_" + a;
-    }
-  }
-}
-
-var commPointsLayer;
-for(i=0; i<mainSvg.childNodes.length; i++){
-  var myLabel = $(mainSvg.childNodes[i]).attr('inkscape:label');
-  if(myLabel == 'commPoints'){
-    for(a=0; a<mainSvg.childNodes[i].childNodes.length; a++){
-      commPointsLayer = mainSvg.childNodes[i];
-      commPointsLayer.style.display = 'inline';
-      mainSvg.childNodes[i].setAttribute('onclick','testPointClicked();');
-      mainSvg.childNodes[i].setAttribute('onmouseover','this.style.cursor = "default";');
-      mainSvg.childNodes[i].childNodes[a].style.stroke = "green";
-      mainSvg.childNodes[i].childNodes[a].style.fill = "green";
-      mainSvg.childNodes[i].childNodes[a].id = "comm_" + a;
-    }
-  }
-}
-
-var dcMinusPointsLayer;
-for(i=0; i<mainSvg.childNodes.length; i++){
-  var myLabel = $(mainSvg.childNodes[i]).attr('inkscape:label');
-  if(myLabel == 'dcMinusPoints'){
-    for(a=0; a<mainSvg.childNodes[i].childNodes.length; a++){
-      dcMinusPointsLayer = mainSvg.childNodes[i];
-      dcMinusPointsLayer.style.display = 'inline';
-      mainSvg.childNodes[i].setAttribute('onclick','testPointClicked();');
-      mainSvg.childNodes[i].setAttribute('onmouseover','this.style.cursor = "default";');
-      mainSvg.childNodes[i].childNodes[a].style.stroke = "green";
-      mainSvg.childNodes[i].childNodes[a].style.fill = "green";
-      mainSvg.childNodes[i].childNodes[a].id = "dcMinus_" + a;
-    }
-  }
-}
-
-var dcPulsePointsLayer;
-for(i=0; i<mainSvg.childNodes.length; i++){
-  var myLabel = $(mainSvg.childNodes[i]).attr('inkscape:label');
-  if(myLabel == 'dcPulsePoints'){
-    for(a=0; a<mainSvg.childNodes[i].childNodes.length; a++){
-      dcPulsePointsLayer = mainSvg.childNodes[i];
-      dcPulsePointsLayer.style.display = 'inline';
-      mainSvg.childNodes[i].setAttribute('onclick','testPointClicked();');
-      mainSvg.childNodes[i].setAttribute('onmouseover','this.style.cursor = "default";');
-      mainSvg.childNodes[i].childNodes[a].style.stroke = "green";
-      mainSvg.childNodes[i].childNodes[a].style.fill = "green";
-      mainSvg.childNodes[i].childNodes[a].id = "dcPulse_" + a;
+      mainSvg.childNodes[i].childNodes[a].id = "l2_" + a;
     }
   }
 }
@@ -159,12 +138,25 @@ function colorPickerChange(e){
   var highlightColor = document.getElementById("colorPicker").value;
 }
 
+var answer = "";
 function wireClicked(wire){
+  answer = event.target.id;
+  console.log(event.target.id)
+  for(i=0; i<diagram1Paths.length; i++){
+    part = diagram1Paths[i].id;
+    part = part.split("copy")
+
+    if(part.length === 1){
+    diagram1Paths[i].style['stroke-linecap']="round";
+    diagram1Paths[i].style.stroke = "#000000";
+    diagram1Paths[i].style["stroke-width"]= originalLineSize;
+    }
+  }
   nameSplit = wire.id.split("copy");
   wire2 = document.getElementById(nameSplit[0]);
-  if(wire2.style["stroke-width"] == .25 || wire2.style["stroke-width"] == '0.25px'){
+  if(wire2.style["stroke-width"] == 1 || wire2.style["stroke-width"] == '1px'){
     wire2.style["stroke-width"]= highlightedWidth;
-    wire2.style["stroke"]= document.getElementById("colorPicker").value;
+    wire2.style["stroke"]= 'red';
     selectedPart = wire2.id;
   }else{
     wire2.style["stroke-width"]= originalLineSize;
@@ -182,10 +174,7 @@ for(i=0; i<layers.length; i++){
 
 var neutralArray = document.getElementById("neutralPoints").childNodes;
 var l1Array = document.getElementById("l1Points").childNodes;
-var dcPlusArray = document.getElementById("dcPlusPoints").childNodes;
-var dcMinusArray = document.getElementById("dcMinusPoints").childNodes;
-var commArray = document.getElementById("commPoints").childNodes;
-var dcPulseArray = document.getElementById("dcPulsePoints").childNodes;
+var l2Array = document.getElementById("l2Points").childNodes;
 var tpArray = [];
 for(i=0; i<neutralArray.length; i++){
   tpArray.push(neutralArray[i]);
@@ -193,22 +182,15 @@ for(i=0; i<neutralArray.length; i++){
 for(i=0; i<l1Array.length; i++){
   tpArray.push(l1Array[i]);
 }
-for(i=0; i<dcPlusArray.length; i++){
-  tpArray.push(dcPlusArray[i]);
+for(i=0; i<l2Array.length; i++){
+  tpArray.push(l2Array[i]);
 }
-for(i=0; i<dcMinusArray.length; i++){
-  tpArray.push(dcMinusArray[i]);
-}
-for(i=0; i<commArray.length; i++){
-  tpArray.push(commArray[i]);
-}
-for(i=0; i<dcPulseArray.length; i++){
-  tpArray.push(dcPulseArray[i]);
-}
+
 var redLeadPot;
 var blackLeadPot;
 var readingType;
 function testPointClicked(){
+  console.clear()
   console.log(event.target.id)
   if(ac.checked == true){
     readingType = "VAC"
@@ -268,61 +250,43 @@ function readMeter(){
     }
     break;
 
-    case "dcPlusdcMinus":
-    if(readingType == "VDC"){
-      meterReading.innerHTML = "Meter Reading: 13.60" + readingType;
+    case "l2neutral":
+    if(readingType == "VAC"){
+      meterReading.innerHTML = "Meter Reading: 120" + readingType;
     }else{
       meterReading.innerHTML = "Meter Reading: 0.000" + readingType;
     }
     break;
 
-    case "dcMinusdcPlus":
-    if(readingType == "VDC"){
-      meterReading.innerHTML = "Meter Reading: -13.60" + readingType;
+    case "neutrall2":
+    if(readingType == "VAC"){
+      meterReading.innerHTML = "Meter Reading: 120" + readingType;
     }else{
       meterReading.innerHTML = "Meter Reading: 0.000" + readingType;
     }
     break;
 
-    case "dcPlusdcPulse":
-    if(readingType == "VDC"){
-      meterReading.innerHTML = "Meter Reading: -4.30" + readingType;
+    case "l1l2":
+    if(readingType == "VAC"){
+      meterReading.innerHTML = "Meter Reading: 240.0" + readingType;
     }else{
       meterReading.innerHTML = "Meter Reading: 0.000" + readingType;
     }
     break;
 
-    case "dcPulsedcPlus":
-    if(readingType == "VDC"){
-      meterReading.innerHTML = "Meter Reading: 4.30" + readingType;
+    case "l2l1":
+    if(readingType == "VAC"){
+      meterReading.innerHTML = "Meter Reading: 240.0" + readingType;
     }else{
       meterReading.innerHTML = "Meter Reading: 0.000" + readingType;
     }
     break;
-
-    case "dcMinusdcPulse":
-    if(readingType == "VDC"){
-      meterReading.innerHTML = "Meter Reading: -4.30" + readingType;
-    }else{
-      meterReading.innerHTML = "Meter Reading: 0.000" + readingType;
-    }
-    break;
-
-    case "dcPulsedcMinus":
-    if(readingType == "VDC"){
-      meterReading.innerHTML = "Meter Reading: 4.30" + readingType;
-    }else{
-      meterReading.innerHTML = "Meter Reading: 0.000" + readingType;
-    }
-    break;
-
-
 
     default:
     if(readingType == "VAC"){
-      meterReading.innerHTML = "Meter Reading - 0" + readingType;
+      meterReading.innerHTML = "Meter Reading: 0" + readingType;
     }else{
-      meterReading.innerHTML = "Meter Reading - 0" + readingType;
+      meterReading.innerHTML = "Meter Reading: 0" + readingType;
     }
 
 }
@@ -340,23 +304,14 @@ function changeDropDown(e){
   }
 }
 
-function clearHighlights(){
-  for(i=0; i<diagram1Paths.length; i++){
-    part = diagram1Paths[i].id;
-    part = part.split("copy")
 
-    if(part.length === 1){
-    diagram1Paths[i].style['stroke-linecap']="round";
-    diagram1Paths[i].style.stroke = "#000000";
-    diagram1Paths[i].style["stroke-width"]= originalLineSize;
-    }
+
+function checkAnswer(){
+  if(answer == 'path9368copy'){
+    alert('Correct!');
+  }else{
+    alert('Incorrect, try again!');
   }
-}
-
-clearHighlights();
-
-function getColors(){
-
 }
 
 function toggleTestPoints(){
@@ -372,35 +327,31 @@ function toggleTestPoints(){
     l1PointsLayer.style.display = "inline"
   }
 
-  if(dcPlusPointsLayer.style.display == "inline"){
-    dcPlusPointsLayer.style.display = "none"
+  if(l2PointsLayer.style.display == "inline"){
+    l2PointsLayer.style.display = "none"
   }else{
-    dcPlusPointsLayer.style.display = "inline"
-  }
-
-  if(dcMinusPointsLayer.style.display == "inline"){
-    dcMinusPointsLayer.style.display = "none"
-  }else{
-    dcMinusPointsLayer.style.display = "inline"
-  }
-
-  if(commPointsLayer.style.display == "inline"){
-    commPointsLayer.style.display = "none"
-  }else{
-    commPointsLayer.style.display = "inline"
-  }
-
-  if(dcPulsePointsLayer.style.display == "inline"){
-    dcPulsePointsLayer.style.display = "none"
-  }else{
-    dcPulsePointsLayer.style.display = "inline"
+    l2PointsLayer.style.display = "inline"
   }
 }
 
 redLead.checked = true;
 ac.checked = true;
-loadsOffBtn.checked = true;
+tpOn.checked = true;
 
+l1_2.id = 'neutral_2c';
+l1_3.id = 'neutral_3c';
+l1_6.id = 'neutral_6c';
+l1_4.id = 'neutral_4c';
+l1_5.id = 'neutral_5c';
+l1_7.id = 'neutral_7c';
+l1_8.id = 'neutral_8c';
+l1_9.id = 'neutral_9c';
+l1_10.id = 'neutral_10c';
+l1_11.id = 'neutral_11c';
+l1_12.id = 'neutral_12c';
+l1_13.id = 'neutral_13c';
+l1_27.id = 'neutral_27c';
+neutral_4.id = 'l1_4c';
 
-neutral_3.id = "l1_3c";
-neutral_4.id = "l1_4c";
+l2_2.id = 'l1_2c'
+l2_3.id = 'l1_3c'
