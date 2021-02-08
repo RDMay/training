@@ -1,5 +1,5 @@
 document.title = "Exercise 1"
-complaintField.innerHTML = "Motor wont start when start button is pressed."
+complaintField.innerHTML = "Timer set to timed dry, 30 minutes. Motor wont start when start button is pressed."
 
 var originalLineSize = "1px";
 var highlightedWidth = "2px";
