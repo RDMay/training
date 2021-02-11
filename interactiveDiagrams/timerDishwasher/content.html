@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>loading</title>
+    <meta charset="UTF-8">
+    <!DOCTYPE html>
+    <link rel="stylesheet" href="../../JavaScriptLibraries/interactiveSchematic.css">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="../../JavaScriptLibraries/svgPanZoom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.12.0/d3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.1/TweenMax.min.js"></script>
+  </head>
+<body>
+  <div id="mainWindow"></div>
+    <span style="position: fixed; top: 10px; left: 5px; width: 20%; margin: 0; padding: 0; z-index: 1; display: inline-block;">
+      <select id="componentSelect" onChange="componentChange(this.selectedIndex.value);">
+        <option value="NONE">CLEAR HIGHLIGHTS</option>
+      </select>
+      <select id="colorPicker" onChange="colorPickerChange(this.selectedIndex);">
+        <option value="#000000" style="background-color: Black;color: #FFFFFF;">COLOR PICKER</option>
+        <option value="#000000" style="background-color: Black;color: #FFFFFF;">Black</option>
+        <option value="#A9A9A9" style="background-color: DarkGray;">DarkGray</option>
+        <option value="#D3D3D3" style="background-color: LightGrey;">LightGray</option>
+        <option value="#7FFFD4" style="background-color: Aquamarine;">Aquamarine</option>
+        <option value="#0000FF" style="background-color: Blue;">Blue</option>
+        <option value="#800080" style="background-color: Purple;color: #FFFFFF;">Purple</option>
+        <option value="#EE82EE" style="background-color: Violet;">Violet</option>
+        <option value="#FFC0CB" style="background-color: Pink;">Pink</option>
+        <option value="#008000" style="background-color: Green;color: #FFFFFF;">Green</option>
+        <option value="#9ACD32" style="background-color: YellowGreen;">YellowGreen</option>
+        <option value="#FFFF00" style="background-color: Yellow;">Yellow</option>
+        <option value="#FFA500" style="background-color: Orange;">Orange</option>
+        <option value="#FF0000" style="background-color: Red;">Red</option>
+        <option value="#A52A2A" style="background-color: Brown;">Brown</option>
+      </select>
+      <!-- <button onclick="getColors()">Get Wire Colors</button> -->
+    </span>
+</body>
+<script src="javaScript.js"></script>
+<script src="data.js"></script>
+<script>
+        var eventsHandler;
+        eventsHandler = {
+          haltEventListeners: ['touchstart', 'touchend', 'touchmove', 'touchleave', 'touchcancel']
+        , init: function(options) {
+            var instance = options.instance
+              , initialScale = 1
+              , pannedX = 0
+              , pannedY = 0
+              this.hammer = Hammer(options.svgElement, {
+              inputClass: Hammer.SUPPORT_POINTER_EVENTS ? Hammer.PointerEventInput : Hammer.TouchInput
+            })
+            this.hammer.get('pinch').set({enable: true})
+            this.hammer.on('doubletap', function(ev){
+              instance.zoomIn()
+            })
+            this.hammer.on('panstart panmove', function(ev){
+              if (ev.type === 'panstart') {
+                pannedX = 0
+                pannedY = 0
+              }
+              instance.panBy({x: ev.deltaX - pannedX, y: ev.deltaY - pannedY})
+              pannedX = ev.deltaX
+              pannedY = ev.deltaY
+            })
+            this.hammer.on('pinchstart pinchmove', function(ev){
+              if (ev.type === 'pinchstart') {
+                initialScale = instance.getZoom()
+                instance.zoomAtPoint(initialScale * ev.scale, {x: ev.center.x, y: ev.center.y})
+              }
+              instance.zoomAtPoint(initialScale * ev.scale, {x: ev.center.x, y: ev.center.y})
+            })
+            options.svgElement.addEventListener('touchmove', function(e){ e.preventDefault(); });
+          }
+        , destroy: function(){
+            this.hammer.destroy()
+          }
+        }
+
+        // $(window).resize(function(){
+        //   panZoom.resize();
+        //   panZoom.fit();
+        //   panZoom.center();
+        // })
+        window.panZoom = svgPanZoom(schematic, {
+          zoomEnabled: true
+        , controlIconsEnabled: true
+        , fit: 1
+        , center: 1
+        , customEventsHandler: eventsHandler
+        });
+
+    </script>
+</html>

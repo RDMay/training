@@ -6,6 +6,7 @@
     <!DOCTYPE html>
     <link rel="icon" type="image/png" href="https://example.com/favicon.png"/>
     <link rel="stylesheet" href="../../../JavaScriptLibraries/interactiveSchematic.css">
+    <link rel="stylesheet" href="../../../JavaScriptLibraries/circuitHighlights.css">
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <script src="../../../JavaScriptLibraries/svgPanZoom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
@@ -15,11 +16,16 @@
   </head>
 <body>
   <div id="mainWindow"></div>
-    <span style="position: fixed; top: 10px; left: 5px; width: 20%; padding: 5px; z-index: 1; display: inline-block; background-color:white; border-style: solid; border-width: thin;">
-       <a href="https://www.youtube.com/watch?v=YEfryPX4dyA&feature=youtu.be" target="_blank">Help Tutorial</a>
-      <br><br>
-      Highlight L1 and Neutral to the Main Control Board.
-      <br><br>
+  <button type="button" id="clearDiagram" onclick="clearHighlights()" style="cursor:pointer;display:block;";><center>Clear Diagram</center></button>
+    <span class="uiClass">
+      <a href="https://www.youtube.com/watch?v=YEfryPX4dyA&feature=youtu.be" target="_blank">Help Tutorial</a>
+      <h3>Highlight L1 and Neural to the Main Control Board.</h3>
+      <ul style="list-style-type:disc;">
+        <li>Highlight wires according to potential.</li>
+        <li>There is no Energized Load (orange) in this exercise.</li>
+        <li>Use the (Move Switch) buttons to reposition switches as needed.</li>
+    </ul>
+      <br>
       <select id="colorPicker" onChange="colorPickerChange(this.selectedIndex);">
         <option value="#330000">L1</option>
         <option value="#CDCDCD">Neutral</option>
@@ -31,10 +37,7 @@
         <option value="#800080">Unknown</option>
       </select>
       <br><br>
-      <button type="button" id="clearDiagram" onclick="clearHighlights()" style="cursor:pointer;display:block;";><center>Clear Diagram</center></button>
-      <br>
-      <button type="button" id="clearDiagram" onclick="checkAnswer()" style="cursor:pointer;display:block;"><center>Submit</center></button>
-      <br>
+      <button type="button" onclick="checkAnswer()" style="cursor:pointer;display:block;"><center>Submit</center></button>
     </span>
 </body>
 <script src="javaScript.js"></script>

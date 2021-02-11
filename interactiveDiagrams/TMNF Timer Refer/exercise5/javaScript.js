@@ -18,7 +18,7 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 }
 
 xhr = new XMLHttpRequest();
-xhr.open("GET","../schematic.svg",false);
+xhr.open("GET","schematic.svg",false);
 xhr.overrideMimeType("image/svg+xml");
 xhr.send("");
 
