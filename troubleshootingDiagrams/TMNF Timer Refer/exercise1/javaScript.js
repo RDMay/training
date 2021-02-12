@@ -9,11 +9,11 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
   deviceType="mobile"
 }
 
-// xhr = new XMLHttpRequest();
-// xhr.open("GET","SVG Meter.svg",false);
-// xhr.overrideMimeType("image/svg+xml");
-// xhr.send("");
-// var meter = document.getElementById("robert").appendChild(xhr.responseXML.documentElement);
+xhr = new XMLHttpRequest();
+xhr.open("GET","SVG Meter.svg",false);
+xhr.overrideMimeType("image/svg+xml");
+xhr.send("");
+var meters = document.getElementById("uiDiv").appendChild(xhr.responseXML.documentElement);
 
 xhr = new XMLHttpRequest();
 xhr.open("GET","schematic.svg",false);
@@ -23,7 +23,7 @@ var schematic = document.getElementById("mainWindow").appendChild(xhr.responseXM
 
 
 //Resize Window
-var svgWindow = document.getElementById("mainWindow");
+// var svgWindow = document.getElementById("mainWindow");
 // var svg = d3.select(schematic);
 // function schematicRedraw(){
 //   var width = svgWindow.clientWidth;
@@ -35,32 +35,20 @@ var svgWindow = document.getElementById("mainWindow");
 // schematicRedraw();
 // window.addEventListener("resize", schematicRedraw);
 
-// function meterRedraw(){
-//   var  svg = $("#meter").get(0);
-//   var w = svg.width.baseVal.value;
-//   var h = svg.height.baseVal.value;
-//   svg.setAttribute('viewBox', '0 0 '+w+' '+h);
-  // svg.setAttribute('width', '100%');
-  // svg.setAttribute('height', '100%');
-// }
-// meterRedraw();
-// window.addEventListener("resize", meterRedraw);
-// console.log(uiDiv.offsetWidth)
 
 
-// function meterRedraw(){
-//   var width = svgWindow.clientWidth/uiDiv.offsetWidth;
-//   uiDiv.offsetWidth = width;
-//   var height = svgWindow.clientHeight*.9;
-//   uiDiv.offsetHeight = height;
-//   console.log(width)
-//   var  svg = $("#meter").get(0);
-//   var w = svg.width.baseVal.value;
-//   var h = svg.height.baseVal.value;
-//   svg.setAttribute('viewBox', '0 0 '+width+' '+height);
-// }
-// meterRedraw();
-// window.addEventListener("resize", meterRedraw);
+
+function schematicRedraw(){
+  var  svg = $("#mainSvg").get(0);
+  console.log(svg.viewBox.baseVal)
+  // x: 0, y: 0, width: 1999.9998779296875, height: 1172.4276123046875
+  // svg.setAttribute('viewBox', '0 0 '+1000+' '+500);
+  // var w = svg.width.baseVal.value;
+  // var h = svg.height.baseVal.value;
+  // svg.setAttribute('viewBox', '0 0 '+w+' '+h);
+}
+schematicRedraw();
+window.addEventListener("resize", schematicRedraw);
 
 document.addEventListener('keydown', logKey);
 function logKey(e) {
