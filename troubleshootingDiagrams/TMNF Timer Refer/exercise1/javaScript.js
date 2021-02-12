@@ -1,5 +1,5 @@
 document.title = "Exercise 1"
-complaintField.innerHTML = "Timer set to timed dry, 30 minutes. Motor wont start when start button is pressed."
+// complaintField.innerHTML = "Timer set to timed dry, 30 minutes. Motor wont start when start button is pressed."
 
 var originalLineSize = "1px";
 var highlightedWidth = "2px";
@@ -8,6 +8,14 @@ var deviceType = "not mobile";
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
   deviceType="mobile"
 }
+
+xhr = new XMLHttpRequest();
+xhr.open("GET","SVG Meter.svg",false);
+xhr.overrideMimeType("image/svg+xml");
+xhr.send("");
+var meter = document.getElementById("uiDiv").appendChild(xhr.responseXML.documentElement);
+meter.setAttribute("width", screen.width/2);
+meter.setAttribute("height", screen.height/2);
 
 xhr = new XMLHttpRequest();
 xhr.open("GET","schematic.svg",false);
@@ -23,12 +31,16 @@ schematic.setAttribute("height", screen.height);
 //Resize Window
 var svgWindow = document.getElementById("mainWindow");
 var svg = d3.select(schematic);
+var meter = d3.select(meter);
 function myredraw(){
   var width = svgWindow.clientWidth;
   var height = svgWindow.clientHeight;
   svg
   .attr("width", width)
   .attr("height", height);
+  meter
+  .attr("width", width/3)
+  .attr("height", height/3);
 }
 myredraw();
 window.addEventListener("resize", myredraw);
@@ -336,5 +348,5 @@ function toggleTestPoints(){
   }
 }
 
-redLead.checked = true;
-ac.checked = true;
+// redLead.checked = true;
+// ac.checked = true;

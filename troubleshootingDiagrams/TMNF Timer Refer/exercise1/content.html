@@ -7,8 +7,9 @@
     <!DOCTYPE html>
     <link rel="icon" type="image/png" href="https://example.com/favicon.png"/>
     <link rel="stylesheet" href="../../../JavaScriptLibraries/interactiveSchematic.css">
-    <link rel="stylesheet" href="../../../JavaScriptLibraries/troubleshootingExercise.css">
+    <link rel="stylesheet" href="../../../JavaScriptLibraries/meter.css">
     <script src="../../../JavaScriptLibraries/svgPanZoom.js"></script>
+    <script src="../../../JavaScriptLibraries/draggable.js"></script>
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
@@ -19,7 +20,7 @@
 <body style="font-family: arial">
   <div id="mainWindow"></div>
     <span id="uiDiv" class="uiClass">
-      <a href="https://www.youtube.com/watch?v=4vPE70rqeMw&feature=youtu.be" target="_blank" style="color:white">Help Tutorial</a>
+      <!-- <a href="https://www.youtube.com/watch?v=4vPE70rqeMw&feature=youtu.be" target="_blank" style="color:white">Help Tutorial</a>
       <br><br>
       <button id="zoomIn"> Zoom in</button>
       <h4>Complaint:</h4>
@@ -42,20 +43,21 @@
       <h4>Meter Reading:</h4>
       <div class="uiSubDiv">
       <span id="meterReading"> 0.000 VAC</span>
-    </div>
-    <hr>
+
+    <hr> -->
 
       <!-- <button type="button" id="clearDiagram" onclick="checkAnswer()" style="cursor:pointer;display:block;"><center>Submit</center></button> -->
 
-      <h4>Failed Component:</h4>
+      <!-- <h4>Failed Component:</h4>
       <div class="uiSubDiv" id="failedComponent">
            No Component Selected
-      </div>
+      </div> -->
 
       <!-- <button type="button" onclick="toggleTestPoints()">Toggle Test Points</button> -->
     </span>
 </body>
 <script src="javaScript.js"></script>
+<script src="../../../JavaScriptLibraries/Multimeter.js"></script>
 <script>
         var eventsHandler;
         eventsHandler = {
