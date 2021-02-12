@@ -1,11 +1,12 @@
 .uiClass{
+  border-style: solid;
     position: fixed;
     top: 10px;
-    left: 5px;
+    right: 0px;
     width: 20%;
     padding: 5px;
     z-index: 1;
-    display: inline-block;
+    /* display: inline-block; */
     /* background-color:#092c74; */
     color:white;
     border-style: solid;
@@ -18,3 +19,19 @@
     padding: 0;
     margin:0;
   }
+
+
+  .svg-container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    vertical-align: top;
+    overflow: hidden;
+}
+.svg-content {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}

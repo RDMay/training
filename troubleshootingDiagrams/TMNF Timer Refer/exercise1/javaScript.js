@@ -14,36 +14,48 @@ xhr.open("GET","SVG Meter.svg",false);
 xhr.overrideMimeType("image/svg+xml");
 xhr.send("");
 var meter = document.getElementById("uiDiv").appendChild(xhr.responseXML.documentElement);
-meter.setAttribute("width", screen.width/2);
-meter.setAttribute("height", screen.height/2);
 
 xhr = new XMLHttpRequest();
 xhr.open("GET","schematic.svg",false);
 xhr.overrideMimeType("image/svg+xml");
 xhr.send("");
-
 var schematic = document.getElementById("mainWindow").appendChild(xhr.responseXML.documentElement);
-// var schematic = document.getElementById("mainSvg");
 
-schematic.setAttribute("width", screen.width);
-schematic.setAttribute("height", screen.height);
 
 //Resize Window
-var svgWindow = document.getElementById("mainWindow");
-var svg = d3.select(schematic);
-var meter = d3.select(meter);
-function myredraw(){
-  var width = svgWindow.clientWidth;
-  var height = svgWindow.clientHeight;
-  svg
-  .attr("width", width)
-  .attr("height", height);
-  meter
-  .attr("width", width/3)
-  .attr("height", height/3);
+// var svgWindow = document.getElementById("mainWindow");
+// var svg = d3.select(schematic);
+// function schematicRedraw(){
+//   var width = svgWindow.clientWidth;
+//   var height = svgWindow.clientHeight;
+//   svg
+//   .attr("width", width)
+//   .attr("height", height);
+// }
+// schematicRedraw();
+// window.addEventListener("resize", schematicRedraw);
+
+function meterRedraw(){
+  var  svg = $("#meter").get(0);
+  var w = svg.width.baseVal.value;
+  var h = svg.height.baseVal.value;
+  svg.setAttribute('viewBox', '0 0 '+w+' '+h);
+  svg.setAttribute('width', '100%');
+  svg.setAttribute('height', '100%');
 }
-myredraw();
-window.addEventListener("resize", myredraw);
+meterRedraw();
+window.addEventListener("resize", meterRedraw);
+
+// function schematicRedraw(){
+//   var  svg = $("#mainSvg").get(0);
+//   var w = svg.width.baseVal.value;
+//   var h = svg.height.baseVal.value;
+//   svg.setAttribute('viewBox', '0 0 '+w+' '+h);
+//   svg.setAttribute('width', '100%');
+//   svg.setAttribute('height', '100%');
+// }
+// schematicRedraw();
+// window.addEventListener("resize", schematicRedraw);
 
 document.addEventListener('keydown', logKey);
 function logKey(e) {
