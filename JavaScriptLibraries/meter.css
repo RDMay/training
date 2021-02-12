@@ -1,16 +1,12 @@
 .uiClass{
-  border-style: solid;
     position: fixed;
-    top: 10px;
+    top: 0px;
     right: 0px;
-    width: 20%;
-    padding: 5px;
+    /* width: 10%;
+    max-height: 50px; */
     z-index: 1;
-    /* display: inline-block; */
-    /* background-color:#092c74; */
-    color:white;
-    border-style: solid;
-    border-width: thin;"
+    display: inline;
+    background-color:#092c74;
   }
   .uiSubDiv{
     background-color:#505050; padding:10px;
@@ -22,16 +18,16 @@
 
 
   .svg-container {
-    display: inline-block;
-    position: relative;
-    width: 100%;
-    padding-bottom: 100%;
-    vertical-align: top;
-    overflow: hidden;
-}
-.svg-content {
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
+  	display: inline-block;
+  	position: relative;
+  	width: 100%;
+  	padding-bottom: 100%;
+  	vertical-align: middle;
+  	overflow: hidden;
+  }
+  .svg-content {
+  	display: inline-block;
+  	position: absolute;
+  	top: 0;
+  	left: 0;
+  }
