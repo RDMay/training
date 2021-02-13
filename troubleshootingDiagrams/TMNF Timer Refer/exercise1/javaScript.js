@@ -22,6 +22,10 @@ xhr.send("");
 var schematic = document.getElementById("mainWindow").appendChild(xhr.responseXML.documentElement);
 
 
+
+
+
+
 //Resize Window
 // var svgWindow = document.getElementById("mainWindow");
 // var svg = d3.select(schematic);
@@ -38,17 +42,15 @@ var schematic = document.getElementById("mainWindow").appendChild(xhr.responseXM
 
 
 
-function schematicRedraw(){
-  var  svg = $("#mainSvg").get(0);
-  console.log(svg.viewBox.baseVal)
-  // x: 0, y: 0, width: 1999.9998779296875, height: 1172.4276123046875
-  // svg.setAttribute('viewBox', '0 0 '+1000+' '+500);
-  // var w = svg.width.baseVal.value;
-  // var h = svg.height.baseVal.value;
-  // svg.setAttribute('viewBox', '0 0 '+w+' '+h);
-}
-schematicRedraw();
-window.addEventListener("resize", schematicRedraw);
+// function schematicRedraw(){
+//   var  svg = $("#meter").get(0);
+//   var w = svg.width.baseVal.value;
+//   var h = svg.height.baseVal.value;
+//   // svg.setAttribute('viewBox', '0 0 '+10+' '+10);
+//   console.log(svg.width)
+// }
+// schematicRedraw();
+// window.addEventListener("resize", schematicRedraw);
 
 document.addEventListener('keydown', logKey);
 function logKey(e) {

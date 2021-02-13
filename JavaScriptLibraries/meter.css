@@ -1,11 +1,11 @@
 .uiClass{
     position: fixed;
     top: 10px;
-    right: 200px;
-    width: 10%;
+    right: 0px;
+    width: 20%;
     z-index: 1;
     display: inline;
-    background-color:#092c74;
+    /* background-color:#092c74; */
   }
   .uiSubDiv{
     background-color:#505050; padding:10px;

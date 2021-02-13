@@ -2,9 +2,9 @@ var positionAndScale = "";
 
 var instant = .1;
 
-var off1=0;
-var Vdc=-54;
-var Vac=35;
+var off1=-55;
+var Vdc=-35;
+var Vac=-18;
 var ohms=55;
 var diode=67;
 var cap=90;
@@ -16,9 +16,40 @@ var milliAmps=200;
 var amps=215;
 var off2=235;
 
+blackLead.addEventListener('click', blackLeadClicked);
+function blackLeadClicked(){
+  blackLead.style.opacity = 1;
+  redLead.style.opacity = 0;
+}
 
-TweenMax.to(meterKnob, instant, {rotation:Vdc,transformOrigin: "50% 50%"})
-// TweenMax.to(meterKnob, .001, {rotation:off1,transformOrigin: "100% 50%", onComplete:changeMeterFunction, onCompleteParams:["off"]})
+redLead.addEventListener('click', redLeadClicked);
+function redLeadClicked(){
+  blackLead.style.opacity = 0;
+  redLead.style.opacity = 1;
+}
+
+off_btn.style.cursor = 'pointer';
+off_btn.addEventListener('click', off_btnClicked);
+function off_btnClicked(){
+  TweenMax.to(meterKnob, instant, {rotation:off1,transformOrigin: "50% 50%"})
+}
+
+
+vdc_btn.style.cursor = 'pointer';
+vdc_btn.addEventListener('click', vdc_btnClicked);
+function vdc_btnClicked(){
+  TweenMax.to(meterKnob, instant, {rotation:Vdc,transformOrigin: "50% 50%"})
+}
+
+vac_btn.style.cursor = 'pointer';
+vac_btn.addEventListener('click', vac_btnClicked);
+function vac_btnClicked(){
+  TweenMax.to(meterKnob, instant, {rotation:Vac,transformOrigin: "50% 50%"})
+}
+
+
+// TweenMax.to(meterKnob, instant, {rotation:Vdc,transformOrigin: "50% 50%"})
+TweenMax.to(meterKnob, .001, {rotation:off1,transformOrigin: "50% 50%", onComplete:changeMeterFunction, onCompleteParams:["off"]})
 function changeMeterFunction(setting){
 	TweenMax.to([meterPolarity], .001, {autoAlpha:0})
 		TweenMax.to([meterHoldIndicator], .001, {autoAlpha:0})
@@ -28,10 +59,9 @@ function changeMeterFunction(setting){
 		meterVoltagePrefix.textContent = "";
 		ohmsPrefix.textContent = "";
 		TweenMax.to([meterText], .001, {autoAlpha:0})
-		TweenMax.to([off,offTwo,vdc,vac], instant, {fill:"black"});
+		// TweenMax.to([off,offTwo,vac], instant, {fill:"black"});
 		switch(setting) {
 		case "off":
-		TweenMax.to([off], instant, {fill:"red"})
 		// TweenMax.to([off], .25, {scaleX:1.5, scaleY:1.5, transformOrigin: '50% 50%', ease: Back. easeOut.config( 1.7)})
 		// TweenMax.to([off], .25, {scaleX:1, scaleY:1, transformOrigin: '50% 50%', ease: Back. easeOut.config( 1.7)})
 		// TweenMax.to([off], instant, {fill:"black"})
@@ -49,10 +79,6 @@ function changeMeterFunction(setting){
 		TweenMax.to([meterDCIndicator], .001, {autoAlpha:1})
 		TweenMax.to([meterPolarity], .001, {autoAlpha:1})
 		meterVoltagePrefix.textContent = "V";
-	    TweenMax.to([vdc], instant, {fill:"red"})
-	    TweenMax.to([vdc], .25, {scaleX:1.5, scaleY:1.5, transformOrigin: '50% 50%', ease: Back. easeOut.config( 1.7)})
-	    TweenMax.to([vdc], .25, {scaleX:1, scaleY:1, transformOrigin: '50% 50%', ease: Back. easeOut.config( 1.7)})
-	    TweenMax.to([vdc], instant, {fill:"red"})
         break;
         case "Vac":
         TweenMax.to([display], .001, {autoAlpha:1})
