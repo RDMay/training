@@ -75,7 +75,12 @@ body{
 
 .mainWindow{
   display: block;
-  left: 100%
+  width: 100vw;
+  height: 100vh;
+}
+#mainSvg{
+  width: 100vw;
+  height: 100vh;
 }
 
 ul {

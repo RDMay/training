@@ -15,6 +15,7 @@ var microAmps=185;
 var milliAmps=200;
 var amps=215;
 var off2=235;
+var readingType;
 
 blackLead.addEventListener('click', blackLeadClicked);
 function blackLeadClicked(){
@@ -31,112 +32,211 @@ function redLeadClicked(){
 off_btn.style.cursor = 'pointer';
 off_btn.addEventListener('click', off_btnClicked);
 function off_btnClicked(){
-  TweenMax.to(meterKnob, instant, {rotation:off1,transformOrigin: "50% 50%"})
+  TweenMax.to(meterKnob, instant, {rotation:off1,transformOrigin: "50% 50%"});
+	changeMeterFunction(off)
 }
-
 
 vdc_btn.style.cursor = 'pointer';
 vdc_btn.addEventListener('click', vdc_btnClicked);
 function vdc_btnClicked(){
-  TweenMax.to(meterKnob, instant, {rotation:Vdc,transformOrigin: "50% 50%"})
+  TweenMax.to(meterKnob, instant, {rotation:Vdc,transformOrigin: "50% 50%"});
+	changeMeterFunction('Vdc')
 }
 
 vac_btn.style.cursor = 'pointer';
 vac_btn.addEventListener('click', vac_btnClicked);
 function vac_btnClicked(){
-  TweenMax.to(meterKnob, instant, {rotation:Vac,transformOrigin: "50% 50%"})
+  TweenMax.to(meterKnob, instant, {rotation:Vac,transformOrigin: "50% 50%"});
+	changeMeterFunction('Vac');
 }
 
 
-// TweenMax.to(meterKnob, instant, {rotation:Vdc,transformOrigin: "50% 50%"})
+
 TweenMax.to(meterKnob, .001, {rotation:off1,transformOrigin: "50% 50%", onComplete:changeMeterFunction, onCompleteParams:["off"]})
-function changeMeterFunction(setting){
-	TweenMax.to([meterPolarity], .001, {autoAlpha:0})
-		TweenMax.to([meterHoldIndicator], .001, {autoAlpha:0})
-		TweenMax.to([meterAutoIndicator], .001, {autoAlpha:0})
-		TweenMax.to([meterDCIndicator], .001, {autoAlpha:0})
-		TweenMax.to([meterACIndicator], .001, {autoAlpha:0})
-		meterVoltagePrefix.textContent = "";
-		ohmsPrefix.textContent = "";
-		TweenMax.to([meterText], .001, {autoAlpha:0})
-		// TweenMax.to([off,offTwo,vac], instant, {fill:"black"});
-		switch(setting) {
-		case "off":
-		// TweenMax.to([off], .25, {scaleX:1.5, scaleY:1.5, transformOrigin: '50% 50%', ease: Back. easeOut.config( 1.7)})
-		// TweenMax.to([off], .25, {scaleX:1, scaleY:1, transformOrigin: '50% 50%', ease: Back. easeOut.config( 1.7)})
-		// TweenMax.to([off], instant, {fill:"black"})
-		break;
-		case "offTwo":
-		TweenMax.to([offTwo], instant, {fill:"red"})
-		TweenMax.to([offTwo], .25, {scaleX:1.5, scaleY:1.5, transformOrigin: '50% 50%', ease: Back. easeOut.config( 1.7)})
-		TweenMax.to([offTwo], .25, {scaleX:1, scaleY:1, transformOrigin: '50% 50%', ease: Back. easeOut.config( 1.7)})
-		TweenMax.to([offTwo], instant, {fill:"black"})
-		break;
-	    case "Vdc":
-	    TweenMax.to([display], .001, {autoAlpha:1})
-	    TweenMax.to([meterText], .001, {autoAlpha:1})
-	    TweenMax.to([meterAutoIndicator], .001, {autoAlpha:1})
-		TweenMax.to([meterDCIndicator], .001, {autoAlpha:1})
-		TweenMax.to([meterPolarity], .001, {autoAlpha:1})
-		meterVoltagePrefix.textContent = "V";
-        break;
-        case "Vac":
-        TweenMax.to([display], .001, {autoAlpha:1})
-        TweenMax.to([meterPolarity], .001, {autoAlpha:0})
-        TweenMax.to([meterText], .001, {autoAlpha:1})
-		TweenMax.to([meterACIndicator], .001, {autoAlpha:1})
-		TweenMax.to([meterAutoIndicator], .001, {autoAlpha:1})
-	    TweenMax.to([meterText], .001, {autoAlpha:1})
-	    meterVoltagePrefix.textContent = "V";
-	    meterText.textContent = "000.0";
-	    TweenMax.to([vac], instant, {fill:"red"})
-	    TweenMax.to([vac], .25, {scaleX:1.5, scaleY:1.5, transformOrigin: '50% 50%', ease: Back. easeOut.config( 1.7)})
-	    TweenMax.to([vac], .25, {scaleX:1, scaleY:1, transformOrigin: '50% 50%', ease: Back. easeOut.config( 1.7)})
-	    TweenMax.to([vac], instant, {fill:"red"})
-        break;
-        case "ohms":
-        TweenMax.to([display], .001, {autoAlpha:1})
-		TweenMax.to([meterAutoIndicator], .001, {autoAlpha:1})
-	    TweenMax.to([meterText], .001, {autoAlpha:1})
-	    meterText.textContent = "O.L";
-	    ohmsPrefix.textContent = "MΩ";
-	    // TweenMax.to([ohms2], instant, {stroke:"red"})
-	    // TweenMax.to([ohms2], .25, {scaleX:1.5, scaleY:1.5, transformOrigin: '50% 50%', ease: Back. easeOut.config( 1.7)})
-	    // TweenMax.to([ohms2], .25, {scaleX:1, scaleY:1, transformOrigin: '50% 50%', ease: Back. easeOut.config( 1.7)})
-	    // TweenMax.to([ohms2], instant, {stroke:"black", onComplete: updateLineNumber, onCompleteParams:[2, new Error().lineNumber]},'-=0')
-        break;
 
-        case "cap":
-	    TweenMax.to([meterText], .001, {autoAlpha:1})
-	    meterText.textContent = "0.000";
-	    TweenMax.to([diode], instant, {stroke:"red"})
-	    TweenMax.to([diode], .25, {scaleX:1.5, scaleY:1.5, transformOrigin: '50% 50%', ease: Back. easeOut.config( 1.7)})
-	    TweenMax.to([diode], .25, {scaleX:1, scaleY:1, transformOrigin: '50% 50%', ease: Back. easeOut.config( 1.7)})
-	    TweenMax.to([diode], instant, {stroke:"black"})
-        break;
-        case "degreesC":
-	    TweenMax.to([meterText], .001, {autoAlpha:1})
-	    meterText.textContent = "OL";
-	    TweenMax.to([degreesC1], instant, {stroke:"red"})
-	    TweenMax.to([degreesC1], .25, {scaleX:1.5, scaleY:1.5, transformOrigin: '50% 50%', ease: Back. easeOut.config( 1.7)})
-	    TweenMax.to([degreesC1], .25, {scaleX:1, scaleY:1, transformOrigin: '50% 50%', ease: Back. easeOut.config( 1.7)})
-	    TweenMax.to([degreesC1], instant, {stroke:"black"})
-        break;
-        case "degreesF":
-	    TweenMax.to([meterText], .001, {autoAlpha:1})
-	    meterText.textContent = "OL";
-	    TweenMax.to([degreesF1], instant, {stroke:"red"})
-	    TweenMax.to([degreesF1], .25, {scaleX:1.5, scaleY:1.5, transformOrigin: '50% 50%', ease: Back. easeOut.config( 1.7)})
-	    TweenMax.to([degreesF1], .25, {scaleX:1, scaleY:1, transformOrigin: '50% 50%', ease: Back. easeOut.config( 1.7)})
-	    TweenMax.to([degreesF1], instant, {stroke:"black"})
-        break;
-        case "hz":
-	    TweenMax.to([meterText], .001, {autoAlpha:1})
-	    meterText.textContent = "000.0";
-	    TweenMax.to([degreesF1], instant, {stroke:"red"})
-	    TweenMax.to([degreesF1], .25, {scaleX:1.5, scaleY:1.5, transformOrigin: '50% 50%', ease: Back. easeOut.config( 1.7)})
-	    TweenMax.to([degreesF1], .25, {scaleX:1, scaleY:1, transformOrigin: '50% 50%', ease: Back. easeOut.config( 1.7)})
-	    TweenMax.to([degreesF1], instant, {stroke:"black"})
-        break;
+function changeMeterFunction(meterSetting){
+	TweenMax.to([meterPolarity], .001, {autoAlpha:0})
+	TweenMax.to([meterHoldIndicator], .001, {autoAlpha:0})
+	TweenMax.to([meterAutoIndicator], .001, {autoAlpha:0})
+	TweenMax.to([meterDCIndicator], .001, {autoAlpha:0})
+	TweenMax.to([meterACIndicator], .001, {autoAlpha:0})
+	TweenMax.to([meterText], .001, {autoAlpha:0})
+	TweenMax.to([ohmsSymbol], .001, {autoAlpha:0});
+	TweenMax.to([voltSymbol], .001, {autoAlpha:0});
+	meterVoltagePrefix.textContent = "";
+	ohmsPrefix.textContent = "";
+
+	switch(meterSetting) {
+	   case "Vdc":
+				TweenMax.to([meterText], .001, {autoAlpha:1});
+	    	TweenMax.to([meterDCIndicator], .001, {autoAlpha:1});
+				TweenMax.to([meterAutoIndicator], .001, {autoAlpha:1});
+				TweenMax.to([voltSymbol], .001, {autoAlpha:1});
+				meterVoltagePrefix.textContent = "m";
+      break;
+      case "Vac":
+				readingType = "VAC";
+				TweenMax.to([meterText], .001, {autoAlpha:1});
+				TweenMax.to([meterACIndicator], .001, {autoAlpha:1});
+				TweenMax.to([meterAutoIndicator], .001, {autoAlpha:1});
+				TweenMax.to([voltSymbol], .001, {autoAlpha:1});
+				meterVoltagePrefix.textContent = "m";
+      break;
+		}
 }
+
+function showReading(meterReading){
+	meterReading = meterReading.split("_");
+	for(i=0; i<meterReading.length; i++){
+		switch(meterReading[i]) {
+		   case "1":
+			 if(i==0){
+				 thousandsA.style.opacity = 0;
+				 thousandsD.style.opacity = 0;
+				 thousandsE.style.opacity = 0;
+				 thousandsF.style.opacity = 0;
+				 thousandsG.style.opacity = 0;
+			 }
+			 if(i==1){
+				 hundredsA.style.opacity = 0;
+				 hundredsD.style.opacity = 0;
+				 hundredsE.style.opacity = 0;
+				 hundredsF.style.opacity = 0;
+				 hundredsG.style.opacity = 0;
+			 }
+			 if(i==2){
+				 tensA.style.opacity = 0;
+				 tensD.style.opacity = 0;
+				 tensE.style.opacity = 0;
+				 tensF.style.opacity = 0;
+				 tensG.style.opacity = 0;
+			 }
+			 if(i==3){
+				 onesA.style.opacity = 0;
+				 onesD.style.opacity = 0;
+				 onesE.style.opacity = 0;
+				 onesF.style.opacity = 0;
+				 onesG.style.opacity = 0;
+			 }
+			 break;
+			 case "2":
+			 if(i==0){
+				 thousandsC.style.opacity = 0;
+				 thousandsF.style.opacity = 0;
+			 }
+			 if(i==1){
+				 hundredsC.style.opacity = 0;
+				 hundredsF.style.opacity = 0;
+			 }
+			 if(i==2){
+				 tensC.style.opacity = 0;
+				 tensF.style.opacity = 0;
+			 }
+			 if(i==3){
+				 onesC.style.opacity = 0;
+				 onesF.style.opacity = 0;
+			 }
+			 break;
+			 case "3":
+			 if(i==0){
+				 thousandsE.style.opacity = 0;
+				 thousandsF.style.opacity = 0;
+			 }
+			 if(i==1){
+				 hundredsE.style.opacity = 0;
+				 hundredsF.style.opacity = 0;
+			 }
+			 if(i==2){
+				 tensE.style.opacity = 0;
+				 tensF.style.opacity = 0;
+			 }
+			 if(i==3){
+				 onesE.style.opacity = 0;
+				 onesF.style.opacity = 0;
+			 }
+			 break;
+			 case "4":
+			 if(i==0){
+				 thousandsA.style.opacity = 0;
+				 thousandsD.style.opacity = 0;
+				 thousandsE.style.opacity = 0;
+			 }
+			 if(i==1){
+				 hundredsA.style.opacity = 0;
+				 hundredsD.style.opacity = 0;
+				 hundredsE.style.opacity = 0;
+			 }
+			 if(i==2){
+				 tensA.style.opacity = 0;
+				 tensD.style.opacity = 0;
+				 tensE.style.opacity = 0;
+			 }
+			 if(i==3){
+				 onesA.style.opacity = 0;
+				 onesD.style.opacity = 0;
+				 onesE.style.opacity = 0;
+			 }
+			 break;
+			 case "5":
+			 if(i==0){
+				 thousandsB.style.opacity = 0;
+				 thousandsE.style.opacity = 0;
+			 }
+			 if(i==1){
+				 hundredsB.style.opacity = 0;
+				 hundredsE.style.opacity = 0;
+			 }
+			 if(i==2){
+				 tensB.style.opacity = 0;
+				 tensE.style.opacity = 0;
+			 }
+			 if(i==3){
+				 onesB.style.opacity = 0;
+				 onesE.style.opacity = 0;
+			 }
+			 break;
+			 case "6":
+			 if(i==0){
+				 thousandsB.style.opacity = 0;
+			 }
+			 if(i==1){
+				 hundredsB.style.opacity = 0;
+			 }
+			 if(i==2){
+				 tensB.style.opacity = 0;
+			 }
+			 if(i==3){
+				 onesB.style.opacity = 0;
+			 }
+			 break;
+			 case "7":
+			 if(i==0){
+				 thousandsD.style.opacity = 0;
+				 thousandsE.style.opacity = 0;
+				 thousandsF.style.opacity = 0;
+				 thousandsG.style.opacity = 0;
+			 }
+			 if(i==1){
+				 hundredsD.style.opacity = 0;
+				 hundredsE.style.opacity = 0;
+				 hundredsF.style.opacity = 0;
+				 hundredsG.style.opacity = 0;
+			 }
+			 if(i==2){
+				 tensD.style.opacity = 0;
+				 tensE.style.opacity = 0;
+				 tensF.style.opacity = 0;
+				 tensG.style.opacity = 0;
+			 }
+			 if(i==3){
+				 onesD.style.opacity = 0;
+				 onesE.style.opacity = 0;
+				 onesF.style.opacity = 0;
+				 onesG.style.opacity = 0;
+			 }
+			 break;
+			}
+	}
+
+	console.log(meterReading[0])
 }

@@ -65,6 +65,7 @@
         eventsHandler = {
           haltEventListeners: ['touchstart', 'touchend', 'touchmove', 'touchleave', 'touchcancel']
         , init: function(options) {
+          console.log("function")
             var instance = options.instance
               , initialScale = 1
               , pannedX = 0
@@ -107,6 +108,23 @@
         , center: 1
         , customEventsHandler: eventsHandler
         });
+
+        function schematicRedraw(){
+          var panZoom = window.panZoom = svgPanZoom(schematic, {
+          zoomEnabled: true,
+          controlIconsEnabled: true,
+          fit: 1,
+          center: 1
+        });
+
+        $(window).resize(function(){
+          panZoom.resize();
+          panZoom.fit();
+          panZoom.center();
+        })
+        }
+        // schematicRedraw();
+        window.addEventListener("resize", schematicRedraw);
 
     </script>
 </html>

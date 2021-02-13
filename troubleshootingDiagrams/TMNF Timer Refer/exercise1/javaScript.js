@@ -3,6 +3,7 @@ document.title = "Exercise 1"
 
 var originalLineSize = "1px";
 var highlightedWidth = "2px";
+var selectedLead = "red";
 
 var deviceType = "not mobile";
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
@@ -26,9 +27,9 @@ var schematic = document.getElementById("mainWindow").appendChild(xhr.responseXM
 
 
 
-//Resize Window
-// var svgWindow = document.getElementById("mainWindow");
-// var svg = d3.select(schematic);
+// Resize Window
+var svgWindow = document.getElementById("mainWindow");
+var svg = d3.select(schematic);
 // function schematicRedraw(){
 //   var width = svgWindow.clientWidth;
 //   var height = svgWindow.clientHeight;
@@ -52,26 +53,6 @@ var schematic = document.getElementById("mainWindow").appendChild(xhr.responseXM
 // schematicRedraw();
 // window.addEventListener("resize", schematicRedraw);
 
-document.addEventListener('keydown', logKey);
-function logKey(e) {
-  console.log(e.keyCode)
-  if(e.keyCode == 77){
-    if(ac.checked == true){
-      dc.checked = true;
-    }else{
-      console.log(ac.checked)
-      ac.checked = true;
-    }
-  }
-  if(e.keyCode == 32){
-    if(redLead.checked == true){
-      blackLead.checked = true;
-    }else{
-      console.log(ac.checked)
-      redLead.checked = true;
-    }
-  }
-}
 
 //Set Path Codes
 var diagram1Paths = document.getElementById("diagram1").getElementsByTagName("path");
@@ -171,8 +152,8 @@ function wireClicked(wire){
   answer = event.target.id;
   answer = answer.split("copy")
   answer = answer[0];
-  console.clear();
-  console.log(answer)
+  // console.clear();
+  // console.log(answer)
 
   for(i=0; i<diagram1Paths.length; i++){
     part = diagram1Paths[i].id;
@@ -221,16 +202,9 @@ for(i=0; i<l1Array.length; i++){
 
 var redLeadPot;
 var blackLeadPot;
-var readingType;
-function testPointClicked(){
-  console.log(event.target.id)
-  if(ac.checked == true){
-    readingType = "VAC"
-  }else{
-    readingType = "VDC"
-  }
 
-  if(redLead.checked == true){
+function testPointClicked(){
+  if(redLead.style.opacity == 1){
     for(i=0; i<tpArray.length; i++){
       if(tpArray[i].style.stroke != "black"){
         tpArray[i].style.stroke = "black";
@@ -245,7 +219,7 @@ function testPointClicked(){
     event.target.style.strokeWidth = 5;
   }
 
-  if(redLead.checked == false){
+  if(redLead.style.opacity == 0){
     for(i=0; i<tpArray.length; i++){
       if(tpArray[i].style.stroke != "red"){
         tpArray[i].style.stroke = "black";
@@ -263,66 +237,59 @@ function testPointClicked(){
 }
 
 function readMeter(){
-  if(ac.checked == true){
-    readingType = "VAC"
-  }else{
-    readingType = "VDC"
-  }
+
+  // console.log(readingType)
 
   switch(redLeadPot + blackLeadPot) {
     case "l1neutral":
-    if(readingType == "VAC"){
-      meterReading.innerHTML = "120.0 " + readingType;
-    }else{
-      meterReading.innerHTML = "0.000 " + readingType;
-    }
+      showReading('7_7_7_7_3_VAC');
     break;
 
     case "neutrall1":
     if(readingType == "VAC"){
-      meterReading.innerHTML = "120.0 " + readingType;
+      // meterReading.innerHTML = "120.0 " + readingType;
     }else{
-      meterReading.innerHTML = "0.000 " + readingType;
+      // meterReading.innerHTML = "0.000 " + readingType;
     }
     break;
 
     case "l2neutral":
     if(readingType == "VAC"){
-      meterReading.innerHTML = "120.0 " + readingType;
+      // meterReading.innerHTML = "120.0 " + readingType;
     }else{
-      meterReading.innerHTML = "0.000 " + readingType;
+      // meterReading.innerHTML = "0.000 " + readingType;
     }
     break;
 
     case "neutrall2":
     if(readingType == "VAC"){
-      meterReading.innerHTML = "120.0 " + readingType;
+      // meterReading.innerHTML = "120.0 " + readingType;
     }else{
-      meterReading.innerHTML = "0.000 " + readingType;
+      // meterReading.innerHTML = "0.000 " + readingType;
     }
     break;
 
     case "l1l2":
     if(readingType == "VAC"){
-      meterReading.innerHTML = "240.0 " + readingType;
+      // meterReading.innerHTML = "240.0 " + readingType;
     }else{
-      meterReading.innerHTML = "0.000 " + readingType;
+      // meterReading.innerHTML = "0.000 " + readingType;
     }
     break;
 
     case "l2l1":
     if(readingType == "VAC"){
-      meterReading.innerHTML = "240.0 " + readingType;
+      // meterReading.innerHTML = "240.0 " + readingType;
     }else{
-      meterReading.innerHTML = "0.000 " + readingType;
+      // meterReading.innerHTML = "0.000 " + readingType;
     }
     break;
 
     default:
     if(readingType == "VAC"){
-      meterReading.innerHTML = "0.000 " + readingType;
+      // meterReading.innerHTML = "0.000 " + readingType;
     }else{
-      meterReading.innerHTML = "0.000 " + readingType;
+      // meterReading.innerHTML = "0.000 " + readingType;
     }
   }
 }
@@ -354,6 +321,3 @@ function toggleTestPoints(){
     l2PointsLayer.style.display = "inline"
   }
 }
-
-// redLead.checked = true;
-// ac.checked = true;
