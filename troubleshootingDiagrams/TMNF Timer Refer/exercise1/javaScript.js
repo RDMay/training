@@ -237,60 +237,24 @@ function testPointClicked(){
 }
 
 function readMeter(){
-
-  // console.log(readingType)
-
+  console.log("read meter fired: " + redLeadPot + blackLeadPot)
   switch(redLeadPot + blackLeadPot) {
     case "l1neutral":
-      showReading('7_7_7_7_3_VAC');
+      showReading('1_2_0_0_c_VAC');
+      meterVoltagePrefix.textContent = "";
     break;
-
     case "neutrall1":
-    if(readingType == "VAC"){
-      // meterReading.innerHTML = "120.0 " + readingType;
-    }else{
-      // meterReading.innerHTML = "0.000 " + readingType;
-    }
+    showReading('1_2_0_0_c_VAC');
+    meterVoltagePrefix.textContent = "";
     break;
-
-    case "l2neutral":
-    if(readingType == "VAC"){
-      // meterReading.innerHTML = "120.0 " + readingType;
-    }else{
-      // meterReading.innerHTML = "0.000 " + readingType;
-    }
+    case "neutralneutral":
+    showReading('0_0_0_0_c_VAC');
+    meterVoltagePrefix.textContent = "m";
     break;
-
-    case "neutrall2":
-    if(readingType == "VAC"){
-      // meterReading.innerHTML = "120.0 " + readingType;
-    }else{
-      // meterReading.innerHTML = "0.000 " + readingType;
-    }
+    case "l1l1":
+    showReading('0_0_0_0_c_VAC');
+    meterVoltagePrefix.textContent = "m";
     break;
-
-    case "l1l2":
-    if(readingType == "VAC"){
-      // meterReading.innerHTML = "240.0 " + readingType;
-    }else{
-      // meterReading.innerHTML = "0.000 " + readingType;
-    }
-    break;
-
-    case "l2l1":
-    if(readingType == "VAC"){
-      // meterReading.innerHTML = "240.0 " + readingType;
-    }else{
-      // meterReading.innerHTML = "0.000 " + readingType;
-    }
-    break;
-
-    default:
-    if(readingType == "VAC"){
-      // meterReading.innerHTML = "0.000 " + readingType;
-    }else{
-      // meterReading.innerHTML = "0.000 " + readingType;
-    }
   }
 }
 

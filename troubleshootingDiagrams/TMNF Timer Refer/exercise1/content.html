@@ -18,45 +18,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.1/TweenMax.min.js"></script>
   </head>
 <body style="font-family: arial">
-  <div id="mainWindow" class="mainWindow"></div>
-    <span id="uiDiv" class="uiClass">
-      <div class="svg-container">
-
-      <!-- <a href="https://www.youtube.com/watch?v=4vPE70rqeMw&feature=youtu.be" target="_blank" style="color:white">Help Tutorial</a>
-      <br><br>
-      <button id="zoomIn"> Zoom in</button>
-      <h4>Complaint:</h4>
-      <span id="complaintField"></span>
-      <hr>
-
-      <h4>Select Meter Lead:</h4>
-      <input type="radio" id="redLead" name="leadColors" checked="true" onclick="readMeter()">
-      <label for="male">Red Lead</label>&nbsp&nbsp&nbsp
-      <input type="radio" id="blackLead" name="leadColors" onclick="readMeter()">
-      <label for="female">Black Lead</label>
-      <hr>
-      <h4>Select Voltage Measurement Type:</h4>
-
-      <input type="radio" id="ac" name="readingType" value="VAC" checked="true" onclick="readMeter()">
-      <label for="male">AC Voltage</label>&nbsp&nbsp&nbsp
-      <input type="radio" id="dc" name="readingType" value="VDC" onclick="readMeter()">
-      <label for="female">DC Voltage</label>
-      <hr>
-      <h4>Meter Reading:</h4>
-      <div class="uiSubDiv">
-      <span id="meterReading"> 0.000 VAC</span>
-
-    <hr> -->
-
-      <!-- <button type="button" id="clearDiagram" onclick="checkAnswer()" style="cursor:pointer;display:block;"><center>Submit</center></button> -->
-
-      <!-- <h4>Failed Component:</h4>
-      <div class="uiSubDiv" id="failedComponent">
-           No Component Selected
-      </div> -->
-
-      <!-- <button type="button" onclick="toggleTestPoints()">Toggle Test Points</button> -->
-    </span>
+  <div id="mainWindow" class="svg-container"></div>
+    <span id="uiDiv" class="uiClass"></span>
 </body>
 <script src="javaScript.js"></script>
 <script src="../../../JavaScriptLibraries/Multimeter.js"></script>
@@ -116,14 +79,10 @@
           fit: 1,
           center: 1
         });
-
-        $(window).resize(function(){
-          panZoom.resize();
-          panZoom.fit();
-          panZoom.center();
-        })
+        panZoom.resize();
+        panZoom.fit();
+        panZoom.center();
         }
-        // schematicRedraw();
         window.addEventListener("resize", schematicRedraw);
 
     </script>
