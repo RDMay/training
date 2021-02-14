@@ -1,0 +1,26 @@
+.uiClass{
+    position: fixed;
+    top: 10px;
+    right: 5px;
+    width: 20%;
+    padding: 5px;
+    z-index: 1;
+    display: inline-block;
+    background-color:#092c74;
+    color:white;
+    border-style: solid;
+    border-width: thin;"
+  }
+  .uiSubDiv{
+    background-color:#505050; padding:10px;
+  }
+  h4{
+    padding: 0;
+    margin:0;
+  }
+  .problemDescription{
+    position: fixed;
+    top: 10px;
+    left: 5px;
+    z-index: 10;
+  }

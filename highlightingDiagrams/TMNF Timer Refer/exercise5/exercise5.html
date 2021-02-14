@@ -2,23 +2,42 @@
 <html>
   <head>
     <title>loading</title>
-    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="icon" type="image/x-icon" href="../../../css/favicon.ico"/>
+    <meta charset="UTF-8">
+    <!DOCTYPE html>
+    <link rel="icon" type="image/png" href="https://example.com/favicon.png"/>
     <link rel="stylesheet" href="../../../css/interactiveSchematic.css">
-    <link rel="stylesheet" href="../../../css/meter.css">
-    <script src="../../../JavaScriptLibraries/d3.min.js"></script>
+    <link rel="stylesheet" href="../../../css/circuitHighlights.css">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <script src="../../../JavaScriptLibraries/svgPanZoom.js"></script>
-    <script src="../../../JavaScriptLibraries/draggable.js"></script>
-    <script src="../../../JavaScriptLibraries/gsap.min.js"></script>
-    <script src="../../../JavaScriptLibraries/hammer.min.js"></script>
-    <script src="../../../JavaScriptLibraries/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.12.0/d3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.1/TweenMax.min.js"></script>
   </head>
-<body style="font-family: arial">
-  <div id="mainWindow" class="svg-container"></div>
-  <span id="meterDiv" class="meterClass"></span>
+<body>
+  <div id="mainWindow"></div>
+  <button type="button" id="clearDiagram" onclick="clearHighlights()" style="cursor:pointer;display:block;";><center>Clear Diagram</center></button>
+  <span class="uiClass">
+    <a href="https://www.youtube.com/watch?v=YEfryPX4dyA&feature=youtu.be" target="_blank">Help Tutorial</a>
+    <br>
+    <h3>Highlight L1 and Neutral to the Combo Device.</h3>
+    <ul style="list-style-type:disc;">
+      <li>Highlight the L1 parts of the circuit with L1 (black).</li>
+      <li>Highlight the Neutral parts of the circuit with Neutral (blue).</li>
+      <li>Highlight the load with Energized Load (orange).</li>
+      <li>Use the (Move Switch) buttons to reposition switches as needed.</li>
+    </ul>
+    <br>
+    <select id="colorPicker" onChange="colorPickerChange(this.selectedIndex);">
+      <option value="#000000">L1</option>
+      <option value="#0000FF">Neutral</option>
+    </select>
+    <br><br>
+    <button id="getWireColors" onclick="getColors()">Get Wire Colors CTRL+Shift To Hide This Button</button>
+    <button type="button" onclick="checkAnswer()" style="cursor:pointer;display:block;"><center>Submit</center></button>
+  </span>
 </body>
 <script src="javaScript.js"></script>
-<script src="../../../JavaScriptLibraries/Multimeter.js"></script>
 <script>
 var eventsHandler;
 eventsHandler = {

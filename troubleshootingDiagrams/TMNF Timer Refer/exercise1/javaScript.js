@@ -14,7 +14,7 @@ xhr = new XMLHttpRequest();
 xhr.open("GET","SVG Meter.svg",false);
 xhr.overrideMimeType("image/svg+xml");
 xhr.send("");
-var meters = document.getElementById("uiDiv").appendChild(xhr.responseXML.documentElement);
+var meters = document.getElementById("meterDiv").appendChild(xhr.responseXML.documentElement);
 
 xhr = new XMLHttpRequest();
 xhr.open("GET","schematic.svg",false);
@@ -285,3 +285,8 @@ function toggleTestPoints(){
     l2PointsLayer.style.display = "inline"
   }
 }
+
+// TweenMax.to(evapFanBlade, 3, {rotation:360,transformOrigin: "50% 50%", ease:"none", repeat:-1});
+TweenMax.to([evapFanBlade], 1.5, {rotation:360, transformOrigin: "50% 50%", ease: Power0.easeNone, repeat:-1});
+TweenMax.to([conFanBlade], 1.5, {rotation:360, transformOrigin: "50% 50%", ease: Power0.easeNone, repeat:-1});
+TweenMax.to([piston], .25, {y:10, transformOrigin: "50% 50%", ease: Power0.easeNone, repeat:-1, yoyo:true});
