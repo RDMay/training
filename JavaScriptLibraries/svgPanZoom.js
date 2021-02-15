@@ -42,7 +42,7 @@ module.exports = {
     // Zoom Group
     var zoomGroup = document.createElementNS(SvgUtils.svgNS, 'g');
     zoomGroup.setAttribute('id', 'svg-pan-zoom-controls');
-    zoomGroup.setAttribute('transform', 'translate(' + ( 12 ) + ' ' + ( 0) + ') scale(0.75)');
+    zoomGroup.setAttribute('transform', 'translate(' + ( 12 ) + ' ' + ( 500000) + ') scale(0.75)');
     zoomGroup.setAttribute('class', 'svg-pan-zoom-control');
 
     // Control elements
@@ -64,6 +64,7 @@ module.exports = {
     zoomIn.setAttribute('class', 'svg-pan-zoom-control');
     zoomIn.addEventListener('click', function() {instance.getPublicInstance().zoomIn()}, false)
     zoomIn.addEventListener('touchstart', function() {instance.getPublicInstance().zoomIn()}, false)
+    zoomInButton.addEventListener('click', function() {instance.getPublicInstance().zoomIn()}, false)
 
     var zoomInBackground = document.createElementNS(SvgUtils.svgNS, 'rect'); // TODO change these background space fillers to rounded rectangles so they look prettier
     zoomInBackground.setAttribute('x', '0');
@@ -89,6 +90,7 @@ module.exports = {
     resetPanZoomControl.setAttribute('class', 'svg-pan-zoom-control');
     resetPanZoomControl.addEventListener('click', function() {instance.getPublicInstance().reset()}, false);
     resetPanZoomControl.addEventListener('touchstart', function() {instance.getPublicInstance().reset()}, false);
+    resetButton.addEventListener('click', function() {instance.getPublicInstance().reset()}, false);
 
     var resetPanZoomControlBackground = document.createElementNS(SvgUtils.svgNS, 'rect'); // TODO change these background space fillers to rounded rectangles so they look prettier
     resetPanZoomControlBackground.setAttribute('x', '2');
@@ -119,6 +121,7 @@ module.exports = {
     zoomOut.setAttribute('class', 'svg-pan-zoom-control');
     zoomOut.addEventListener('click', function() {instance.getPublicInstance().zoomOut()}, false);
     zoomOut.addEventListener('touchstart', function() {instance.getPublicInstance().zoomOut()}, false);
+    zoomOutButton.addEventListener('click', function() {instance.getPublicInstance().zoomOut()}, false);
 
     var zoomOutBackground = document.createElementNS(SvgUtils.svgNS, 'rect'); // TODO change these background space fillers to rounded rectangles so they look prettier
     zoomOutBackground.setAttribute('x', '0');

@@ -4,11 +4,11 @@
     <title>loading</title>
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="icon" type="image/x-icon" href="../../../css/favicon.ico"/>
-    <link rel="stylesheet" href="../../../css/interactiveSchematic.css">
+    <!-- <link rel="stylesheet" href="../../../css/interactiveSchematic.css"> -->
     <link rel="stylesheet" href="../../../css/meter.css">
+    <link rel="stylesheet" href="../../../css/troubleshootingExercise.css">
     <script src="../../../JavaScriptLibraries/d3.min.js"></script>
     <script src="../../../JavaScriptLibraries/svgPanZoom.js"></script>
-    <script src="../../../JavaScriptLibraries/draggable.js"></script>
     <script src="../../../JavaScriptLibraries/gsap.min.js"></script>
     <script src="../../../JavaScriptLibraries/hammer.min.js"></script>
     <script src="../../../JavaScriptLibraries/jquery-3.2.1.min.js"></script>
@@ -16,6 +16,13 @@
 <body style="font-family: arial">
   <div id="mainWindow" class="svg-container"></div>
   <span id="meterDiv" class="meterClass"></span>
+  <span id="uiDiv" class="uiClass">
+    <button id="zoomInButton" class="uiButton">+</button>
+    <button id="resetButton" class="uiButton">Reset</button>
+    <button id="zoomOutButton" class="uiButton">-</button>
+    <br><br>
+    <center><button id="submitButton" class="uiButton">SUBMIT</button></center>
+  </span>
 </body>
 <script src="javaScript.js"></script>
 <script src="../../../JavaScriptLibraries/Multimeter.js"></script>
@@ -63,6 +70,7 @@ window.panZoom = svgPanZoom(schematic, {
   , customEventsHandler: eventsHandler
 });
 
+
 function schematicRedraw(){
   var panZoom = window.panZoom = svgPanZoom(schematic, {
   zoomEnabled: true,
@@ -75,5 +83,7 @@ function schematicRedraw(){
     panZoom.center();
 }
 window.addEventListener("resize", schematicRedraw);
+// var zoomGroup = document.getElementById('svg-pan-zoom-controls')
+// zoomGroup.appendChild(this._createZoomIn(document.getElementById('submitButton')))
 </script>
 </html>
