@@ -1,8 +1,7 @@
-document.title = "TM Refrigerator Exercise 1"
+document.title = "TMNF Highlight Exercise 1"
 
 var originalLineSize = "1px";
 var highlightedWidth = "3px";
-
 
 var deviceType = "not mobile";
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
@@ -13,25 +12,7 @@ xhr = new XMLHttpRequest();
 xhr.open("GET","schematic.svg",false);
 xhr.overrideMimeType("image/svg+xml");
 xhr.send("");
-
 var schematic = document.getElementById("mainWindow").appendChild(xhr.responseXML.documentElement);
-// var schematic = document.getElementById("mainSvg");
-
-schematic.setAttribute("width", screen.width);
-schematic.setAttribute("height", screen.height);
-
-//Resize Window
-var svgWindow = document.getElementById("mainWindow");
-var svg = d3.select(schematic);
-function myredraw(){
-  var width = svgWindow.clientWidth;
-  var height = svgWindow.clientHeight;
-  svg
-  .attr("width", width)
-  .attr("height", height);
-}
-myredraw();
-window.addEventListener("resize", myredraw)
 
 //Set Path Codes
 var diagram1Paths = document.getElementById("diagram1").getElementsByTagName("path");
@@ -46,19 +27,19 @@ for(i=0; i<diagram1PathsLength; i++){
   path.setAttribute('opacity',0);
   path.setAttribute('id',diagram1Paths[i].id + 'copy');
 
-  if(deviceType == "mobile"){
-    path.setAttribute('onclick','wireClicked(this);');
-    path.setAttribute('ontouchstart','wireClicked(this);');
-    path.setAttribute('ontouchend','wireClicked(this);');
-    path.setAttribute('onmouseover','wireClicked(this);');
-    }else{
-      path.setAttribute('onclick','wireClicked(this);');
-      path.setAttribute('onmouseover','this.style.cursor = "default";');
-    }
-    path.style['stroke-linecap']="round";
-    path.setAttribute("d", diagram1Paths[i].getAttribute("d"));
-    diagram1.appendChild(path);
-    path.style["stroke-width"]= 12;
+  // if(deviceType == "mobile"){
+  //   path.setAttribute('onclick','wireClicked(this);');
+  //   path.setAttribute('ontouchstart','wireClicked(this);');
+  //   path.setAttribute('ontouchend','wireClicked(this);');
+  //   path.setAttribute('onmouseover','wireClicked(this);');
+  //   }else{
+  //     path.setAttribute('onclick','wireClicked(this);');
+  //     path.setAttribute('onmouseover','this.style.cursor = "default";');
+  //   }
+  //   path.style['stroke-linecap']="round";
+  //   path.setAttribute("d", diagram1Paths[i].getAttribute("d"));
+  //   diagram1.appendChild(path);
+  //   path.style["stroke-width"]= 12;
 }
 
 function colorPickerChange(e){
@@ -76,7 +57,6 @@ function wireClicked(wire){
     wire2.style["stroke-width"]= originalLineSize;
     wire2.style["stroke"]= "rgb(0, 0, 0)";
   }
-
 }
 
 //Change DropDown when component is clicked on diagram.
@@ -94,11 +74,10 @@ function clearHighlights(){
   for(i=0; i<diagram1Paths.length; i++){
     part = diagram1Paths[i].id;
     part = part.split("copy")
-
     if(part.length === 1){
-    diagram1Paths[i].style['stroke-linecap']="round";
-    diagram1Paths[i].style.stroke = "#000000";
-    diagram1Paths[i].style["stroke-width"]= originalLineSize;
+      diagram1Paths[i].style['stroke-linecap']="round";
+      diagram1Paths[i].style.stroke = "#000000";
+      diagram1Paths[i].style["stroke-width"]= originalLineSize;
     }
   }
 }
@@ -159,7 +138,6 @@ function getColors(){
     console.log("BlackArray = [" + blackArray + "];" + "\n" + "DarkGrayArray = [" + darkGrayArray + "];" + "\n" + "LightGrayArray = [" + lightGrayArray + "];" + "\n" + "AquamarineArray = [" + aquamarineArray + "];" + "\n" + "BlueArray = [" + blueArray + "];" + "\n" + "PurpleArray = [" + purpleArray + "];" + "\n" + "VioletArray = [" + violetArray + "];" + "\n" + "PinkArray = [" + pinkArray + "];" + "\n" + "YellowGreenArray = [" + yellowGreenArray + "];" + "\n" + "YellowArray = [" + yellowArray + "];" + "\n" + "OrangeArray = [" + orangeArray + "];" + "\n" + "RedArray = [" + redArray + "];" + "\n" + "BrownArray = [" + brownArray + "];");
 }
 
-
 blackArrayStandard = ['path1583-6','path2783','path1077','path2691','path178-2','path2775','path162-5','defrostControlWiper','tcBlade'];
 blueArrayStandard = ['path1587','path294','path1116','path1099','path1101','path1103'];
 orangeArrayStandard = ["evapFanMotor"];
@@ -189,7 +167,6 @@ function checkAnswer(){
     answerArray.push("false")
   }
   if(answerArray.includes('false')){
-    // console.log(answerArray)
     alert("Incorrect, please try again.")
   }else{
     alert("8359")
@@ -277,8 +254,8 @@ function changeIMSwitch(){
 		waterValveSwitchRotated=false;
 	}
 }
+
 function closeMenu(){
-  console.log(instructionDiv.getAttribute('class'))
   menuSpan.setAttribute('class', 'uiHiddenClass')
 }
 
