@@ -3,14 +3,6 @@ document.title = "TM Refrigerator Exercise 1"
 var originalLineSize = "1px";
 var highlightedWidth = "3px";
 
-//Toggle Edit Functions
-getWireColors.style.display="none";
-window.addEventListener("keydown", toggleEditor);
-function toggleEditor(){
-  if(event.keyCode == 16 && event.ctrlKey){
-    getColors();
-  }
-}
 
 var deviceType = "not mobile";
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
@@ -284,4 +276,12 @@ function changeIMSwitch(){
 		TweenMax.to(IMSwitchcopy,1,{rotation:0});
 		waterValveSwitchRotated=false;
 	}
+}
+function closeMenu(){
+  console.log(instructionDiv.getAttribute('class'))
+  menuSpan.setAttribute('class', 'uiHiddenClass')
+}
+
+function openMenu(){
+  menuSpan.setAttribute('class', 'uiClass')
 }

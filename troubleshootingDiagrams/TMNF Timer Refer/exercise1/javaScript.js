@@ -11,7 +11,7 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 }
 
 xhr = new XMLHttpRequest();
-xhr.open("GET","SVG Meter.svg",false);
+xhr.open("GET","../../SVG Meter.svg",false);
 xhr.overrideMimeType("image/svg+xml");
 xhr.send("");
 var meters = document.getElementById("meterDiv").appendChild(xhr.responseXML.documentElement);
@@ -287,6 +287,6 @@ function toggleTestPoints(){
 }
 
 // TweenMax.to(evapFanBlade, 3, {rotation:360,transformOrigin: "50% 50%", ease:"none", repeat:-1});
-TweenMax.to([evapFanBlade], 1.5, {rotation:360, transformOrigin: "50% 50%", ease: Power0.easeNone, repeat:-1});
+// TweenMax.to([evapFanBlade], 1.5, {rotation:360, transformOrigin: "50% 50%", ease: Power0.easeNone, repeat:-1});
 TweenMax.to([conFanBlade], 1.5, {rotation:360, transformOrigin: "50% 50%", ease: Power0.easeNone, repeat:-1});
 TweenMax.to([piston], .25, {y:10, transformOrigin: "50% 50%", ease: Power0.easeNone, repeat:-1, yoyo:true});
