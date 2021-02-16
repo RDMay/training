@@ -1,7 +1,8 @@
-document.title = "Exercise 1"
+document.title = "SXS Electronic Highlight Exercise 1"
 
-var originalLineSize = "0.25px";
-var highlightedWidth = "1px";
+var originalLineSize = ".5px";
+var highlightedWidth = "1.5px";
+
 
 var deviceType = "not mobile";
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
@@ -12,25 +13,7 @@ xhr = new XMLHttpRequest();
 xhr.open("GET","../schematic.svg",false);
 xhr.overrideMimeType("image/svg+xml");
 xhr.send("");
-
 var schematic = document.getElementById("mainWindow").appendChild(xhr.responseXML.documentElement);
-// var schematic = document.getElementById("mainSvg");
-
-schematic.setAttribute("width", screen.width);
-schematic.setAttribute("height", screen.height);
-
-//Resize Window
-var svgWindow = document.getElementById("mainWindow");
-var svg = d3.select(schematic);
-function myredraw(){
-  var width = svgWindow.clientWidth;
-  var height = svgWindow.clientHeight;
-  svg
-  .attr("width", width)
-  .attr("height", height);
-}
-myredraw();
-window.addEventListener("resize", myredraw)
 
 //Set Path Codes
 var diagram1Paths = document.getElementById("diagram1").getElementsByTagName("path");
@@ -42,7 +25,7 @@ for(i=0; i<diagram1PathsLength; i++){
   var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
   path.setAttribute('stroke','blue');
   path.setAttribute('fill','none');
-  path.setAttribute('opacity', 0);
+  path.setAttribute('opacity',0);
   path.setAttribute('id',diagram1Paths[i].id + 'copy');
 
   if(deviceType == "mobile"){
@@ -57,7 +40,7 @@ for(i=0; i<diagram1PathsLength; i++){
     path.style['stroke-linecap']="round";
     path.setAttribute("d", diagram1Paths[i].getAttribute("d"));
     diagram1.appendChild(path);
-    path.style["stroke-width"]= 3;
+    path.style["stroke-width"]= 8;
 }
 
 function colorPickerChange(e){
@@ -67,7 +50,7 @@ function colorPickerChange(e){
 function wireClicked(wire){
   nameSplit = wire.id.split("copy");
   wire2 = document.getElementById(nameSplit[0]);
-  if(wire2.style["stroke-width"] == .25 || wire2.style["stroke-width"] == '0.25px'){
+  if(wire2.style["stroke-width"] == .5 || wire2.style["stroke-width"] == '.5px'){
     wire2.style["stroke-width"]= highlightedWidth;
     wire2.style["stroke"]= document.getElementById("colorPicker").value;
     selectedPart = wire2.id;
@@ -75,6 +58,7 @@ function wireClicked(wire){
     wire2.style["stroke-width"]= originalLineSize;
     wire2.style["stroke"]= "rgb(0, 0, 0)";
   }
+
 }
 
 //Change DropDown when component is clicked on diagram.
@@ -103,53 +87,56 @@ function clearHighlights(){
 
 clearHighlights();
 
-var l1Array = []; var grayArray = []; var neutralArray = []; var darkGrayArray = []; var aquamarineArray = []; var dcMinusArray = []; var rpmFeedBackArray = []; var violetArray = []; var pinkArray = []; var yellowGreenArray = []; var speedControlArray = []; var energizedLoadArray = []; var dcPlusArray = [];
-var unkArray = [];
+var l1Array = []; var l2Array = []; var grayArray = []; var neutralArray = []; var darkGrayArray = []; var aquamarineArray = []; var dcMinusArray = []; var rpmFeedBackArray = []; var violetArray = []; var pinkArray = []; var yellowGreenArray = []; var speedControlArray = []; var energizedLoadArray = []; var dcPlusArray = []; var commArray = [];
 
 function getColors(){
   l1Array = []; grayArray = []; neutralArray = []; darkGrayArray = []; aquamarineArray = []; dcMinusArray = []; rpmFeedBackArray = []; violetArray = []; pinkArray = []; yellowGreenArray = []; speedControlArray = []; energizedLoadArray = []; dcPlusArray = []; unkArray = [];
     for(i=0; i<diagram1PathsLength; i++){
       if(diagram1Paths[i].style["stroke-width"] != originalLineSize) {
         switch(diagram1Paths[i].style.stroke) {
-        case "rgb(51, 0, 0)":
+        case "rgb(255, 0, 0)":
           l1Array.push(diagram1Paths[i].id);
         break;
-        case "rgb(205, 205, 205)":
-          neutralArray.push(diagram1Paths[i].id);
+        case "rgb(72, 72, 72)":
+          l2Array.push(diagram1Paths[i].id);
         break;
         case "rgb(255, 165, 0)":
+          neutralArray.push(diagram1Paths[i].id);
+        break;
+        case "rgb(249, 231, 159)":
           energizedLoadArray.push(diagram1Paths[i].id);
         break;
-        case "rgb(255, 0, 0)":
+        case "rgb(255, 102, 102)":
           dcPlusArray.push(diagram1Paths[i].id);
         break;
         case "rgb(0, 0, 0)":
           dcMinusArray.push(diagram1Paths[i].id);
         break;
-        case "rgb(0, 0, 255)":
+        case "rgb(65, 105, 225)":
           rpmFeedBackArray.push(diagram1Paths[i].id);
         break;
-        case "rgb(255, 255, 0)":
+        case "rgb(0, 0, 255)":
           speedControlArray.push(diagram1Paths[i].id);
         break;
-        case "rgb(128, 0, 128)":
-          unkArray.push(diagram1Paths[i].id);
-            break;
+        case "rgb(0, 0, 255)":
+          speedControlArray.push(diagram1Paths[i].id);
+        break;
+        case "rgb(30, 144, 255)":
+          commArray.push(diagram1Paths[i].id);
+        break;
         }
       }
     }
-    console.log("l1ArrayKey = [" + l1Array + "];" + "\n" + "neutralArrayKey = [" + neutralArray + "];" + "\n" + "energizedLoadArrayKey = ["  + energizedLoadArray + "];" + "\n" + "dcPlusArrayKey = [" + dcPlusArray + "];" + "\n" + "dcMinusArrayKey = [" + dcMinusArray + "];" + "\n" + "rpmFeedBackArrayKey = [" + rpmFeedBackArray + "];" + "\n" + "speedControlArrayKey = [" + speedControlArray + "];" + "\n"  + "unkArrayKey = [" + unkArray + "];");
+    console.log("l1ArrayKey = [" + l1Array + "];" + "\n" + "l2ArrayKey = [" + l2Array + "];" + "\n" + "neutralArrayKey = [" + neutralArray + "];" + "\n" + "energizedLoadArrayKey = ["  + energizedLoadArray + "];" + "\n" + "dcPlusArrayKey = [" + dcPlusArray + "];" + "\n" + "dcMinusArrayKey = [" + dcMinusArray + "];" + "\n" + "rpmFeedBackArrayKey = [" + rpmFeedBackArray + "];" + "\n" + "speedControlArrayKey = [" + speedControlArray + "];" + "\n"  + "commArrayKey = [" + commArray + "];" + "\n");
 }
 
-
-l1ArrayKey = [];
-neutralArrayKey = [];
-energizedLoadArrayKey = ['evapFanMotor_btn'];
-dcPlusArrayKey = ['path7469','path7474','path46258','path300','path3512'];
-dcMinusArrayKey = ['path3538','path318'];
-rpmFeedBackArrayKey = ['path312'];
-speedControlArrayKey = ['path306'];
-unkArrayKey = [];
+l1ArrayKey = ['path6367','path106','path262','path6970','path1154','path7014','defrostControlWiper','tcBlade'];
+neutralArrayKey = ['path6357','path7016','path7069','path7071','path7073','path7075'];
+energizedLoadArrayKey = ['path146'];
+dcPlusArrayKey = [];
+dcMinusArrayKey = [];
+rpmFeedBackArrayKey = [];
+speedControlArrayKey = [];
 
 function checkAnswer(){
   getColors();
@@ -184,173 +171,79 @@ function checkAnswer(){
       answerArray.push("false")
     }
   }
-  for(a=0; a<unkArrayKey.length; a++){
-    if(unkArrayKey.includes(unkArray[a]) == false || unkArray.length != unkArrayKey.length){
-      answerArray.push("false")
-    }
-  }
   for(a=0; a<energizedLoadArrayKey.length; a++){
     if(energizedLoadArrayKey.includes(energizedLoadArray[a]) == false || energizedLoadArray.length != energizedLoadArrayKey.length){
       answerArray.push("false")
     }
   }
 
-  // if(ccSwitchRotated === true){
-  //   answerArray.push("false")
-  // }
+  if(ccSwitchRotated === false){
+    answerArray.push("false")
+  }
+  if(timerSwitchRotated === true){
+    answerArray.push("false")
+  }
 
   if(answerArray.includes('false')){
+    // console.log(answerArray)
     alert("Incorrect, please try again.")
   }else{
-    alert("3196")
+    alert("8359")
   }
 }
 
-var highLimitSwitchRotated=false;
-highLimitSwitch.setAttribute('onclick','changeHighLimitSwitch();');
-highLimitSwitch.setAttribute('onmouseover','this.style.cursor = "pointer";');
-
-function changeHighLimitSwitch(){
-	if(highLimitSwitchRotated === false){
-		TweenMax.to(path3549,1,{rotation:33})
-		TweenMax.to(path3549copy,1,{rotation:33})
-		highLimitSwitchRotated=true;
-	}else{
-		TweenMax.to(path3549,1,{rotation:0})
-		TweenMax.to(path3549copy,1,{rotation:0})
-		highLimitSwitchRotated=false;
-	}
+function closeMenu(){
+  console.log(instructionDiv.getAttribute('class'))
+  menuSpan.setAttribute('class', 'uiHiddenClass')
 }
 
-var highLimit2SwitchRotated=false;
-highLimitSwitch2.setAttribute('onclick','changeHighLimitSwitch2();');
-highLimitSwitch2.setAttribute('onmouseover','this.style.cursor = "pointer";');
-
-function changeHighLimitSwitch2(){
-	if(highLimit2SwitchRotated === false){
-		TweenMax.to(path3768,1,{rotation:33})
-		TweenMax.to(path3768copy,1,{rotation:33})
-		highLimit2SwitchRotated=true;
-	}else{
-		TweenMax.to(path3768,1,{rotation:0})
-		TweenMax.to(path3768copy,1,{rotation:0})
-		highLimit2SwitchRotated=false;
-	}
+function openMenu(){
+  menuSpan.setAttribute('class', 'uiClass')
 }
 
+//Switch Code
 var ffDoorSwitchRotated=false;
-ffDoorSwitch.setAttribute('onclick','changeffDoorSwitch();');
-ffDoorSwitch.setAttribute('onmouseover','this.style.cursor = "pointer";');
-
+ffDoorSwitch_btn.setAttribute('onclick','changeffDoorSwitch();');
+ffDoorSwitch_btn.setAttribute('onmouseover','this.style.cursor = "pointer";');
 function changeffDoorSwitch(){
 	if(ffDoorSwitchRotated === false){
-		TweenMax.to(path3551,1,{rotation:-33})
-		TweenMax.to(path3551copy,1,{rotation:-33})
+		TweenMax.to(ffDoorSwitch,1,{rotation:-30});
+		TweenMax.to(ffDoorSwitchcopy,1,{rotation:-30});
 		ffDoorSwitchRotated=true;
 	}else{
-		TweenMax.to(path3551,1,{rotation:0})
-		TweenMax.to(path3551copy,1,{rotation:0})
+		TweenMax.to(ffDoorSwitch,1,{rotation:0});
+		TweenMax.to(ffDoorSwitchcopy,1,{rotation:0});
 		ffDoorSwitchRotated=false;
 	}
 }
 
 var fzDoorSwitchRotated=false;
-fzDoorSwitch.setAttribute('onclick','changeFzDoorSwitch();');
-fzDoorSwitch.setAttribute('onmouseover','this.style.cursor = "pointer";');
-
-function changeFzDoorSwitch(){
+fzDoorSwitch_btn.setAttribute('onclick','changefzDoorSwitch();');
+fzDoorSwitch_btn.setAttribute('onmouseover','this.style.cursor = "pointer";');
+function changefzDoorSwitch(){
 	if(fzDoorSwitchRotated === false){
-		TweenMax.to(path3348,1,{rotation:55, transformOrigin: '0% 100%'})
-		TweenMax.to(path3348copy,1,{rotation:55, transformOrigin: '0% 100%'})
+		TweenMax.to(fzDoorSwitch,1,{rotation:-60, transformOrigin:'0 0'});
+		TweenMax.to(fzDoorSwitchcopy,1,{rotation:-60, transformOrigin:'0 0'});
 		fzDoorSwitchRotated=true;
 	}else{
-		TweenMax.to(path3348,1,{rotation:0})
-		TweenMax.to(path3348copy,1,{rotation:0})
+		TweenMax.to(fzDoorSwitch,1,{rotation:0});
+		TweenMax.to(fzDoorSwitchcopy,1,{rotation:0});
 		fzDoorSwitchRotated=false;
 	}
 }
 
-//Compressor Relay
-var compressorRelayRotated=false;
-compressorRelay.setAttribute('onclick','changecompressorRelay();');
-compressorRelay.setAttribute('onmouseover','this.style.cursor = "pointer";');
-
-function changecompressorRelay(){
-	if(compressorRelayRotated === false){
-		TweenMax.to(path2239,1,{rotation:33, transformOrigin: '100% 0%'})
-		TweenMax.to(path2239copy,1,{rotation:33, transformOrigin: '100% 0%'})
-		compressorRelayRotated=true;
+var highLimitSwitchRotated=false;
+highLimitSwitch_btn.setAttribute('onclick','changehighLimitSwitch();');
+highLimitSwitch_btn.setAttribute('onmouseover','this.style.cursor = "pointer";');
+function changehighLimitSwitch(){
+  console.log('fired')
+	if(highLimitSwitchRotated === false){
+		TweenMax.to(highLimitSwitch,1,{rotation:-60, transformOrigin:'0 0'});
+		TweenMax.to(highLimitSwitchcopy,1,{rotation:-60, transformOrigin:'0 0'});
+		highLimitSwitchRotated=true;
 	}else{
-		TweenMax.to(path2239,1,{rotation:0})
-		TweenMax.to(path2239copy,1,{rotation:0})
-		compressorRelayRotated=false;
-	}
-}
-
-//Compressor Relay
-var compressorRelayRotated=false;
-compressorRelay.setAttribute('onclick','changecompressorRelay();');
-compressorRelay.setAttribute('onmouseover','this.style.cursor = "pointer";');
-
-function changecompressorRelay(){
-	if(compressorRelayRotated === false){
-		TweenMax.to(path2239,1,{rotation:33, transformOrigin: '100% 0%'})
-		TweenMax.to(path2239copy,1,{rotation:33, transformOrigin: '100% 0%'})
-		compressorRelayRotated=true;
-	}else{
-		TweenMax.to(path2239,1,{rotation:0})
-		TweenMax.to(path2239copy,1,{rotation:0})
-		compressorRelayRotated=false;
-	}
-}
-
-//Heater Relay
-var heaterRelayRotated=false;
-heaterRelay.setAttribute('onclick','changeheaterRelay();');
-heaterRelay.setAttribute('onmouseover','this.style.cursor = "pointer";');
-
-function changeheaterRelay(){
-	if(heaterRelayRotated === false){
-		TweenMax.to(path2243,1,{rotation:33, transformOrigin: '0% 0%'})
-		TweenMax.to(path2243copy,1,{rotation:33, transformOrigin: '0% 0%'})
-		heaterRelayRotated=true;
-	}else{
-		TweenMax.to(path2243,1,{rotation:0})
-		TweenMax.to(path2243copy,1,{rotation:0})
-		heaterRelayRotated=false;
-	}
-}
-
-//Cube Relay
-var cubeRelayRotated=false;
-cubeRelay.setAttribute('onclick','changecubeRelay();');
-cubeRelay.setAttribute('onmouseover','this.style.cursor = "pointer";');
-
-function changecubeRelay(){
-	if(cubeRelayRotated === false){
-		TweenMax.to(path2130,1,{rotation:-33, transformOrigin: '0% 0%'})
-		TweenMax.to(path2130copy,1,{rotation:-31, transformOrigin: '0% 0%'})
-		cubeRelayRotated=true;
-	}else{
-		TweenMax.to(path2130,1,{rotation:0})
-		TweenMax.to(path2130copy,1,{rotation:0})
-		cubeRelayRotated=false;
-	}
-}
-
-//Cube Relay
-var augerRelayRotated=false;
-augerRelay.setAttribute('onclick','changeaugerRelay();');
-augerRelay.setAttribute('onmouseover','this.style.cursor = "pointer";');
-
-function changeaugerRelay(){
-	if(augerRelayRotated === false){
-		TweenMax.to(path2132,1,{rotation:-30, transformOrigin: '0% 0%'})
-		TweenMax.to(path2132copy,1,{rotation:-30, transformOrigin: '0% 0%'})
-		augerRelayRotated=true;
-	}else{
-		TweenMax.to(path2132,1,{rotation:0})
-		TweenMax.to(path2132copy,1,{rotation:0})
-		augerRelayRotated=false;
+		TweenMax.to(highLimitSwitch,1,{rotation:0});
+		TweenMax.to(highLimitSwitchcopy,1,{rotation:0});
+		highLimitSwitchRotated=false;
 	}
 }

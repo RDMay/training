@@ -1,7 +1,8 @@
-document.title = "TM Refrigerator Exercise 2"
+document.title = "TMNF Highlight Exercise 2"
 
 var originalLineSize = "1px";
 var highlightedWidth = "3px";
+
 
 var deviceType = "not mobile";
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
@@ -12,25 +13,7 @@ xhr = new XMLHttpRequest();
 xhr.open("GET","schematic.svg",false);
 xhr.overrideMimeType("image/svg+xml");
 xhr.send("");
-
 var schematic = document.getElementById("mainWindow").appendChild(xhr.responseXML.documentElement);
-// var schematic = document.getElementById("mainSvg");
-
-schematic.setAttribute("width", screen.width);
-schematic.setAttribute("height", screen.height);
-
-//Resize Window
-var svgWindow = document.getElementById("mainWindow");
-var svg = d3.select(schematic);
-function myredraw(){
-  var width = svgWindow.clientWidth;
-  var height = svgWindow.clientHeight;
-  svg
-  .attr("width", width)
-  .attr("height", height);
-}
-myredraw();
-window.addEventListener("resize", myredraw)
 
 //Set Path Codes
 var diagram1Paths = document.getElementById("diagram1").getElementsByTagName("path");
@@ -57,7 +40,7 @@ for(i=0; i<diagram1PathsLength; i++){
     path.style['stroke-linecap']="round";
     path.setAttribute("d", diagram1Paths[i].getAttribute("d"));
     diagram1.appendChild(path);
-    path.style["stroke-width"]= 12;
+    path.style["stroke-width"]= 8;
 }
 
 function colorPickerChange(e){
@@ -104,83 +87,97 @@ function clearHighlights(){
 
 clearHighlights();
 
-var blackArray = []; var grayArray = []; var lightGrayArray = []; var darkGrayArray = []; var aquamarineArray = []; var blueArray = []; var purpleArray = []; var violetArray = []; var pinkArray = []; var yellowGreenArray = []; var yellowArray = []; var orangeArray = []; var redArray = [];
-var brownArray = [];
+var l1Array = []; var l2Array = []; var grayArray = []; var neutralArray = []; var darkGrayArray = []; var aquamarineArray = []; var dcMinusArray = []; var rpmFeedBackArray = []; var violetArray = []; var pinkArray = []; var yellowGreenArray = []; var speedControlArray = []; var energizedLoadArray = []; var dcPlusArray = []; var commArray = [];
 
 function getColors(){
-  blackArray = []; grayArray = []; lightGrayArray = []; darkGrayArray = []; aquamarineArray = []; blueArray = []; purpleArray = []; violetArray = []; pinkArray = []; yellowGreenArray = []; yellowArray = []; orangeArray = []; redArray = []; brownArray = [];
+  l1Array = []; grayArray = []; neutralArray = []; darkGrayArray = []; aquamarineArray = []; dcMinusArray = []; rpmFeedBackArray = []; violetArray = []; pinkArray = []; yellowGreenArray = []; speedControlArray = []; energizedLoadArray = []; dcPlusArray = []; unkArray = [];
     for(i=0; i<diagram1PathsLength; i++){
-      console.log(diagram1Paths[i].style["stroke-width"])
       if(diagram1Paths[i].style["stroke-width"] != originalLineSize) {
         switch(diagram1Paths[i].style.stroke) {
-        case "rgb(0, 0, 0)":
-          blackArray.push(diagram1Paths[i].id);
-        break;
-        case "rgb(169, 169, 169)":
-          darkGrayArray.push(diagram1Paths[i].id);
-            break;
-        case "rgb(211, 211, 211)":
-          lightGrayArray.push(diagram1Paths[i].id);
-            break;
-        case "rgb(127, 255, 212)":
-          aquamarineArray.push(diagram1Paths[i].id);
-            break;
-        case "rgb(0, 0, 255)":
-          blueArray.push(diagram1Paths[i].id);
-            break;
-        case "rgb(128, 0, 128)":
-          purpleArray.push(diagram1Paths[i].id);
-            break;
-        case "rgb(238, 130, 238)":
-          violetArray.push(diagram1Paths[i].id);
-            break;
-        case "rgb(255, 192, 203)":
-          pinkArray.push(diagram1Paths[i].id);
-            break;
-        case "rgb(154, 205, 50)":
-          yellowGreenArray.push(diagram1Paths[i].id);
-            break;
-        case "rgb(255, 255, 0)":
-          yellowArray.push(diagram1Paths[i].id);
-            break;
-        case "rgb(255, 165, 0)":
-          orangeArray.push(diagram1Paths[i].id);
-            break;
         case "rgb(255, 0, 0)":
-          redArray.push(diagram1Paths[i].id);
-            break;
-        case "rgb(165, 42, 42)":
-          brownArray.push(diagram1Paths[i].id);
-            break;
+          l1Array.push(diagram1Paths[i].id);
+        break;
+        case "rgb(72, 72, 72)":
+          l2Array.push(diagram1Paths[i].id);
+        break;
+        case "rgb(255, 165, 0)":
+          neutralArray.push(diagram1Paths[i].id);
+        break;
+        case "rgb(249, 231, 159)":
+          energizedLoadArray.push(diagram1Paths[i].id);
+        break;
+        case "rgb(255, 102, 102)":
+          dcPlusArray.push(diagram1Paths[i].id);
+        break;
+        case "rgb(0, 0, 0)":
+          dcMinusArray.push(diagram1Paths[i].id);
+        break;
+        case "rgb(65, 105, 225)":
+          rpmFeedBackArray.push(diagram1Paths[i].id);
+        break;
+        case "rgb(0, 0, 255)":
+          speedControlArray.push(diagram1Paths[i].id);
+        break;
+        case "rgb(0, 0, 255)":
+          speedControlArray.push(diagram1Paths[i].id);
+        break;
+        case "rgb(30, 144, 255)":
+          commArray.push(diagram1Paths[i].id);
+        break;
         }
       }
     }
-    console.log("BlackArray = [" + blackArray + "];" + "\n" + "DarkGrayArray = [" + darkGrayArray + "];" + "\n" + "LightGrayArray = [" + lightGrayArray + "];" + "\n" + "AquamarineArray = [" + aquamarineArray + "];" + "\n" + "BlueArray = [" + blueArray + "];" + "\n" + "PurpleArray = [" + purpleArray + "];" + "\n" + "VioletArray = [" + violetArray + "];" + "\n" + "PinkArray = [" + pinkArray + "];" + "\n" + "YellowGreenArray = [" + yellowGreenArray + "];" + "\n" + "YellowArray = [" + yellowArray + "];" + "\n" + "OrangeArray = [" + orangeArray + "];" + "\n" + "RedArray = [" + redArray + "];" + "\n" + "BrownArray = [" + brownArray + "];");
+    console.log("l1ArrayKey = [" + l1Array + "];" + "\n" + "l2ArrayKey = [" + l2Array + "];" + "\n" + "neutralArrayKey = [" + neutralArray + "];" + "\n" + "energizedLoadArrayKey = ["  + energizedLoadArray + "];" + "\n" + "dcPlusArrayKey = [" + dcPlusArray + "];" + "\n" + "dcMinusArrayKey = [" + dcMinusArray + "];" + "\n" + "rpmFeedBackArrayKey = [" + rpmFeedBackArray + "];" + "\n" + "speedControlArrayKey = [" + speedControlArray + "];" + "\n"  + "commArrayKey = [" + commArray + "];" + "\n");
 }
 
+l1ArrayKey = ['path2783','path1077','path1366','path2691','path178-2','path2775','path1097','path1100','path162-5','defrostControlWiper','tcBlade'];
+neutralArrayKey = ['path1370','path1116','path1099','path1101'];
+energizedLoadArrayKey = ['path1370-4'];
+dcPlusArrayKey = [];
+dcMinusArrayKey = [];
+rpmFeedBackArrayKey = [];
+speedControlArrayKey = [];
 
-blackArrayStandard = ['path2783','path1077','path1366','path2691','path178-2','path2775','path1097','path1100','path162-5','defrostControlWiper','tcBlade'];
-blueArrayStandard = ['path1370','path1116','path1099','path1101'];
-orangeArrayStandard = ["path1370-4"];
 
 function checkAnswer(){
   getColors();
   var answerArray = [];
-  for(a=0; a<blackArrayStandard.length; a++){
-    if(blackArrayStandard.includes(blackArray[a]) == false || blackArray.length != blackArrayStandard.length){
+  for(a=0; a<l1ArrayKey.length; a++){
+    if(l1ArrayKey.includes(l1Array[a]) == false || l1Array.length != l1ArrayKey.length){
       answerArray.push("false")
     }
   }
-  for(i=0; i<blueArrayStandard.length; i++){
-    if(blueArrayStandard.includes(blueArray[i]) == false || blueArray.length != blueArrayStandard.length){
+  for(a=0; a<neutralArrayKey.length; a++){
+    if(neutralArrayKey.includes(neutralArray[a]) == false || neutralArray.length != neutralArrayKey.length){
       answerArray.push("false")
     }
   }
-  for(i=0; i<orangeArrayStandard.length; i++){
-    if(orangeArrayStandard.includes(orangeArray[i]) == false || orangeArray.length != orangeArrayStandard.length){
+  for(a=0; a<dcPlusArrayKey.length; a++){
+    if(dcPlusArrayKey.includes(dcPlusArray[a]) == false || dcPlusArray.length != dcPlusArrayKey.length){
       answerArray.push("false")
     }
   }
+  for(a=0; a<dcMinusArrayKey.length; a++){
+    if(dcMinusArrayKey.includes(dcMinusArray[a]) == false || dcMinusArray.length != dcMinusArrayKey.length){
+      answerArray.push("false")
+    }
+  }
+  for(a=0; a<rpmFeedBackArrayKey.length; a++){
+    if(rpmFeedBackArrayKey.includes(rpmFeedBackArray[a]) == false || rpmFeedBackArray.length != rpmFeedBackArrayKey.length){
+      answerArray.push("false")
+    }
+  }
+  for(a=0; a<speedControlArrayKey.length; a++){
+    if(speedControlArrayKey.includes(speedControlArray[a]) == false || speedControlArray.length != speedControlArrayKey.length){
+      answerArray.push("false")
+    }
+  }
+  for(a=0; a<energizedLoadArrayKey.length; a++){
+    if(energizedLoadArrayKey.includes(energizedLoadArray[a]) == false || energizedLoadArray.length != energizedLoadArrayKey.length){
+      answerArray.push("false")
+    }
+  }
+
   if(ccSwitchRotated === true){
     answerArray.push("false")
   }
@@ -195,6 +192,15 @@ function checkAnswer(){
   }
 }
 
+function closeMenu(){
+  console.log(instructionDiv.getAttribute('class'))
+  menuSpan.setAttribute('class', 'uiHiddenClass')
+}
+
+function openMenu(){
+  menuSpan.setAttribute('class', 'uiClass')
+}
+
 //Switch Codesvar ccSwitchRotated=false;
 var ccSwitchRotated=false;
 ccSwitch.setAttribute('onclick','changeccSwitch();');
@@ -203,12 +209,10 @@ function changeccSwitch(){
 	if(ccSwitchRotated === false){
 		TweenMax.to(tcBlade,1,{rotation:-30});
 		TweenMax.to(tcBladecopy,1,{rotation:-30});
-		TweenMax.to(g3942,1,{y:"-=6"});
 		ccSwitchRotated=true;
 	}else{
 		TweenMax.to(tcBlade,1,{rotation:0});
 		TweenMax.to(tcBladecopy,1,{rotation:0});
-		TweenMax.to(g3942,1,{y:"+=7"});
 		ccSwitchRotated=false;
 	}
 }
@@ -219,8 +223,8 @@ timerSwitch.setAttribute('onmouseover','this.style.cursor = "pointer";');
 
 function changeTimerSwitch(){
 	if(timerSwitchRotated === false){
-		TweenMax.to(defrostControlWiper,1,{rotation:-33});
-		TweenMax.to(defrostControlWipercopy,1,{rotation:-33});
+		TweenMax.to(defrostControlWiper,1,{rotation:-60});
+		TweenMax.to(defrostControlWipercopy,1,{rotation:-60});
 		timerSwitchRotated=true;
 	}else{
 		TweenMax.to(defrostControlWiper,1,{rotation:0});
@@ -235,53 +239,61 @@ doorSwitch.setAttribute('onmouseover','this.style.cursor = "pointer";');
 
 function changeDoorSwitch(){
 	if(doorSwitchRotated === false){
-		TweenMax.to(path200,1,{rotation:-26});
-		TweenMax.to(path200copy,1,{rotation:-26});
+		TweenMax.to(doorSwitchBlade,1,{rotation:-26});
+		TweenMax.to(doorSwitchBladecopy,1,{rotation:-26});
 		doorSwitchRotated=true;
 	}else{
-		TweenMax.to(path200,1,{rotation:0});
-		TweenMax.to(path200copy,1,{rotation:0});
+		TweenMax.to(doorSwitchBlade,1,{rotation:0});
+		TweenMax.to(doorSwitchBladecopy,1,{rotation:0});
 		doorSwitchRotated=false;
 	}
 }
 
 var defrostThermostatRotated=false;
-defrostThermostat.setAttribute('onclick','changeDefrostThermostatSwitch();');
-defrostThermostat.setAttribute('onmouseover','this.style.cursor = "pointer";');
+defrostThermostat_btn.setAttribute('onclick','changeDefrostThermostatSwitch();');
+defrostThermostat_btn.setAttribute('onmouseover','this.style.cursor = "pointer";');
 function changeDefrostThermostatSwitch(){
 	if(defrostThermostatRotated === false){
-		TweenMax.to(path334,1,{rotation:30});
-		TweenMax.to(path334copy,1,{rotation:30});
+		TweenMax.to(defrostThermostat1Blade,1,{rotation:30});
+		TweenMax.to(defrostThermostat1Bladecopy,1,{rotation:30});
 		TweenMax.to(path324,1,{y:3});
 		defrostThermostatRotated=true;
 	}else{
-		TweenMax.to(path334,1,{rotation:0});
-		TweenMax.to(path334copy,1,{rotation:0});
+		TweenMax.to(defrostThermostat1Blade,1,{rotation:0});
+		TweenMax.to(defrostThermostat1Bladecopy,1,{rotation:0});
 		TweenMax.to(path324,1,{y:0});
 		defrostThermostatRotated=false;
 	}
 }
 
-var waterValveSwitchRotated=false;
-waterValveSwitch.setAttribute('onclick','changeIMSwitch();');
-waterValveSwitch.setAttribute('onmouseover','this.style.cursor = "pointer";');
-function changeIMSwitch(){
-	if(waterValveSwitchRotated === false){
-		TweenMax.to(IMSwitch,1,{rotation:-28});
-		TweenMax.to(IMSwitchcopy,1,{rotation:-28});
-		waterValveSwitchRotated=true;
+var defrostThermostat2Rotated=false;
+defrostThermostat2_btn.setAttribute('onclick','changeDefrostThermostat2Switch();');
+defrostThermostat2_btn.setAttribute('onmouseover','this.style.cursor = "pointer";');
+function changeDefrostThermostat2Switch(){
+	if(defrostThermostat2Rotated === false){
+		TweenMax.to(defrostThermostat2Blade,1,{rotation:30});
+		TweenMax.to(defrostThermostat2Bladecopy,1,{rotation:30});
+		TweenMax.to(path324,1,{y:3});
+		defrostThermostat2Rotated=true;
 	}else{
-		TweenMax.to(IMSwitch,1,{rotation:0});
-		TweenMax.to(IMSwitchcopy,1,{rotation:0});
-		waterValveSwitchRotated=false;
+		TweenMax.to(defrostThermostat2Blade,1,{rotation:0});
+		TweenMax.to(defrostThermostat2Bladecopy,1,{rotation:0});
+		TweenMax.to(path324,1,{y:0});
+		defrostThermostat2Rotated=false;
 	}
 }
 
-function closeMenu(){
-  console.log(instructionDiv.getAttribute('class'))
-  menuSpan.setAttribute('class', 'uiHiddenClass')
-}
-
-function openMenu(){
-  menuSpan.setAttribute('class', 'uiClass')
+var waterValveSwitchRotated=false;
+waterValveSwitch_btn.setAttribute('onclick','changeIMSwitch();');
+waterValveSwitch_btn.setAttribute('onmouseover','this.style.cursor = "pointer";');
+function changeIMSwitch(){
+	if(waterValveSwitchRotated === false){
+		TweenMax.to(waterValveSwitch,1,{rotation:-28});
+		TweenMax.to(waterValveSwitchcopy,1,{rotation:-28});
+		waterValveSwitchRotated=true;
+	}else{
+		TweenMax.to(waterValveSwitch,1,{rotation:0});
+		TweenMax.to(waterValveSwitchcopy,1,{rotation:0});
+		waterValveSwitchRotated=false;
+	}
 }

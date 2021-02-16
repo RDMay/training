@@ -19,9 +19,15 @@
     <button id="zoomOutButton" class="uiButton">-</button>
     <center><button type="button" id="clearDiagram" onclick="clearHighlights()" style="cursor:pointer;display:block;";><center>Clear Diagram</center></button></center>
     <center><select id="colorPicker" onChange="colorPickerChange(this.selectedIndex);">
-      <option value="#000000">L1</option>
-      <option value="#ffa500">Energized Load</option>
-      <option value="#0000FF">Neutral</option>
+      <option value="rgb(255,0,0)">L1</option>
+      <!-- <option value="rgb(72, 72, 72)">L2</option> -->
+      <option value="rgb(255, 165, 0)">Neutral</option>
+      <option value="rgb(249, 231, 159)">Energized Load</option>
+      <!-- <option value="rgb(255, 102, 102)">DC +</option>
+      <option value="rgb(0, 0, 0)">DC -</option>
+      <option value="rgb(65, 105, 225)">RPM Feedback</option>
+      <option value="rgb(0, 0, 255)">Speed Control</option>
+      <option value="rgb(30, 144, 255)">Comm</option> -->
     </select></center>
     <center><button type="button" onclick="checkAnswer()" style="cursor:pointer;display:block;"><center>Submit</center></button></center>
   </span>
