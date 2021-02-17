@@ -9,7 +9,7 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 }
 
 xhr = new XMLHttpRequest();
-xhr.open("GET","schematic.svg",false);
+xhr.open("GET","../schematic.svg",false);
 xhr.overrideMimeType("image/svg+xml");
 xhr.send("");
 var schematic = document.getElementById("mainWindow").appendChild(xhr.responseXML.documentElement);
@@ -99,8 +99,8 @@ timerSwitch_btn.setAttribute('onmouseover','this.style.cursor = "pointer";');
 
 function changeTimerSwitch(){
 	if(timerSwitchRotated === false){
-		TweenMax.to(timerSwitch,1,{rotation:-40});
-		TweenMax.to(timerSwitchcopy,1,{rotation:-40});
+		TweenMax.to(timerSwitch,1,{rotation:-32});
+		TweenMax.to(timerSwitchcopy,1,{rotation:-32});
 		timerSwitchRotated=true;
 	}else{
 		TweenMax.to(timerSwitch,1,{rotation:0});
