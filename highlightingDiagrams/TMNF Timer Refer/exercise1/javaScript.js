@@ -29,10 +29,10 @@ for(i=0; i<diagram1PathsLength; i++){
   path.setAttribute('id',diagram1Paths[i].id + 'copy');
 
   if(deviceType == "mobile"){
-    // path.setAttribute('onclick','wireClicked(this);');
+    path.setAttribute('onclick','wireClicked(this);');
     path.setAttribute('ontouchstart','wireClicked(this);');
-    // path.setAttribute('ontouchend','wireClicked(this);');
-    // path.setAttribute('onmouseover','wireClicked(this);');
+    path.setAttribute('ontouchend','wireClicked(this);');
+    path.setAttribute('onmouseover','wireClicked(this);');
     }else{
       path.setAttribute('onclick','wireClicked(this);');
       path.setAttribute('onmouseover','this.style.cursor = "default";');
@@ -141,11 +141,11 @@ speedControlArrayKey = [];
 function checkAnswer(){
   getColors();
   var answerArray = [];
-  for(a=0; a<l1ArrayKey.length; a++){
-    if(l1ArrayKey.includes(l1Array[a]) == false || l1Array.length != l1ArrayKey.length){
-      answerArray.push("false")
-    }
-  }
+  // for(a=0; a<l1ArrayKey.length; a++){
+  //   if(l1ArrayKey.includes(l1Array[a]) == false || l1Array.length != l1ArrayKey.length){
+  //     answerArray.push("false")
+  //   }
+  // }
   // for(a=0; a<neutralArrayKey.length; a++){
   //   if(neutralArrayKey.includes(neutralArray[a]) == false || neutralArray.length != neutralArrayKey.length){
   //     answerArray.push("false")
@@ -180,9 +180,11 @@ function checkAnswer(){
   // if(ccSwitchRotated === true){
   //   answerArray.push("false")
   // }
+  //
   // if(timerSwitchRotated === true){
   //   answerArray.push("false")
   // }
+
   if(answerArray.includes('false')){
     // console.log(answerArray)
     alert("Incorrect, please try again.")
