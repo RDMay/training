@@ -173,7 +173,7 @@ function checkAnswer(){
   // }
   alert("AnswerArray 1 " +answerArray)
   for(a=0; a<energizedLoadArrayKey.length; a++){
-    if(energizedLoadArrayKey.includes(energizedLoadArray[a]) == false || energizedLoadArray.length != energizedLoadArrayKey.length){
+    if(energizedLoadArrayKey.includes(energizedLoadArray[a]) == 'false' || energizedLoadArray.length != energizedLoadArrayKey.length){
       answerArray.push("false")
     }
   }
