@@ -37,7 +37,7 @@ function colorPickerChange(e){
 function wireClicked(wire){
   nameSplit = wire.id.split("copy");
   wire2 = document.getElementById(nameSplit[0]);
-  if(wire2.style["stroke-width"] == 1 || wire2.style["stroke-width"] == '1px'){
+  if(wire2.style["stroke-width"] == originalLineSize || wire2.style["stroke-width"] == originalLineSize + 'px'){
     wire2.style["stroke-width"]= highlightedWidth;
     wire2.style["stroke"]= document.getElementById("colorPicker").value;
     selectedPart = wire2.id;
