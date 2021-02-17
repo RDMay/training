@@ -103,7 +103,7 @@ function getColors(){
         case "rgb(255, 165, 0)":
           neutralArray.push(diagram1Paths[i].id);
         break;
-        case "rgb(249, 231, 159)" || "#f9e79f":
+        case "#f9e79f":
           energizedLoadArray.push(diagram1Paths[i].id);
         break;
         case "rgb(255, 102, 102)":
@@ -189,7 +189,7 @@ function checkAnswer(){
     // console.log(answerArray)
     alert("Incorrect, please try again.")
   }else{
-    alert("8359")
+    alert("s8359")
   }
 }
 
