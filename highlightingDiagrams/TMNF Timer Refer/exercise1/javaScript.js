@@ -160,11 +160,11 @@ function checkAnswer(){
       answerArray.push("false")
     }
   }
-  for(a=0; a<neutralArrayKey.length; a++){
-    if(neutralArrayKey.includes(neutralArray[a]) == false || neutralArray.length != neutralArrayKey.length){
-      answerArray.push("false")
-    }
-  }
+  // for(a=0; a<neutralArrayKey.length; a++){
+  //   if(neutralArrayKey.includes(neutralArray[a]) == false || neutralArray.length != neutralArrayKey.length){
+  //     answerArray.push("false")
+  //   }
+  // }
   // for(a=0; a<dcPlusArrayKey.length; a++){
   //   if(dcPlusArrayKey.includes(dcPlusArray[a]) == false || dcPlusArray.length != dcPlusArrayKey.length){
   //     answerArray.push("false")
