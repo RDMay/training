@@ -97,31 +97,56 @@ function getColors(){
         case "rgb(255, 0, 0)":
           l1Array.push(diagram1Paths[i].id);
         break;
+        case "#ff0000":
+          l1Array.push(diagram1Paths[i].id);
+        break;
         case "rgb(72, 72, 72)":
+          l2Array.push(diagram1Paths[i].id);
+        break;
+        case "#484848":
           l2Array.push(diagram1Paths[i].id);
         break;
         case "rgb(255, 165, 0)":
           neutralArray.push(diagram1Paths[i].id);
         break;
+        case "#ffa500":
+          neutralArray.push(diagram1Paths[i].id);
+        break;
         case "rgb(249, 231, 159)":
+          energizedLoadArray.push(diagram1Paths[i].id);
+        break;
+        case "#f9e79f":
           energizedLoadArray.push(diagram1Paths[i].id);
         break;
         case "rgb(255, 102, 102)":
           dcPlusArray.push(diagram1Paths[i].id);
         break;
+        case "#ff6666":
+          dcPlusArray.push(diagram1Paths[i].id);
+        break;
         case "rgb(0, 0, 0)":
+          dcMinusArray.push(diagram1Paths[i].id);
+        break;
+        case "#000000":
           dcMinusArray.push(diagram1Paths[i].id);
         break;
         case "rgb(65, 105, 225)":
           rpmFeedBackArray.push(diagram1Paths[i].id);
         break;
+        case "#4169e1":
+          rpmFeedBackArray.push(diagram1Paths[i].id);
+        break;
+
         case "rgb(0, 0, 255)":
           speedControlArray.push(diagram1Paths[i].id);
         break;
-        case "rgb(0, 0, 255)":
+        case "#0000ff":
           speedControlArray.push(diagram1Paths[i].id);
         break;
         case "rgb(30, 144, 255)":
+          commArray.push(diagram1Paths[i].id);
+        break;
+        case "#1e90ff":
           commArray.push(diagram1Paths[i].id);
         break;
         }
