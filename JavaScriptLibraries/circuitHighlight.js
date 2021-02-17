@@ -27,7 +27,7 @@ for(i=0; i<diagram1PathsLength; i++){
     path.style['stroke-linecap']="round";
     path.setAttribute("d", diagram1Paths[i].getAttribute("d"));
     diagram1.appendChild(path);
-    path.style["stroke-width"]= 8;
+    path.style["stroke-width"]= highlightedWidth*3;
 }
 
 function colorPickerChange(e){
@@ -111,10 +111,10 @@ function getColors(){
         case "#ff6666":
           dcPlusArray.push(diagram1Paths[i].id);
         break;
-        case "rgb(0, 0, 0)":
+        case "rgb(48, 48, 48)":
           dcMinusArray.push(diagram1Paths[i].id);
         break;
-        case "#000000":
+        case "#303030":
           dcMinusArray.push(diagram1Paths[i].id);
         break;
         case "rgb(65, 105, 225)":
@@ -123,10 +123,10 @@ function getColors(){
         case "#4169e1":
           rpmFeedBackArray.push(diagram1Paths[i].id);
         break;
-        case "rgb(0, 0, 255)":
+        case "rgb(244, 208, 63)":
           speedControlArray.push(diagram1Paths[i].id);
         break;
-        case "#0000ff":
+        case "#f4d03f":
           speedControlArray.push(diagram1Paths[i].id);
         break;
         case "rgb(30, 144, 255)":

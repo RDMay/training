@@ -1,7 +1,7 @@
-document.title = "Exercise 4"
+document.title = "SXS Electronic Highlight Exercise 4"
 
-var originalLineSize = "0.25px";
-var highlightedWidth = "1px";
+var originalLineSize = .5;
+var highlightedWidth = 1.25;
 
 var deviceType = "not mobile";
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
@@ -12,144 +12,15 @@ xhr = new XMLHttpRequest();
 xhr.open("GET","../schematic.svg",false);
 xhr.overrideMimeType("image/svg+xml");
 xhr.send("");
-
 var schematic = document.getElementById("mainWindow").appendChild(xhr.responseXML.documentElement);
-// var schematic = document.getElementById("mainSvg");
 
-schematic.setAttribute("width", screen.width);
-schematic.setAttribute("height", screen.height);
-
-//Resize Window
-var svgWindow = document.getElementById("mainWindow");
-var svg = d3.select(schematic);
-function myredraw(){
-  var width = svgWindow.clientWidth;
-  var height = svgWindow.clientHeight;
-  svg
-  .attr("width", width)
-  .attr("height", height);
-}
-myredraw();
-window.addEventListener("resize", myredraw)
-
-//Set Path Codes
-var diagram1Paths = document.getElementById("diagram1").getElementsByTagName("path");
-var diagram1PathsLength = diagram1Paths.length;
-
-for(i=0; i<diagram1PathsLength; i++){
-  diagram1Paths[i].style['stroke-linecap']="round";
-  diagram1Paths[i].style.stroke = "Black";
-  var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-  path.setAttribute('stroke','blue');
-  path.setAttribute('fill','none');
-  path.setAttribute('opacity', 0);
-  path.setAttribute('id',diagram1Paths[i].id + 'copy');
-
-  if(deviceType == "mobile"){
-    path.setAttribute('onclick','wireClicked(this);');
-    path.setAttribute('ontouchstart','wireClicked(this);');
-    path.setAttribute('ontouchend','wireClicked(this);');
-    path.setAttribute('onmouseover','wireClicked(this);');
-    }else{
-      path.setAttribute('onclick','wireClicked(this);');
-      path.setAttribute('onmouseover','this.style.cursor = "default";');
-    }
-    path.style['stroke-linecap']="round";
-    path.setAttribute("d", diagram1Paths[i].getAttribute("d"));
-    diagram1.appendChild(path);
-    path.style["stroke-width"]= 3;
-}
-
-function colorPickerChange(e){
-  var highlightColor = document.getElementById("colorPicker").value;
-}
-
-function wireClicked(wire){
-  nameSplit = wire.id.split("copy");
-  wire2 = document.getElementById(nameSplit[0]);
-  if(wire2.style["stroke-width"] == .25 || wire2.style["stroke-width"] == '0.25px'){
-    wire2.style["stroke-width"]= highlightedWidth;
-    wire2.style["stroke"]= document.getElementById("colorPicker").value;
-    selectedPart = wire2.id;
-  }else{
-    wire2.style["stroke-width"]= originalLineSize;
-    wire2.style["stroke"]= "rgb(0, 0, 0)";
-  }
-}
-
-//Change DropDown when component is clicked on diagram.
-function changeDropDown(e){
-  newDropDownValue = e.split("_")[0];
-  for(i=0; i<componentSelect.length; i++){
-    if(newDropDownValue == componentSelect[i].value){
-      componentSelect.value = newDropDownValue;
-      componentChange();
-    }
-  }
-}
-
-function clearHighlights(){
-  for(i=0; i<diagram1Paths.length; i++){
-    part = diagram1Paths[i].id;
-    part = part.split("copy")
-
-    if(part.length === 1){
-    diagram1Paths[i].style['stroke-linecap']="round";
-    diagram1Paths[i].style.stroke = "#000000";
-    diagram1Paths[i].style["stroke-width"]= originalLineSize;
-    }
-  }
-}
-
-clearHighlights();
-
-var l1Array = []; var grayArray = []; var neutralArray = []; var darkGrayArray = []; var aquamarineArray = []; var dcMinusArray = []; var rpmFeedBackArray = []; var violetArray = []; var pinkArray = []; var yellowGreenArray = []; var speedControlArray = []; var energizedLoadArray = []; var dcPlusArray = [];
-var unkArray = [];
-
-function getColors(){
-  l1Array = []; grayArray = []; neutralArray = []; darkGrayArray = []; aquamarineArray = []; dcMinusArray = []; rpmFeedBackArray = []; violetArray = []; pinkArray = []; yellowGreenArray = []; speedControlArray = []; energizedLoadArray = []; dcPlusArray = []; unkArray = [];
-    for(i=0; i<diagram1PathsLength; i++){
-      if(diagram1Paths[i].style["stroke-width"] != originalLineSize) {
-        switch(diagram1Paths[i].style.stroke) {
-        case "rgb(51, 0, 0)":
-          l1Array.push(diagram1Paths[i].id);
-        break;
-        case "rgb(205, 205, 205)":
-          neutralArray.push(diagram1Paths[i].id);
-        break;
-        case "rgb(255, 165, 0)":
-          energizedLoadArray.push(diagram1Paths[i].id);
-        break;
-        case "rgb(255, 0, 0)":
-          dcPlusArray.push(diagram1Paths[i].id);
-        break;
-        case "rgb(0, 0, 0)":
-          dcMinusArray.push(diagram1Paths[i].id);
-        break;
-        case "rgb(0, 0, 255)":
-          rpmFeedBackArray.push(diagram1Paths[i].id);
-        break;
-        case "rgb(255, 255, 0)":
-          speedControlArray.push(diagram1Paths[i].id);
-        break;
-        case "rgb(128, 0, 128)":
-          unkArray.push(diagram1Paths[i].id);
-            break;
-        }
-      }
-    }
-    console.log("l1ArrayKey = [" + l1Array + "];" + "\n" + "neutralArrayKey = [" + neutralArray + "];" + "\n" + "energizedLoadArrayKey = ["  + energizedLoadArray + "];" + "\n" + "dcPlusArrayKey = [" + dcPlusArray + "];" + "\n" + "dcMinusArrayKey = [" + dcMinusArray + "];" + "\n" + "rpmFeedBackArrayKey = [" + rpmFeedBackArray + "];" + "\n" + "speedControlArrayKey = [" + speedControlArray + "];" + "\n"  + "unkArrayKey = [" + unkArray + "];");
-}
-
-
-l1ArrayKey = ['path3589','path410','path46214','path46204','path3348','path2120','path2128','path2132','path2371'];
-neutralArrayKey = ['path3488','path3483','path3478','path3473','path3468','path3445','path3440','path392','path1339','path3604','path468','path1341'];
-energizedLoadArrayKey = ['path444'];
+l1ArrayKey = ['path410','path46206','path4785','path4797','path2235','path2237','path2371','path2387','compressorRelay'];
+neutralArrayKey = ['path3352','path392'];
+energizedLoadArrayKey = [];
 dcPlusArrayKey = [];
 dcMinusArrayKey = [];
 rpmFeedBackArrayKey = [];
 speedControlArrayKey = [];
-unkArrayKey = [];
 
 function checkAnswer(){
   getColors();
@@ -164,197 +35,160 @@ function checkAnswer(){
       answerArray.push("false")
     }
   }
-  for(a=0; a<dcPlusArrayKey.length; a++){
-    if(dcPlusArrayKey.includes(dcPlusArray[a]) == false || dcPlusArray.length != dcPlusArrayKey.length){
-      answerArray.push("false")
-    }
-  }
-  for(a=0; a<dcMinusArrayKey.length; a++){
-    if(dcMinusArrayKey.includes(dcMinusArray[a]) == false || dcMinusArray.length != dcMinusArrayKey.length){
-      answerArray.push("false")
-    }
-  }
-  for(a=0; a<rpmFeedBackArrayKey.length; a++){
-    if(rpmFeedBackArrayKey.includes(rpmFeedBackArray[a]) == false || rpmFeedBackArray.length != rpmFeedBackArrayKey.length){
-      answerArray.push("false")
-    }
-  }
-  for(a=0; a<speedControlArrayKey.length; a++){
-    if(speedControlArrayKey.includes(speedControlArray[a]) == false || speedControlArray.length != speedControlArrayKey.length){
-      answerArray.push("false")
-    }
-  }
-  for(a=0; a<unkArrayKey.length; a++){
-    if(unkArrayKey.includes(unkArray[a]) == false || unkArray.length != unkArrayKey.length){
-      answerArray.push("false")
-    }
-  }
-  for(a=0; a<energizedLoadArrayKey.length; a++){
-    if(energizedLoadArrayKey.includes(energizedLoadArray[a]) == false || energizedLoadArray.length != energizedLoadArrayKey.length){
-      answerArray.push("false")
-    }
-  }
-
-  if(augerRelayRotated === false){
-    answerArray.push("false")
-  }
-  if(fzDoorSwitchRotated === true){
+  // for(a=0; a<dcPlusArrayKey.length; a++){
+  //   if(dcPlusArrayKey.includes(dcPlusArray[a]) == false || dcPlusArray.length != dcPlusArrayKey.length){
+  //     answerArray.push("false")
+  //   }
+  // }
+  // for(a=0; a<dcMinusArrayKey.length; a++){
+  //   if(dcMinusArrayKey.includes(dcMinusArray[a]) == false || dcMinusArray.length != dcMinusArrayKey.length){
+  //     answerArray.push("false")
+  //   }
+  // }
+  // for(a=0; a<rpmFeedBackArrayKey.length; a++){
+  //   if(rpmFeedBackArrayKey.includes(rpmFeedBackArray[a]) == false || rpmFeedBackArray.length != rpmFeedBackArrayKey.length){
+  //     answerArray.push("false")
+  //   }
+  // }
+  // for(a=0; a<speedControlArrayKey.length; a++){
+  //   if(speedControlArrayKey.includes(speedControlArray[a]) == false || speedControlArray.length != speedControlArrayKey.length){
+  //     answerArray.push("false")
+  //   }
+  // }
+  // for(a=0; a<energizedLoadArrayKey.length; a++){
+  //   if(energizedLoadArrayKey.includes(energizedLoadArray[a]) == false || energizedLoadArray.length != energizedLoadArrayKey.length){
+  //     answerArray.push("false")
+  //   }
+  // }
+  //
+  if(compressorRelayRotated === false){
     answerArray.push("false")
   }
 
   if(answerArray.includes('false')){
     alert("Incorrect, please try again.")
   }else{
-    alert("3888")
+    alert("9774")
   }
 }
 
-var highLimitSwitchRotated=false;
-highLimitSwitch.setAttribute('onclick','changeHighLimitSwitch();');
-highLimitSwitch.setAttribute('onmouseover','this.style.cursor = "pointer";');
-
-function changeHighLimitSwitch(){
-	if(highLimitSwitchRotated === false){
-		TweenMax.to(path3549,1,{rotation:33})
-		TweenMax.to(path3549copy,1,{rotation:33})
-		highLimitSwitchRotated=true;
-	}else{
-		TweenMax.to(path3549,1,{rotation:0})
-		TweenMax.to(path3549copy,1,{rotation:0})
-		highLimitSwitchRotated=false;
-	}
-}
-
-var highLimit2SwitchRotated=false;
-highLimitSwitch2.setAttribute('onclick','changeHighLimitSwitch2();');
-highLimitSwitch2.setAttribute('onmouseover','this.style.cursor = "pointer";');
-
-function changeHighLimitSwitch2(){
-	if(highLimit2SwitchRotated === false){
-		TweenMax.to(path3768,1,{rotation:33})
-		TweenMax.to(path3768copy,1,{rotation:33})
-		highLimit2SwitchRotated=true;
-	}else{
-		TweenMax.to(path3768,1,{rotation:0})
-		TweenMax.to(path3768copy,1,{rotation:0})
-		highLimit2SwitchRotated=false;
-	}
-}
 
 var ffDoorSwitchRotated=false;
-ffDoorSwitch.setAttribute('onclick','changeffDoorSwitch();');
-ffDoorSwitch.setAttribute('onmouseover','this.style.cursor = "pointer";');
-
+ffDoorSwitch_btn.setAttribute('onclick','changeffDoorSwitch();');
+ffDoorSwitch_btn.setAttribute('onmouseover','this.style.cursor = "pointer";');
 function changeffDoorSwitch(){
 	if(ffDoorSwitchRotated === false){
-		TweenMax.to(path3551,1,{rotation:-33})
-		TweenMax.to(path3551copy,1,{rotation:-33})
+		TweenMax.to(ffDoorSwitch,1,{rotation:-30});
+		TweenMax.to(ffDoorSwitchcopy,1,{rotation:-30});
 		ffDoorSwitchRotated=true;
 	}else{
-		TweenMax.to(path3551,1,{rotation:0})
-		TweenMax.to(path3551copy,1,{rotation:0})
+		TweenMax.to(ffDoorSwitch,1,{rotation:0});
+		TweenMax.to(ffDoorSwitchcopy,1,{rotation:0});
 		ffDoorSwitchRotated=false;
 	}
 }
 
 var fzDoorSwitchRotated=false;
-fzDoorSwitch.setAttribute('onclick','changeFzDoorSwitch();');
-fzDoorSwitch.setAttribute('onmouseover','this.style.cursor = "pointer";');
-
-function changeFzDoorSwitch(){
-  console.log("door fired")
+fzDoorSwitch_btn.setAttribute('onclick','changefzDoorSwitch();');
+fzDoorSwitch_btn.setAttribute('onmouseover','this.style.cursor = "pointer";');
+function changefzDoorSwitch(){
 	if(fzDoorSwitchRotated === false){
-		TweenMax.to(path3348,1,{rotation:55, transformOrigin: '0% 100%'})
-		TweenMax.to(path3348copy,1,{rotation:55, transformOrigin: '0% 100%'})
+		TweenMax.to(fzDoorSwitch,1,{rotation:-60});
+		TweenMax.to(fzDoorSwitchcopy,1,{rotation:-60});
 		fzDoorSwitchRotated=true;
 	}else{
-		TweenMax.to(path3348,1,{rotation:0})
-		TweenMax.to(path3348copy,1,{rotation:0})
+		TweenMax.to(fzDoorSwitch,1,{rotation:0});
+		TweenMax.to(fzDoorSwitchcopy,1,{rotation:0});
 		fzDoorSwitchRotated=false;
 	}
 }
 
-//Compressor Relay
-var compressorRelayRotated=false;
-compressorRelay.setAttribute('onclick','changecompressorRelay();');
-compressorRelay.setAttribute('onmouseover','this.style.cursor = "pointer";');
-
-function changecompressorRelay(){
-	if(compressorRelayRotated === false){
-		TweenMax.to(path2239,1,{rotation:33, transformOrigin: '100% 0%'})
-		TweenMax.to(path2239copy,1,{rotation:33, transformOrigin: '100% 0%'})
-		compressorRelayRotated=true;
+var highLimitSwitchRotated=false;
+highLimitSwitch_btn.setAttribute('onclick','changehighLimitSwitch();');
+highLimitSwitch_btn.setAttribute('onmouseover','this.style.cursor = "pointer";');
+function changehighLimitSwitch(){
+	if(highLimitSwitchRotated === false){
+		TweenMax.to(highLimitSwitch,1,{rotation:30});
+		TweenMax.to(highLimitSwitchcopy,1,{rotation:30});
+		highLimitSwitchRotated=true;
 	}else{
-		TweenMax.to(path2239,1,{rotation:0})
-		TweenMax.to(path2239copy,1,{rotation:0})
-		compressorRelayRotated=false;
+		TweenMax.to(highLimitSwitch,1,{rotation:0});
+		TweenMax.to(highLimitSwitchcopy,1,{rotation:0});
+		highLimitSwitchRotated=false;
 	}
 }
 
-//Compressor Relay
-var compressorRelayRotated=false;
-compressorRelay.setAttribute('onclick','changecompressorRelay();');
-compressorRelay.setAttribute('onmouseover','this.style.cursor = "pointer";');
-
-function changecompressorRelay(){
-	if(compressorRelayRotated === false){
-		TweenMax.to(path2239,1,{rotation:33, transformOrigin: '100% 0%'})
-		TweenMax.to(path2239copy,1,{rotation:33, transformOrigin: '100% 0%'})
-		compressorRelayRotated=true;
+var highLimitSwitch2Rotated=false;
+highLimitSwitch2_btn.setAttribute('onclick','changehighLimitSwitch2();');
+highLimitSwitch2_btn.setAttribute('onmouseover','this.style.cursor = "pointer";');
+function changehighLimitSwitch2(){
+	if(highLimitSwitch2Rotated === false){
+		TweenMax.to(highLimitSwitch2,1,{rotation:30});
+		TweenMax.to(highLimitSwitch2copy,1,{rotation:30});
+		highLimitSwitch2Rotated=true;
 	}else{
-		TweenMax.to(path2239,1,{rotation:0})
-		TweenMax.to(path2239copy,1,{rotation:0})
-		compressorRelayRotated=false;
+		TweenMax.to(highLimitSwitch2,1,{rotation:0});
+		TweenMax.to(highLimitSwitch2copy,1,{rotation:0});
+		highLimitSwitch2Rotated=false;
 	}
 }
 
-//Heater Relay
-var heaterRelayRotated=false;
-heaterRelay.setAttribute('onclick','changeheaterRelay();');
-heaterRelay.setAttribute('onmouseover','this.style.cursor = "pointer";');
-
-function changeheaterRelay(){
-	if(heaterRelayRotated === false){
-		TweenMax.to(path2243,1,{rotation:33, transformOrigin: '0% 0%'})
-		TweenMax.to(path2243copy,1,{rotation:33, transformOrigin: '0% 0%'})
-		heaterRelayRotated=true;
+var augerRelayRotated=false;
+augerRelay_btn.setAttribute('onclick','changeaugerRelay();');
+augerRelay_btn.setAttribute('onmouseover','this.style.cursor = "pointer";');
+function changeaugerRelay(){
+	if(augerRelayRotated === false){
+		TweenMax.to(augerRelay,1,{rotation:-27});
+		TweenMax.to(augerRelaycopy,1,{rotation:-27});
+		augerRelayRotated=true;
 	}else{
-		TweenMax.to(path2243,1,{rotation:0})
-		TweenMax.to(path2243copy,1,{rotation:0})
-		heaterRelayRotated=false;
+		TweenMax.to(augerRelay,1,{rotation:0});
+		TweenMax.to(augerRelaycopy,1,{rotation:0});
+		augerRelayRotated=false;
 	}
 }
 
-//Cube Relay
 var cubeRelayRotated=false;
-cubeRelay.setAttribute('onclick','changecubeRelay();');
-cubeRelay.setAttribute('onmouseover','this.style.cursor = "pointer";');
-
+cubeRelay_btn.setAttribute('onclick','changecubeRelay();');
+cubeRelay_btn.setAttribute('onmouseover','this.style.cursor = "pointer";');
 function changecubeRelay(){
 	if(cubeRelayRotated === false){
-		TweenMax.to(path2130,1,{rotation:-33, transformOrigin: '0% 0%'})
-		TweenMax.to(path2130copy,1,{rotation:-31, transformOrigin: '0% 0%'})
+		TweenMax.to(cubeRelay,1,{rotation:-27});
+		TweenMax.to(cubeRelaycopy,1,{rotation:-27});
 		cubeRelayRotated=true;
 	}else{
-		TweenMax.to(path2130,1,{rotation:0})
-		TweenMax.to(path2130copy,1,{rotation:0})
+		TweenMax.to(cubeRelay,1,{rotation:0});
+		TweenMax.to(cubeRelaycopy,1,{rotation:0});
 		cubeRelayRotated=false;
 	}
 }
 
-//Cube Relay
-var augerRelayRotated=false;
-augerRelay.setAttribute('onclick','changeaugerRelay();');
-augerRelay.setAttribute('onmouseover','this.style.cursor = "pointer";');
-
-function changeaugerRelay(){
-	if(augerRelayRotated === false){
-		TweenMax.to(path2132,1,{rotation:-30, transformOrigin: '0% 0%'})
-		TweenMax.to(path2132copy,1,{rotation:-30, transformOrigin: '0% 0%'})
-		augerRelayRotated=true;
+var heaterRelayRotated=false;
+heaterRelay_btn.setAttribute('onclick','changeheaterRelay();');
+heaterRelay_btn.setAttribute('onmouseover','this.style.cursor = "pointer";');
+function changeheaterRelay(){
+	if(heaterRelayRotated === false){
+		TweenMax.to(heaterRelay,1,{rotation:32});
+		TweenMax.to(heaterRelaycopy,1,{rotation:32});
+		heaterRelayRotated=true;
 	}else{
-		TweenMax.to(path2132,1,{rotation:0})
-		TweenMax.to(path2132copy,1,{rotation:0})
-		augerRelayRotated=false;
+		TweenMax.to(heaterRelay,1,{rotation:0});
+		TweenMax.to(heaterRelaycopy,1,{rotation:0});
+		heaterRelayRotated=false;
+	}
+}
+
+var compressorRelayRotated=false;
+compressorRelay_btn.setAttribute('onclick','changecompressorRelay();');
+compressorRelay_btn.setAttribute('onmouseover','this.style.cursor = "pointer";');
+function changecompressorRelay(){
+	if(compressorRelayRotated === false){
+		TweenMax.to(compressorRelay,1,{rotation:-28});
+		TweenMax.to(compressorRelaycopy,1,{rotation:-28});
+		compressorRelayRotated=true;
+	}else{
+		TweenMax.to(compressorRelay,1,{rotation:0});
+		TweenMax.to(compressorRelaycopy,1,{rotation:0});
+		compressorRelayRotated=false;
 	}
 }

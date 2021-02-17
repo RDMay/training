@@ -1,7 +1,7 @@
-document.title = "TMNF Electronic Highlight Exercise 1"
+document.title = "TMNF Electronic Highlight Exercise 2"
 
-var originalLineSize = "1px";
-var highlightedWidth = "3px";
+var originalLineSize = 1;
+var highlightedWidth = 3;
 
 var deviceType = "not mobile";
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {

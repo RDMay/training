@@ -1,4 +1,4 @@
-document.title = "TMNF Electronic Highlight Exercise 1"
+document.title = "SXS Electronic Highlight Exercise 1"
 
 var originalLineSize = .5;
 var highlightedWidth = 1.25;
@@ -14,9 +14,9 @@ xhr.overrideMimeType("image/svg+xml");
 xhr.send("");
 var schematic = document.getElementById("mainWindow").appendChild(xhr.responseXML.documentElement);
 
-l1ArrayKey = ['path6367','path106','path262','path6970','path1154','path7014','timerSwitch','ccSwitch'];
-neutralArrayKey = ['path6357','path7016','path7069','path7071','path7073','path7075'];
-energizedLoadArrayKey = ['path146'];
+l1ArrayKey = ['path410','path46206','path2371','path2387'];
+neutralArrayKey = ['path3517','path3493','path3488','path3483','path3478','path3473','path3468','path3445','path3440','path392','path1339','path1341'];
+energizedLoadArrayKey = [];
 dcPlusArrayKey = [];
 dcMinusArrayKey = [];
 rpmFeedBackArrayKey = [];
@@ -25,11 +25,11 @@ speedControlArrayKey = [];
 function checkAnswer(){
   getColors();
   var answerArray = [];
-  for(a=0; a<l1ArrayKey.length; a++){
-    if(l1ArrayKey.includes(l1Array[a]) == false || l1Array.length != l1ArrayKey.length){
-      answerArray.push("false")
-    }
-  }
+  // for(a=0; a<l1ArrayKey.length; a++){
+  //   if(l1ArrayKey.includes(l1Array[a]) == false || l1Array.length != l1ArrayKey.length){
+  //     answerArray.push("false")
+  //   }
+  // }
   for(a=0; a<neutralArrayKey.length; a++){
     if(neutralArrayKey.includes(neutralArray[a]) == false || neutralArray.length != neutralArrayKey.length){
       answerArray.push("false")
@@ -55,117 +55,140 @@ function checkAnswer(){
   //     answerArray.push("false")
   //   }
   // }
-  for(a=0; a<energizedLoadArrayKey.length; a++){
-    if(energizedLoadArrayKey.includes(energizedLoadArray[a]) == false || energizedLoadArray.length != energizedLoadArrayKey.length){
-      answerArray.push("false")
-    }
-  }
+  // for(a=0; a<energizedLoadArrayKey.length; a++){
+  //   if(energizedLoadArrayKey.includes(energizedLoadArray[a]) == false || energizedLoadArray.length != energizedLoadArrayKey.length){
+  //     answerArray.push("false")
+  //   }
+  // }
 
-  if(ccSwitchRotated === false){
-    answerArray.push("false")
-  }
-
-  if(timerSwitchRotated === true){
-    answerArray.push("false")
-  }
+  // if(ccSwitchRotated === false){
+  //   answerArray.push("false")
+  // }
 
   if(answerArray.includes('false')){
-    // console.log(answerArray)
     alert("Incorrect, please try again.")
   }else{
-    alert("8359")
+    alert("9774")
   }
 }
 
-//Switch Codesvar ccSwitchRotated=false;
-// var ccSwitchRotated=false;
-// ccSwitch_btn.setAttribute('onclick','changeccSwitch();');
-// ccSwitch_btn.setAttribute('onmouseover','this.style.cursor = "pointer";');
-// function changeccSwitch(){
-// 	if(ccSwitchRotated === false){
-// 		TweenMax.to(ccSwitch,1,{rotation:-30});
-// 		TweenMax.to(ccSwitchcopy,1,{rotation:-30});
-// 		ccSwitchRotated=true;
-// 	}else{
-// 		TweenMax.to(ccSwitch,1,{rotation:0});
-// 		TweenMax.to(ccSwitchcopy,1,{rotation:0});
-// 		ccSwitchRotated=false;
-// 	}
-// }
 
-// var timerSwitchRotated=false;
-// timerSwitch_btn.setAttribute('onclick','changeTimerSwitch();');
-// timerSwitch_btn.setAttribute('onmouseover','this.style.cursor = "pointer";');
-//
-// function changeTimerSwitch(){
-// 	if(timerSwitchRotated === false){
-// 		TweenMax.to(timerSwitch,1,{rotation:-62});
-// 		TweenMax.to(timerSwitchcopy,1,{rotation:-62});
-// 		timerSwitchRotated=true;
-// 	}else{
-// 		TweenMax.to(timerSwitch,1,{rotation:0});
-// 		TweenMax.to(timerSwitchcopy,1,{rotation:0});
-// 		timerSwitchRotated=false;
-// 	}
-// }
-//
-// var doorSwitchRotated=false;
-// doorSwitch_btn.setAttribute('onclick','changeDoorSwitch();');
-// doorSwitch_btn.setAttribute('onmouseover','this.style.cursor = "pointer";');
-//
-// function changeDoorSwitch(){
-// 	if(doorSwitchRotated === false){
-// 		TweenMax.to(doorSwitch,1,{rotation:-26});
-// 		TweenMax.to(doorSwitchcopy,1,{rotation:-26});
-// 		doorSwitchRotated=true;
-// 	}else{
-// 		TweenMax.to(doorSwitch,1,{rotation:0});
-// 		TweenMax.to(doorSwitchcopy,1,{rotation:0});
-// 		doorSwitchRotated=false;
-// 	}
-// }
-//
-// var defrostThermostatRotated=false;
-// defrostThermostat_btn.setAttribute('onclick','changeDefrostThermostatSwitch();');
-// defrostThermostat_btn.setAttribute('onmouseover','this.style.cursor = "pointer";');
-// function changeDefrostThermostatSwitch(){
-// 	if(defrostThermostatRotated === false){
-// 		TweenMax.to(defrostThermostat,1,{rotation:30});
-// 		TweenMax.to(defrostThermostatcopy,1,{rotation:30});
-// 		defrostThermostatRotated=true;
-// 	}else{
-// 		TweenMax.to(defrostThermostat,1,{rotation:0});
-// 		TweenMax.to(defrostThermostatcopy,1,{rotation:0});
-// 		defrostThermostatRotated=false;
-// 	}
-// }
-//
-// var defrostThermostat2Rotated=false;
-// defrostThermostat2_btn.setAttribute('onclick','changeDefrostThermostat2Switch();');
-// defrostThermostat2_btn.setAttribute('onmouseover','this.style.cursor = "pointer";');
-// function changeDefrostThermostat2Switch(){
-// 	if(defrostThermostat2Rotated === false){
-// 		TweenMax.to(defrostThermostat2,1,{rotation:30});
-// 		TweenMax.to(defrostThermostat2copy,1,{rotation:30});
-// 		defrostThermostat2Rotated=true;
-// 	}else{
-// 		TweenMax.to(defrostThermostat2,1,{rotation:0});
-// 		TweenMax.to(defrostThermostat2copy,1,{rotation:0});
-// 		defrostThermostat2Rotated=false;
-// 	}
-// }
-//
-// var waterValveSwitchRotated=false;
-// waterValveSwitch_btn.setAttribute('onclick','changeIMSwitch();');
-// waterValveSwitch_btn.setAttribute('onmouseover','this.style.cursor = "pointer";');
-// function changeIMSwitch(){
-// 	if(waterValveSwitchRotated === false){
-// 		TweenMax.to(waterValveSwitch,1,{rotation:-28});
-// 		TweenMax.to(waterValveSwitchcopy,1,{rotation:-28});
-// 		waterValveSwitchRotated=true;
-// 	}else{
-// 		TweenMax.to(waterValveSwitch,1,{rotation:0});
-// 		TweenMax.to(waterValveSwitchcopy,1,{rotation:0});
-// 		waterValveSwitchRotated=false;
-// 	}
-// }
+var ffDoorSwitchRotated=false;
+ffDoorSwitch_btn.setAttribute('onclick','changeffDoorSwitch();');
+ffDoorSwitch_btn.setAttribute('onmouseover','this.style.cursor = "pointer";');
+function changeffDoorSwitch(){
+	if(ffDoorSwitchRotated === false){
+		TweenMax.to(ffDoorSwitch,1,{rotation:-30});
+		TweenMax.to(ffDoorSwitchcopy,1,{rotation:-30});
+		ffDoorSwitchRotated=true;
+	}else{
+		TweenMax.to(ffDoorSwitch,1,{rotation:0});
+		TweenMax.to(ffDoorSwitchcopy,1,{rotation:0});
+		ffDoorSwitchRotated=false;
+	}
+}
+
+var fzDoorSwitchRotated=false;
+fzDoorSwitch_btn.setAttribute('onclick','changefzDoorSwitch();');
+fzDoorSwitch_btn.setAttribute('onmouseover','this.style.cursor = "pointer";');
+function changefzDoorSwitch(){
+	if(fzDoorSwitchRotated === false){
+		TweenMax.to(fzDoorSwitch,1,{rotation:-60});
+		TweenMax.to(fzDoorSwitchcopy,1,{rotation:-60});
+		fzDoorSwitchRotated=true;
+	}else{
+		TweenMax.to(fzDoorSwitch,1,{rotation:0});
+		TweenMax.to(fzDoorSwitchcopy,1,{rotation:0});
+		fzDoorSwitchRotated=false;
+	}
+}
+
+var highLimitSwitchRotated=false;
+highLimitSwitch_btn.setAttribute('onclick','changehighLimitSwitch();');
+highLimitSwitch_btn.setAttribute('onmouseover','this.style.cursor = "pointer";');
+function changehighLimitSwitch(){
+	if(highLimitSwitchRotated === false){
+		TweenMax.to(highLimitSwitch,1,{rotation:30});
+		TweenMax.to(highLimitSwitchcopy,1,{rotation:30});
+		highLimitSwitchRotated=true;
+	}else{
+		TweenMax.to(highLimitSwitch,1,{rotation:0});
+		TweenMax.to(highLimitSwitchcopy,1,{rotation:0});
+		highLimitSwitchRotated=false;
+	}
+}
+
+var highLimitSwitch2Rotated=false;
+highLimitSwitch2_btn.setAttribute('onclick','changehighLimitSwitch2();');
+highLimitSwitch2_btn.setAttribute('onmouseover','this.style.cursor = "pointer";');
+function changehighLimitSwitch2(){
+	if(highLimitSwitch2Rotated === false){
+		TweenMax.to(highLimitSwitch2,1,{rotation:30});
+		TweenMax.to(highLimitSwitch2copy,1,{rotation:30});
+		highLimitSwitch2Rotated=true;
+	}else{
+		TweenMax.to(highLimitSwitch2,1,{rotation:0});
+		TweenMax.to(highLimitSwitch2copy,1,{rotation:0});
+		highLimitSwitch2Rotated=false;
+	}
+}
+
+var augerRelayRotated=false;
+augerRelay_btn.setAttribute('onclick','changeaugerRelay();');
+augerRelay_btn.setAttribute('onmouseover','this.style.cursor = "pointer";');
+function changeaugerRelay(){
+	if(augerRelayRotated === false){
+		TweenMax.to(augerRelay,1,{rotation:-27});
+		TweenMax.to(augerRelaycopy,1,{rotation:-27});
+		augerRelayRotated=true;
+	}else{
+		TweenMax.to(augerRelay,1,{rotation:0});
+		TweenMax.to(augerRelaycopy,1,{rotation:0});
+		augerRelayRotated=false;
+	}
+}
+
+var cubeRelayRotated=false;
+cubeRelay_btn.setAttribute('onclick','changecubeRelay();');
+cubeRelay_btn.setAttribute('onmouseover','this.style.cursor = "pointer";');
+function changecubeRelay(){
+	if(cubeRelayRotated === false){
+		TweenMax.to(cubeRelay,1,{rotation:-27});
+		TweenMax.to(cubeRelaycopy,1,{rotation:-27});
+		cubeRelayRotated=true;
+	}else{
+		TweenMax.to(cubeRelay,1,{rotation:0});
+		TweenMax.to(cubeRelaycopy,1,{rotation:0});
+		cubeRelayRotated=false;
+	}
+}
+
+var heaterRelayRotated=false;
+heaterRelay_btn.setAttribute('onclick','changeheaterRelay();');
+heaterRelay_btn.setAttribute('onmouseover','this.style.cursor = "pointer";');
+function changeheaterRelay(){
+	if(heaterRelayRotated === false){
+		TweenMax.to(heaterRelay,1,{rotation:32});
+		TweenMax.to(heaterRelaycopy,1,{rotation:32});
+		heaterRelayRotated=true;
+	}else{
+		TweenMax.to(heaterRelay,1,{rotation:0});
+		TweenMax.to(heaterRelaycopy,1,{rotation:0});
+		heaterRelayRotated=false;
+	}
+}
+
+var compressorRelayRotated=false;
+compressorRelay_btn.setAttribute('onclick','changecompressorRelay();');
+compressorRelay_btn.setAttribute('onmouseover','this.style.cursor = "pointer";');
+function changecompressorRelay(){
+	if(compressorRelayRotated === false){
+		TweenMax.to(compressorRelay,1,{rotation:-28});
+		TweenMax.to(compressorRelaycopy,1,{rotation:-28});
+		compressorRelayRotated=true;
+	}else{
+		TweenMax.to(compressorRelay,1,{rotation:0});
+		TweenMax.to(compressorRelaycopy,1,{rotation:0});
+		compressorRelayRotated=false;
+	}
+}

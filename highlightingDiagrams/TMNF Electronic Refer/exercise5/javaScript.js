@@ -1,7 +1,7 @@
 document.title = "TMNF Electronic Highlight Exercise 5"
 
-var originalLineSize = "1px";
-var highlightedWidth = "3px";
+var originalLineSize = 1;
+var highlightedWidth = 3;
 
 var deviceType = "not mobile";
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
@@ -14,8 +14,8 @@ xhr.overrideMimeType("image/svg+xml");
 xhr.send("");
 var schematic = document.getElementById("mainWindow").appendChild(xhr.responseXML.documentElement);
 
-l1ArrayKey = ['path6367','path106','path1154'];
-neutralArrayKey = ['path6357','path6361','path7069','path7071','path7073','path7075','path7077','path7079'];
+l1ArrayKey = ['path6367','path106','path262','path980','path6970','path1154','path7010','path7060','timerSwitch','ccSwitch'];
+neutralArrayKey = ['path6357','path7052','path7069'];
 energizedLoadArrayKey = [];
 dcPlusArrayKey = [];
 dcMinusArrayKey = [];
@@ -55,10 +55,18 @@ function checkAnswer(){
   //     answerArray.push("false")
   //   }
   // }
-  for(a=0; a<energizedLoadArrayKey.length; a++){
-    if(energizedLoadArrayKey.includes(energizedLoadArray[a]) == false || energizedLoadArray.length != energizedLoadArrayKey.length){
-      answerArray.push("false")
-    }
+  // for(a=0; a<energizedLoadArrayKey.length; a++){
+  //   if(energizedLoadArrayKey.includes(energizedLoadArray[a]) == false || energizedLoadArray.length != energizedLoadArrayKey.length){
+  //     answerArray.push("false")
+  //   }
+  // }
+
+  if(ccSwitchRotated === false){
+    answerArray.push("false")
+  }
+
+  if(timerSwitchRotated === true){
+    answerArray.push("false")
   }
 
   if(answerArray.includes('false')){
