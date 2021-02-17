@@ -97,12 +97,23 @@ function getColors(){
         case "rgb(255, 0, 0)":
           l1Array.push(diagram1Paths[i].id);
         break;
+        case "#ff0000":
+          l1Array.push(diagram1Paths[i].id);
+        break;
         case "rgb(72, 72, 72)":
+          l2Array.push(diagram1Paths[i].id);
+        break;
+        case "#484848":
           l2Array.push(diagram1Paths[i].id);
         break;
         case "rgb(255, 165, 0)":
           neutralArray.push(diagram1Paths[i].id);
         break;
+        case "#ffa500 ":
+          neutralArray.push(diagram1Paths[i].id);
+        break;
+
+
         case "rgb(249, 231, 159)":
           energizedLoadArray.push(diagram1Paths[i].id);
         break;
@@ -144,16 +155,16 @@ speedControlArrayKey = [];
 function checkAnswer(){
   getColors();
   var answerArray = [];
-  // for(a=0; a<l1ArrayKey.length; a++){
-  //   if(l1ArrayKey.includes(l1Array[a]) == false || l1Array.length != l1ArrayKey.length){
-  //     answerArray.push("false")
-  //   }
-  // }
-  // for(a=0; a<neutralArrayKey.length; a++){
-  //   if(neutralArrayKey.includes(neutralArray[a]) == false || neutralArray.length != neutralArrayKey.length){
-  //     answerArray.push("false")
-  //   }
-  // }
+  for(a=0; a<l1ArrayKey.length; a++){
+    if(l1ArrayKey.includes(l1Array[a]) == false || l1Array.length != l1ArrayKey.length){
+      answerArray.push("false")
+    }
+  }
+  for(a=0; a<neutralArrayKey.length; a++){
+    if(neutralArrayKey.includes(neutralArray[a]) == false || neutralArray.length != neutralArrayKey.length){
+      answerArray.push("false")
+    }
+  }
   // for(a=0; a<dcPlusArrayKey.length; a++){
   //   if(dcPlusArrayKey.includes(dcPlusArray[a]) == false || dcPlusArray.length != dcPlusArrayKey.length){
   //     answerArray.push("false")
