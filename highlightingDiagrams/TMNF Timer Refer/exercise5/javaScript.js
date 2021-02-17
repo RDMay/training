@@ -70,7 +70,6 @@ function checkAnswer(){
   // }
 
   if(answerArray.includes('false')){
-    // console.log(answerArray)
     alert("Incorrect, please try again.")
   }else{
     alert("8359")
