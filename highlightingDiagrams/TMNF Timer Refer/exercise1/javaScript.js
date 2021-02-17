@@ -141,6 +141,7 @@ speedControlArrayKey = [];
 function checkAnswer(){
   getColors();
   var answerArray = [];
+  alert(energizedLoadArrayKey)
   // for(a=0; a<l1ArrayKey.length; a++){
   //   if(l1ArrayKey.includes(l1Array[a]) == false || l1Array.length != l1ArrayKey.length){
   //     answerArray.push("false")
