@@ -50,7 +50,6 @@ function colorPickerChange(e){
 function wireClicked(wire){
   nameSplit = wire.id.split("copy");
   wire2 = document.getElementById(nameSplit[0]);
-  alert(wire2.style.stroke)
   if(wire2.style["stroke-width"] == 1 || wire2.style["stroke-width"] == '1px'){
     wire2.style["stroke-width"]= highlightedWidth;
     wire2.style["stroke"]= document.getElementById("colorPicker").value;
@@ -104,7 +103,7 @@ function getColors(){
         case "rgb(255, 165, 0)":
           neutralArray.push(diagram1Paths[i].id);
         break;
-        case "rgb(249, 231, 159)":
+        case "rgb(249, 231, 159)" || "#f9e79f":
           energizedLoadArray.push(diagram1Paths[i].id);
         break;
         case "rgb(255, 102, 102)":
@@ -147,11 +146,11 @@ function checkAnswer(){
       answerArray.push("false")
     }
   }
-  for(a=0; a<neutralArrayKey.length; a++){
-    if(neutralArrayKey.includes(neutralArray[a]) == false || neutralArray.length != neutralArrayKey.length){
-      answerArray.push("false")
-    }
-  }
+  // for(a=0; a<neutralArrayKey.length; a++){
+  //   if(neutralArrayKey.includes(neutralArray[a]) == false || neutralArray.length != neutralArrayKey.length){
+  //     answerArray.push("false")
+  //   }
+  // }
   // for(a=0; a<dcPlusArrayKey.length; a++){
   //   if(dcPlusArrayKey.includes(dcPlusArray[a]) == false || dcPlusArray.length != dcPlusArrayKey.length){
   //     answerArray.push("false")
@@ -172,18 +171,18 @@ function checkAnswer(){
   //     answerArray.push("false")
   //   }
   // }
-  // for(a=0; a<energizedLoadArrayKey.length; a++){
-  //   if(energizedLoadArrayKey.includes(energizedLoadArray[a]) == false || energizedLoadArray.length != energizedLoadArrayKey.length){
-  //     answerArray.push("false")
-  //   }
-  // }
+  for(a=0; a<energizedLoadArrayKey.length; a++){
+    if(energizedLoadArrayKey.includes(energizedLoadArray[a]) == false || energizedLoadArray.length != energizedLoadArrayKey.length){
+      answerArray.push("false")
+    }
+  }
 
-  if(ccSwitchRotated === true){
-    answerArray.push("false")
-  }
-  if(timerSwitchRotated === true){
-    answerArray.push("false")
-  }
+  // if(ccSwitchRotated === true){
+  //   answerArray.push("false")
+  // }
+  // if(timerSwitchRotated === true){
+  //   answerArray.push("false")
+  // }
   if(answerArray.includes('false')){
     // console.log(answerArray)
     alert("Incorrect, please try again.")
