@@ -184,7 +184,7 @@ function checkAnswer(){
   // if(timerSwitchRotated === true){
   //   answerArray.push("false")
   // }
-  alert("AnswerArray 2 " +answerArray)
+  alert("AnswerArray 2r " +answerArray)
   if(answerArray.includes('false')){
     console.log(answerArray)
   }else{
