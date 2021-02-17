@@ -22,38 +22,6 @@ xhr.overrideMimeType("image/svg+xml");
 xhr.send("");
 var schematic = document.getElementById("mainWindow").appendChild(xhr.responseXML.documentElement);
 
-
-
-
-
-
-// Resize Window
-var svgWindow = document.getElementById("mainWindow");
-var svg = d3.select(schematic);
-// function schematicRedraw(){
-//   var width = svgWindow.clientWidth;
-//   var height = svgWindow.clientHeight;
-//   svg
-//   .attr("width", width)
-//   .attr("height", height);
-// }
-// schematicRedraw();
-// window.addEventListener("resize", schematicRedraw);
-
-
-
-
-// function schematicRedraw(){
-//   var  svg = $("#meter").get(0);
-//   var w = svg.width.baseVal.value;
-//   var h = svg.height.baseVal.value;
-//   // svg.setAttribute('viewBox', '0 0 '+10+' '+10);
-//   console.log(svg.width)
-// }
-// schematicRedraw();
-// window.addEventListener("resize", schematicRedraw);
-
-
 //Set Path Codes
 var diagram1Paths = document.getElementById("diagram1").getElementsByTagName("path");
 var diagram1PathsLength = diagram1Paths.length;
@@ -199,12 +167,15 @@ for(i=0; i<l1Array.length; i++){
   tpArray.push(l1Array[i]);
 }
 
-
 var redLeadPot;
 var blackLeadPot;
 
+var selectedRedLead;
 function testPointClicked(){
+
   if(redLead.style.opacity == 1){
+    console.log(event.target.id)
+    selectedRedLead = event.target.id;
     for(i=0; i<tpArray.length; i++){
       if(tpArray[i].style.stroke != "black"){
         tpArray[i].style.stroke = "black";
@@ -220,6 +191,8 @@ function testPointClicked(){
   }
 
   if(redLead.style.opacity == 0){
+    console.log(event.target.id)
+    selectedBlackLead = event.target.id;
     for(i=0; i<tpArray.length; i++){
       if(tpArray[i].style.stroke != "red"){
         tpArray[i].style.stroke = "black";
@@ -237,7 +210,6 @@ function testPointClicked(){
 }
 
 function readMeter(){
-  console.log("read meter fired: " + redLeadPot + blackLeadPot)
   switch(redLeadPot + blackLeadPot) {
     case "l1neutral":
       showReading('1_2_0_0_c_VAC');
@@ -258,33 +230,17 @@ function readMeter(){
   }
 }
 
-function checkAnswer(){
-  if(answer == 'path9368copy'){
+function submitClicked(){
+  console.log(selectedRedLead+selectedBlackLead)
+  if(selectedRedLead+selectedBlackLead == "neutral_4l1_20" || selectedRedLead+selectedBlackLead == "l1_20neutral_4"){
     alert('Correct!');
   }else{
     alert('Incorrect, try again!');
   }
 }
 
-function toggleTestPoints(){
-  if(neutralPointsLayer.style.display == "inline"){
-    neutralPointsLayer.style.display = "none"
-  }else{
-    neutralPointsLayer.style.display = "inline"
-  }
 
-  if(l1PointsLayer.style.display == "inline"){
-    l1PointsLayer.style.display = "none"
-  }else{
-    l1PointsLayer.style.display = "inline"
-  }
 
-  if(l2PointsLayer.style.display == "inline"){
-    l2PointsLayer.style.display = "none"
-  }else{
-    l2PointsLayer.style.display = "inline"
-  }
-}
 
 // TweenMax.to(evapFanBlade, 3, {rotation:360,transformOrigin: "50% 50%", ease:"none", repeat:-1});
 // TweenMax.to([evapFanBlade], 1.5, {rotation:360, transformOrigin: "50% 50%", ease: Power0.easeNone, repeat:-1});
