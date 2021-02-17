@@ -106,7 +106,7 @@ function getColors(){
         case "rgb(249, 231, 159)":
           energizedLoadArray.push(diagram1Paths[i].id);
         break;
-        case "#F9E79F":
+        case "#f9e79f":
           energizedLoadArray.push(diagram1Paths[i].id);
         break;
         case "rgb(255, 102, 102)":
