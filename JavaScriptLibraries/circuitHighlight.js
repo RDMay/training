@@ -1,23 +1,10 @@
-document.title = "SXS Electronic Highlight Exercise 1"
-
-var originalLineSize = ".5px";
-var highlightedWidth = "1.5px";
-
+var diagram1Paths = document.getElementById("diagram1").getElementsByTagName("path");
+var diagram1PathsLength = diagram1Paths.length;
 
 var deviceType = "not mobile";
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
   deviceType="mobile"
 }
-
-xhr = new XMLHttpRequest();
-xhr.open("GET","../schematic.svg",false);
-xhr.overrideMimeType("image/svg+xml");
-xhr.send("");
-var schematic = document.getElementById("mainWindow").appendChild(xhr.responseXML.documentElement);
-
-//Set Path Codes
-var diagram1Paths = document.getElementById("diagram1").getElementsByTagName("path");
-var diagram1PathsLength = diagram1Paths.length;
 
 for(i=0; i<diagram1PathsLength; i++){
   diagram1Paths[i].style['stroke-linecap']="round";
@@ -30,9 +17,9 @@ for(i=0; i<diagram1PathsLength; i++){
 
   if(deviceType == "mobile"){
     path.setAttribute('onclick','wireClicked(this);');
-    path.setAttribute('ontouchstart','wireClicked(this);');
+    // path.setAttribute('ontouchstart','wireClicked(this);');
     path.setAttribute('ontouchend','wireClicked(this);');
-    path.setAttribute('onmouseover','wireClicked(this);');
+    // path.setAttribute('onmouseover','wireClicked(this);');
     }else{
       path.setAttribute('onclick','wireClicked(this);');
       path.setAttribute('onmouseover','this.style.cursor = "default";');
@@ -50,7 +37,7 @@ function colorPickerChange(e){
 function wireClicked(wire){
   nameSplit = wire.id.split("copy");
   wire2 = document.getElementById(nameSplit[0]);
-  if(wire2.style["stroke-width"] == .5 || wire2.style["stroke-width"] == '.5px'){
+  if(wire2.style["stroke-width"] == 1 || wire2.style["stroke-width"] == '1px'){
     wire2.style["stroke-width"]= highlightedWidth;
     wire2.style["stroke"]= document.getElementById("colorPicker").value;
     selectedPart = wire2.id;
@@ -97,31 +84,55 @@ function getColors(){
         case "rgb(255, 0, 0)":
           l1Array.push(diagram1Paths[i].id);
         break;
+        case "#ff0000":
+          l1Array.push(diagram1Paths[i].id);
+        break;
         case "rgb(72, 72, 72)":
+          l2Array.push(diagram1Paths[i].id);
+        break;
+        case "#484848":
           l2Array.push(diagram1Paths[i].id);
         break;
         case "rgb(255, 165, 0)":
           neutralArray.push(diagram1Paths[i].id);
         break;
+        case "#ffa500":
+          neutralArray.push(diagram1Paths[i].id);
+        break;
         case "rgb(249, 231, 159)":
+          energizedLoadArray.push(diagram1Paths[i].id);
+        break;
+        case "#f9e79f":
           energizedLoadArray.push(diagram1Paths[i].id);
         break;
         case "rgb(255, 102, 102)":
           dcPlusArray.push(diagram1Paths[i].id);
         break;
+        case "#ff6666":
+          dcPlusArray.push(diagram1Paths[i].id);
+        break;
         case "rgb(0, 0, 0)":
+          dcMinusArray.push(diagram1Paths[i].id);
+        break;
+        case "#000000":
           dcMinusArray.push(diagram1Paths[i].id);
         break;
         case "rgb(65, 105, 225)":
           rpmFeedBackArray.push(diagram1Paths[i].id);
         break;
+        case "#4169e1":
+          rpmFeedBackArray.push(diagram1Paths[i].id);
+        break;
         case "rgb(0, 0, 255)":
           speedControlArray.push(diagram1Paths[i].id);
         break;
-        case "rgb(0, 0, 255)":
+        case "#0000ff":
           speedControlArray.push(diagram1Paths[i].id);
         break;
         case "rgb(30, 144, 255)":
+          commArray.push(diagram1Paths[i].id);
+        break;
+        case "#1e90ff":
           commArray.push(diagram1Paths[i].id);
         break;
         }
@@ -130,120 +141,10 @@ function getColors(){
     console.log("l1ArrayKey = [" + l1Array + "];" + "\n" + "l2ArrayKey = [" + l2Array + "];" + "\n" + "neutralArrayKey = [" + neutralArray + "];" + "\n" + "energizedLoadArrayKey = ["  + energizedLoadArray + "];" + "\n" + "dcPlusArrayKey = [" + dcPlusArray + "];" + "\n" + "dcMinusArrayKey = [" + dcMinusArray + "];" + "\n" + "rpmFeedBackArrayKey = [" + rpmFeedBackArray + "];" + "\n" + "speedControlArrayKey = [" + speedControlArray + "];" + "\n"  + "commArrayKey = [" + commArray + "];" + "\n");
 }
 
-l1ArrayKey = ['path6367','path106','path262','path6970','path1154','path7014','defrostControlWiper','tcBlade'];
-neutralArrayKey = ['path6357','path7016','path7069','path7071','path7073','path7075'];
-energizedLoadArrayKey = ['path146'];
-dcPlusArrayKey = [];
-dcMinusArrayKey = [];
-rpmFeedBackArrayKey = [];
-speedControlArrayKey = [];
-
-function checkAnswer(){
-  getColors();
-  var answerArray = [];
-  for(a=0; a<l1ArrayKey.length; a++){
-    if(l1ArrayKey.includes(l1Array[a]) == false || l1Array.length != l1ArrayKey.length){
-      answerArray.push("false")
-    }
-  }
-  for(a=0; a<neutralArrayKey.length; a++){
-    if(neutralArrayKey.includes(neutralArray[a]) == false || neutralArray.length != neutralArrayKey.length){
-      answerArray.push("false")
-    }
-  }
-  for(a=0; a<dcPlusArrayKey.length; a++){
-    if(dcPlusArrayKey.includes(dcPlusArray[a]) == false || dcPlusArray.length != dcPlusArrayKey.length){
-      answerArray.push("false")
-    }
-  }
-  for(a=0; a<dcMinusArrayKey.length; a++){
-    if(dcMinusArrayKey.includes(dcMinusArray[a]) == false || dcMinusArray.length != dcMinusArrayKey.length){
-      answerArray.push("false")
-    }
-  }
-  for(a=0; a<rpmFeedBackArrayKey.length; a++){
-    if(rpmFeedBackArrayKey.includes(rpmFeedBackArray[a]) == false || rpmFeedBackArray.length != rpmFeedBackArrayKey.length){
-      answerArray.push("false")
-    }
-  }
-  for(a=0; a<speedControlArrayKey.length; a++){
-    if(speedControlArrayKey.includes(speedControlArray[a]) == false || speedControlArray.length != speedControlArrayKey.length){
-      answerArray.push("false")
-    }
-  }
-  for(a=0; a<energizedLoadArrayKey.length; a++){
-    if(energizedLoadArrayKey.includes(energizedLoadArray[a]) == false || energizedLoadArray.length != energizedLoadArrayKey.length){
-      answerArray.push("false")
-    }
-  }
-
-  if(ccSwitchRotated === false){
-    answerArray.push("false")
-  }
-  if(timerSwitchRotated === true){
-    answerArray.push("false")
-  }
-
-  if(answerArray.includes('false')){
-    // console.log(answerArray)
-    alert("Incorrect, please try again.")
-  }else{
-    alert("8359")
-  }
-}
-
 function closeMenu(){
-  console.log(instructionDiv.getAttribute('class'))
   menuSpan.setAttribute('class', 'uiHiddenClass')
 }
 
 function openMenu(){
   menuSpan.setAttribute('class', 'uiClass')
-}
-
-//Switch Code
-var ffDoorSwitchRotated=false;
-ffDoorSwitch_btn.setAttribute('onclick','changeffDoorSwitch();');
-ffDoorSwitch_btn.setAttribute('onmouseover','this.style.cursor = "pointer";');
-function changeffDoorSwitch(){
-	if(ffDoorSwitchRotated === false){
-		TweenMax.to(ffDoorSwitch,1,{rotation:-30});
-		TweenMax.to(ffDoorSwitchcopy,1,{rotation:-30});
-		ffDoorSwitchRotated=true;
-	}else{
-		TweenMax.to(ffDoorSwitch,1,{rotation:0});
-		TweenMax.to(ffDoorSwitchcopy,1,{rotation:0});
-		ffDoorSwitchRotated=false;
-	}
-}
-
-var fzDoorSwitchRotated=false;
-fzDoorSwitch_btn.setAttribute('onclick','changefzDoorSwitch();');
-fzDoorSwitch_btn.setAttribute('onmouseover','this.style.cursor = "pointer";');
-function changefzDoorSwitch(){
-	if(fzDoorSwitchRotated === false){
-		TweenMax.to(fzDoorSwitch,1,{rotation:-60, transformOrigin:'0 0'});
-		TweenMax.to(fzDoorSwitchcopy,1,{rotation:-60, transformOrigin:'0 0'});
-		fzDoorSwitchRotated=true;
-	}else{
-		TweenMax.to(fzDoorSwitch,1,{rotation:0});
-		TweenMax.to(fzDoorSwitchcopy,1,{rotation:0});
-		fzDoorSwitchRotated=false;
-	}
-}
-
-var highLimitSwitchRotated=false;
-highLimitSwitch_btn.setAttribute('onclick','changehighLimitSwitch();');
-highLimitSwitch_btn.setAttribute('onmouseover','this.style.cursor = "pointer";');
-function changehighLimitSwitch(){
-  console.log('fired')
-	if(highLimitSwitchRotated === false){
-		TweenMax.to(highLimitSwitch,1,{rotation:-60, transformOrigin:'0 0'});
-		TweenMax.to(highLimitSwitchcopy,1,{rotation:-60, transformOrigin:'0 0'});
-		highLimitSwitchRotated=true;
-	}else{
-		TweenMax.to(highLimitSwitch,1,{rotation:0});
-		TweenMax.to(highLimitSwitchcopy,1,{rotation:0});
-		highLimitSwitchRotated=false;
-	}
 }
