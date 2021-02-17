@@ -184,7 +184,7 @@ function checkAnswer(){
   // if(timerSwitchRotated === true){
   //   answerArray.push("false")
   // }
-  alert(energizedLoadArrayKey + " " + energizedLoadArray)
+  alert(energizedLoadArrayKey + " - " + energizedLoadArray)
   if(answerArray.includes('false')){
     alert("Incorrect, try again!")
   }else{
