@@ -141,16 +141,16 @@ speedControlArrayKey = [];
 function checkAnswer(){
   getColors();
   var answerArray = [];
-  for(a=0; a<l1ArrayKey.length; a++){
-    if(l1ArrayKey.includes(l1Array[a]) == false || l1Array.length != l1ArrayKey.length){
-      answerArray.push("false")
-    }
-  }
-  for(a=0; a<neutralArrayKey.length; a++){
-    if(neutralArrayKey.includes(neutralArray[a]) == false || neutralArray.length != neutralArrayKey.length){
-      answerArray.push("false")
-    }
-  }
+  // for(a=0; a<l1ArrayKey.length; a++){
+  //   if(l1ArrayKey.includes(l1Array[a]) == false || l1Array.length != l1ArrayKey.length){
+  //     answerArray.push("false")
+  //   }
+  // }
+  // for(a=0; a<neutralArrayKey.length; a++){
+  //   if(neutralArrayKey.includes(neutralArray[a]) == false || neutralArray.length != neutralArrayKey.length){
+  //     answerArray.push("false")
+  //   }
+  // }
   // for(a=0; a<dcPlusArrayKey.length; a++){
   //   if(dcPlusArrayKey.includes(dcPlusArray[a]) == false || dcPlusArray.length != dcPlusArrayKey.length){
   //     answerArray.push("false")
@@ -171,18 +171,18 @@ function checkAnswer(){
   //     answerArray.push("false")
   //   }
   // }
-  // for(a=0; a<energizedLoadArrayKey.length; a++){
-  //   if(energizedLoadArrayKey.includes(energizedLoadArray[a]) == false || energizedLoadArray.length != energizedLoadArrayKey.length){
-  //     answerArray.push("false")
-  //   }
-  // }
+  for(a=0; a<energizedLoadArrayKey.length; a++){
+    if(energizedLoadArrayKey.includes(energizedLoadArray[a]) == false || energizedLoadArray.length != energizedLoadArrayKey.length){
+      answerArray.push("false")
+    }
+  }
 
-  if(ccSwitchRotated === true){
-    answerArray.push("false")
-  }
-  if(timerSwitchRotated === true){
-    answerArray.push("false")
-  }
+  // if(ccSwitchRotated === true){
+  //   answerArray.push("false")
+  // }
+  // if(timerSwitchRotated === true){
+  //   answerArray.push("false")
+  // }
   if(answerArray.includes('false')){
     // console.log(answerArray)
     alert("Incorrect, please try again.")
