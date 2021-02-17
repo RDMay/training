@@ -29,10 +29,10 @@ for(i=0; i<diagram1PathsLength; i++){
   path.setAttribute('id',diagram1Paths[i].id + 'copy');
 
   if(deviceType == "mobile"){
-    path.setAttribute('onclick','wireClicked(this);');
+    // path.setAttribute('onclick','wireClicked(this);');
     path.setAttribute('ontouchstart','wireClicked(this);');
-    path.setAttribute('ontouchend','wireClicked(this);');
-    path.setAttribute('onmouseover','wireClicked(this);');
+    // path.setAttribute('ontouchend','wireClicked(this);');
+    // path.setAttribute('onmouseover','wireClicked(this);');
     }else{
       path.setAttribute('onclick','wireClicked(this);');
       path.setAttribute('onmouseover','this.style.cursor = "default";');
@@ -151,31 +151,31 @@ function checkAnswer(){
       answerArray.push("false")
     }
   }
-  for(a=0; a<dcPlusArrayKey.length; a++){
-    if(dcPlusArrayKey.includes(dcPlusArray[a]) == false || dcPlusArray.length != dcPlusArrayKey.length){
-      answerArray.push("false")
-    }
-  }
-  for(a=0; a<dcMinusArrayKey.length; a++){
-    if(dcMinusArrayKey.includes(dcMinusArray[a]) == false || dcMinusArray.length != dcMinusArrayKey.length){
-      answerArray.push("false")
-    }
-  }
-  for(a=0; a<rpmFeedBackArrayKey.length; a++){
-    if(rpmFeedBackArrayKey.includes(rpmFeedBackArray[a]) == false || rpmFeedBackArray.length != rpmFeedBackArrayKey.length){
-      answerArray.push("false")
-    }
-  }
-  for(a=0; a<speedControlArrayKey.length; a++){
-    if(speedControlArrayKey.includes(speedControlArray[a]) == false || speedControlArray.length != speedControlArrayKey.length){
-      answerArray.push("false")
-    }
-  }
-  for(a=0; a<energizedLoadArrayKey.length; a++){
-    if(energizedLoadArrayKey.includes(energizedLoadArray[a]) == false || energizedLoadArray.length != energizedLoadArrayKey.length){
-      answerArray.push("false")
-    }
-  }
+  // for(a=0; a<dcPlusArrayKey.length; a++){
+  //   if(dcPlusArrayKey.includes(dcPlusArray[a]) == false || dcPlusArray.length != dcPlusArrayKey.length){
+  //     answerArray.push("false")
+  //   }
+  // }
+  // for(a=0; a<dcMinusArrayKey.length; a++){
+  //   if(dcMinusArrayKey.includes(dcMinusArray[a]) == false || dcMinusArray.length != dcMinusArrayKey.length){
+  //     answerArray.push("false")
+  //   }
+  // }
+  // for(a=0; a<rpmFeedBackArrayKey.length; a++){
+  //   if(rpmFeedBackArrayKey.includes(rpmFeedBackArray[a]) == false || rpmFeedBackArray.length != rpmFeedBackArrayKey.length){
+  //     answerArray.push("false")
+  //   }
+  // }
+  // for(a=0; a<speedControlArrayKey.length; a++){
+  //   if(speedControlArrayKey.includes(speedControlArray[a]) == false || speedControlArray.length != speedControlArrayKey.length){
+  //     answerArray.push("false")
+  //   }
+  // }
+  // for(a=0; a<energizedLoadArrayKey.length; a++){
+  //   if(energizedLoadArrayKey.includes(energizedLoadArray[a]) == false || energizedLoadArray.length != energizedLoadArrayKey.length){
+  //     answerArray.push("false")
+  //   }
+  // }
 
   if(ccSwitchRotated === true){
     answerArray.push("false")
