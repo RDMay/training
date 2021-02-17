@@ -173,7 +173,7 @@ function checkAnswer(){
   // }
   alert("AnswerArray 1 " +answerArray)
   for(a=0; a<energizedLoadArrayKey.length; a++){
-    if(energizedLoadArrayKey.includes(energizedLoadArray[a]) == 'false' || energizedLoadArray.length != energizedLoadArrayKey.length){
+    if(energizedLoadArrayKey.includes(energizedLoadArray[a]) == false || energizedLoadArray.length != energizedLoadArrayKey.length){
       answerArray.push("false")
     }
   }
@@ -184,7 +184,7 @@ function checkAnswer(){
   // if(timerSwitchRotated === true){
   //   answerArray.push("false")
   // }
-  alert("AnswerArray 2 " +energizedLoadArray.length != energizedLoadArrayKey.length)
+  alert("AnswerArray 2r " +energizedLoadArrayKey.includes(energizedLoadArray[a]) == false)
   if(answerArray.includes('false')){
     console.log(answerArray)
   }else{
