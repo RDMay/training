@@ -153,7 +153,7 @@ function readMeter(){
 
 function submitClicked(){
   console.log(selectedRedLead+selectedBlackLead)
-  if(selectedRedLead+selectedBlackLead == "neutral_2l1_20" || selectedRedLead+selectedBlackLead == "l1_20neutral_2"){
+  if(selectedRedLead+selectedBlackLead == "neutral_2l1_15" || selectedRedLead+selectedBlackLead == "l1_15neutral_2"){
     alert('Correct!');
   }else{
     alert('Incorrect, try again!');
