@@ -1,4 +1,4 @@
-document.title = "TMNF Timer Troubleshooting 4"
+document.title = "TMNF Timer Troubleshooting 5"
 
 var originalLineSize = "1px";
 var highlightedWidth = "2px";
@@ -153,7 +153,7 @@ function readMeter(){
 
 function submitClicked(){
   console.log(selectedRedLead+selectedBlackLead)
-  if(selectedRedLead+selectedBlackLead == "neutral_13l1_10" || selectedRedLead+selectedBlackLead == "l1_10neutral_13"){
+  if(selectedRedLead+selectedBlackLead == "l1_8neutral_17" || selectedRedLead+selectedBlackLead == "neutral_17l1_8"){
     alert('Correct!');
   }else{
     alert('Incorrect, try again!');
