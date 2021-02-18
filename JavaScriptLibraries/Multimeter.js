@@ -52,7 +52,7 @@ function vac_btnClicked(){
 
 
 
-TweenMax.to(meterKnob, .001, {rotation:off1,transformOrigin: "50% 50%", onComplete:changeMeterFunction, onCompleteParams:["off"]})
+TweenMax.to(meterKnob, .001, {rotation:Vac,transformOrigin: "50% 50%", onComplete:changeMeterFunction, onCompleteParams:["Vac"]})
 
 function changeMeterFunction(meterSetting){
 	TweenMax.to([meterPolarity], .001, {autoAlpha:0})

@@ -1,4 +1,4 @@
-document.title = "TMNF Timer Troubleshooting 1"
+document.title = "TMNF Timer Troubleshooting 4"
 
 var originalLineSize = "1px";
 var highlightedWidth = "2px";
@@ -153,14 +153,14 @@ function readMeter(){
 
 function submitClicked(){
   console.log(selectedRedLead+selectedBlackLead)
-  if(selectedRedLead+selectedBlackLead == "neutral_4l1_20" || selectedRedLead+selectedBlackLead == "l1_20neutral_4"){
+  if(selectedRedLead+selectedBlackLead == "neutral_13l1_10" || selectedRedLead+selectedBlackLead == "l1_10neutral_13"){
     alert('Correct!');
   }else{
     alert('Incorrect, try again!');
   }
 }
 
-// TweenMax.to(evapFanBlade, 3, {rotation:360,transformOrigin: "50% 50%", ease:"none", repeat:-1});
-// TweenMax.to([evapFanBlade], 1.5, {rotation:360, transformOrigin: "50% 50%", ease: Power0.easeNone, repeat:-1});
+
+TweenMax.to([evapFanBlade], 1.5, {rotation:360, transformOrigin: "50% 50%", ease: Power0.easeNone, repeat:-1});
 TweenMax.to([conFanBlade], 1.5, {rotation:360, transformOrigin: "50% 50%", ease: Power0.easeNone, repeat:-1});
 TweenMax.to([piston], .25, {y:10, transformOrigin: "50% 50%", ease: Power0.easeNone, repeat:-1, yoyo:true});
