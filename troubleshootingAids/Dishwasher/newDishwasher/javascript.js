@@ -1,6 +1,6 @@
 gsap.registerPlugin(DrawSVGPlugin);
 
-document.title = "TMNF Highlight Exercise 1"
+document.title = "Washer Dryer Combo"
 
 var originalLineSize = 1;
 var highlightedWidth = 3;
@@ -25,7 +25,7 @@ for(i=0; i<diagram1PathsLength; i++){
   var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
   path.setAttribute('stroke','blue');
   path.setAttribute('fill','none');
-  path.setAttribute('opacity',0);
+  path.setAttribute('opacity',1);
   path.setAttribute('id',diagram1Paths[i].id + 'copy');
 
   if(deviceType == "mobile"){
@@ -40,9 +40,9 @@ for(i=0; i<diagram1PathsLength; i++){
     path.style['stroke-linecap']="round";
     path.setAttribute("d", diagram1Paths[i].getAttribute("d"));
     diagram1.appendChild(path);
-    path.style["stroke-width"]= 3;
+    path.style["stroke-width"]= 2;
     // TweenMax.set(path, {drawSVG:'0% 0%'}, {drawSVG: '0% 0%'})
-    // gsap.set(path, {drawSVG: "0% 0%"})
+    gsap.set(path, {drawSVG: "0% 0%"})
 }
 
 function colorPickerChange(e){
@@ -197,16 +197,10 @@ window.addEventListener("wheel", event => {
       }
 });
 
-if (schematic.addEventListener) {
-  schematic.addEventListener('contextmenu', function(e) {
-    alert("You've tried to open context menu"); //here you draw your own menu
-    e.preventDefault();
-  }, false);
-} else {
-  schematic.attachEvent('oncontextmenu', function() {
-    alert("You've tried to open context menu");
-    window.event.returnValue = false;
-  });
+// doorLock_btn.addEventListener('click', doorLockClicked);
+doorLock_btn.onclick = function(){
+  // gsap.fromTo(path2260copy, {drawSVG:"100%"})
+  gsap.fromTo("#path2260copy", {drawSVG:'100% 100%'}, {drawSVG: '0% 100%', duration: 3, ease:'none'},0)
 }
 
 
@@ -219,4 +213,4 @@ tl
 // .to(schematic,1,{scaleX:'200%', scaleY:'200%', x:'10%', y:'10%', transformOrigin:"50 50"})
 // gsap.to(schematic,1,{scaleX:2, scaleY:2, x:-300, y:-300, transformOrigin:"0 0", delay:2})
 // .to(schematic,1,{autoAlpha:0, delay:1})
-// gsap.fromTo(path552copy, {drawSVG:"100%"}, {duration: 1, drawSVG:"50% 50%"})
+gsap.fromTo(path552copy, {drawSVG:"0%"}, {duration: 1, drawSVG:"0% 100%"})
