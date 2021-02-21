@@ -78,16 +78,14 @@ function clearHighlights(){
   for(i=0; i<diagram1Paths.length; i++){
     part = diagram1Paths[i].id;
     part = part.split("copy")
-
-    if(part.length === 1){
-    diagram1Paths[i].style['stroke-linecap']="round";
-    diagram1Paths[i].style.stroke = "#000000";
-    diagram1Paths[i].style["stroke-width"]= originalLineSize;
+    if(part.length === 2){
+      gsap.to(diagram1Paths[i], {duration: 1, drawSVG: "0% 0%"})
+      // gsap.to(diagram1Paths[i], {duration: 1, autoAlpha:0});
     }
   }
 }
 
-clearHighlights();
+
 
 var l1Array = []; var l2Array = []; var grayArray = []; var neutralArray = []; var darkGrayArray = []; var aquamarineArray = []; var dcMinusArray = []; var rpmFeedBackArray = []; var violetArray = []; var pinkArray = []; var yellowGreenArray = []; var speedControlArray = []; var energizedLoadArray = []; var dcPlusArray = []; var commArray = [];
 
