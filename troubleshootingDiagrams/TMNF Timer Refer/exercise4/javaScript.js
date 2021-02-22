@@ -154,7 +154,7 @@ function readMeter(){
 function submitClicked(){
   console.log(selectedRedLead+selectedBlackLead)
   if(selectedRedLead+selectedBlackLead == "neutral_2l1_15" || selectedRedLead+selectedBlackLead == "l1_15neutral_2"){
-    alert('5540');
+    alert('Correct! Code:5540');
   }else{
     alert('Incorrect, try again!');
   }

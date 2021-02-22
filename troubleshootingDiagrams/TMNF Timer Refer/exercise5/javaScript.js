@@ -154,7 +154,7 @@ function readMeter(){
 function submitClicked(){
   console.log(selectedRedLead+selectedBlackLead)
   if(selectedRedLead+selectedBlackLead == "l1_8neutral_17" || selectedRedLead+selectedBlackLead == "neutral_17l1_8"){
-    alert('3788');
+    alert('Correct! Code:3788');
   }else{
     alert('Incorrect, try again!');
   }

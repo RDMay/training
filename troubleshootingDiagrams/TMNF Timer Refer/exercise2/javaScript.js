@@ -154,7 +154,7 @@ function readMeter(){
 function submitClicked(){
   console.log(selectedRedLead+selectedBlackLead)
   if(selectedRedLead+selectedBlackLead == "l1_10neutral_13" || selectedRedLead+selectedBlackLead == "neutral_13l1_10"){
-    alert('1470');
+    alert('Correct! Code:1470');
   }else{
     alert('Incorrect, try again!');
   }
