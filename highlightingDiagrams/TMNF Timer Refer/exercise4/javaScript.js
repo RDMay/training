@@ -77,7 +77,7 @@ function checkAnswer(){
     // console.log(answerArray)
     alert("Incorrect, please try again.")
   }else{
-    alert("2550")
+    alert("Correct! Code:2550")
   }
 }
 

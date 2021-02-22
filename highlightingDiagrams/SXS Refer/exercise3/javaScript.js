@@ -72,7 +72,7 @@ function checkAnswer(){
   if(answerArray.includes('false')){
     alert("Incorrect, please try again.")
   }else{
-    alert("2702")
+    alert("Correct! Code:2702")
   }
 }
 

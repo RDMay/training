@@ -68,7 +68,7 @@ function checkAnswer(){
   if(answerArray.includes('false')){
     alert("Incorrect, please try again.")
   }else{
-    alert("3371")
+    alert("Correct! Code:3371")
   }
 }
 

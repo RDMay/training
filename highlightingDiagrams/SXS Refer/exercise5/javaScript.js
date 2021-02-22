@@ -80,7 +80,7 @@ function checkAnswer(){
   if(answerArray.includes('false')){
     alert("Incorrect, please try again.")
   }else{
-    alert("1587")
+    alert("Correct! Code:1587")
   }
 }
 

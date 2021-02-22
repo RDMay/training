@@ -72,7 +72,7 @@ function checkAnswer(){
     // console.log(answerArray)
     alert("Incorrect, please try again.")
   }else{
-    alert("1221")
+    alert("Correct! Code:1221")
   }
 }
 

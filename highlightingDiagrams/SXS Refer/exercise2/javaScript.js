@@ -73,7 +73,7 @@ function checkAnswer(){
     // console.log(answerArray)
     alert("Incorrect, please try again.")
   }else{
-    alert("6457")
+    alert("Correct! Code:6457")
   }
 }
 

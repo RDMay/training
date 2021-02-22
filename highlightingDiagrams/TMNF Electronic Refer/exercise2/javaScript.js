@@ -73,7 +73,7 @@ function checkAnswer(){
     // console.log(answerArray)
     alert("Incorrect, please try again.")
   }else{
-    alert("2310")
+    alert("Correct! Code:2310")
   }
 }
 
