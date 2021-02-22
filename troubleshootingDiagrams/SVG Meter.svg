@@ -3860,11 +3860,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.1818224"
-     inkscape:cx="228.79644"
-     inkscape:cy="142.34118"
+     inkscape:zoom="10.518985"
+     inkscape:cx="38.928948"
+     inkscape:cy="79.604326"
      inkscape:document-units="mm"
-     inkscape:current-layer="multimeterGroup"
+     inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="false"
      fit-margin-top="0"
@@ -3885,7 +3885,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
