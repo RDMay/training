@@ -14,8 +14,8 @@ xhr.overrideMimeType("image/svg+xml");
 xhr.send("");
 var schematic = document.getElementById("mainWindow").appendChild(xhr.responseXML.documentElement);
 
-l1ArrayKey = ['path6367','path106','path262','path980','path6970','path1154','path7010','path7060','timerSwitch','ccSwitch'];
-neutralArrayKey = ['path6357','path7052','path7069'];
+l1ArrayKey = ['path6367','path106','path1154'];
+neutralArrayKey = ['path6357','path6361','path7069','path7071','path7073','path7075','path7077','path7079'];
 energizedLoadArrayKey = [];
 dcPlusArrayKey = [];
 dcMinusArrayKey = [];
@@ -61,13 +61,13 @@ function checkAnswer(){
   //   }
   // }
 
-  if(ccSwitchRotated === false){
-    answerArray.push("false")
-  }
-
-  if(timerSwitchRotated === true){
-    answerArray.push("false")
-  }
+  // if(ccSwitchRotated === false){
+  //   answerArray.push("false")
+  // }
+  //
+  // if(timerSwitchRotated === true){
+  //   answerArray.push("false")
+  // }
 
   if(answerArray.includes('false')){
     // console.log(answerArray)
