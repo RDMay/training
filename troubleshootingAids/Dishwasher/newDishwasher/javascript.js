@@ -45,6 +45,18 @@ for(i=0; i<diagram1PathsLength; i++){
     gsap.set(path, {drawSVG: "0% 0%"})
 }
 
+var diagramButtons = schematic.getElementsByTagName("rect");
+function styleButtons(){
+  for(i=0; i<diagramButtons.length; i++){
+    diagramButtons[i].setAttribute('onmouseover','this.style.cursor = "default";');
+    diagramButtons[i].setAttribute('onclick','buttonClicked(this.id);');
+    diagramButtons[i].setAttribute('opacity',0);
+    diagramButtons[i].style.opacity = 0;
+  }
+}
+styleButtons();
+
+
 function colorPickerChange(e){
   var highlightColor = document.getElementById("colorPicker").value;
 }
@@ -162,9 +174,9 @@ function openMenu(){
   menuSpan.setAttribute('class', 'uiClass')
 }
 
-function buttonClicked(){
-  console.log(event.target.id)
-}
+// function buttonClicked(){
+//   console.log(event.target.id)
+// }
 
 Draggable.create(schematic, {
 	onDragEnd:function() {
@@ -182,33 +194,69 @@ Draggable.create(schematic, {
 
 window.addEventListener("wheel", event => {
     const delta = Math.sign(event.deltaY);
-    console.info(delta);
     switch(delta>0) {
   		case true:
   		if(gsap.getProperty(schematic, "scaleX")  > 1){
-  			gsap.to(schematic, {duration:.25, scaleX: '-=.25', scaleY: '-=.25', ease:"power2"})
+  			gsap.to(schematic, {duration:.5, scaleX: '-=.25', scaleY: '-=.25', ease:"power2"})
   		}
   		break;
   		case false:
-  		gsap.to(schematic, {duration:.25, scaleX:'+=.25', scaleY:'+=.25', ease:"power2"})
+  		gsap.to(schematic, {duration:.5, scaleX:'+=.25', scaleY:'+=.25', ease:"power2"})
       break;
       }
 });
 
 // doorLock_btn.addEventListener('click', doorLockClicked);
-doorLock_btn.onclick = function(){
-  // gsap.fromTo(path2260copy, {drawSVG:"100%"})
-  gsap.fromTo("#path2260copy", {drawSVG:'100% 100%'}, {drawSVG: '0% 100%', duration: 3, ease:'none'},0)
+function buttonClicked(e){
+  styleButtons();
+  slideTl.play(0);
+  slideTl.paused(true);
+  slideAudio.currentTime = 0;
+  event.target.style.opacity = .5;
+  for(i=0; i<timelineArray.length; i++){
+    if(timelineArray[i] == e){
+      slideTl = timelineArray[i+1]
+    }
+  }
 }
 
+//Audio
+slideAudio.onplay = function() {
+	slideTl.play();
+	slideTl.time(slideAudio.currentTime);
+};
 
-var tl = gsap.timeline({});
-tl
-// .to(schematic, {duration:2, x:191, y:-7, scaleX:1.463, scaleY:1.463, ease:"power2"})
+slideAudio.onpause = function() {
+	slideTl.pause();
+	slideTl.time(slideAudio.currentTime);
+};
 
-// .to("#path552copy", {duration: 1, x: 200})
-// .to("#path552copy", {duration: 1, drawSVG: "0% 100%", delay:1})
-// .to(schematic,1,{scaleX:'200%', scaleY:'200%', x:'10%', y:'10%', transformOrigin:"50 50"})
-// gsap.to(schematic,1,{scaleX:2, scaleY:2, x:-300, y:-300, transformOrigin:"0 0", delay:2})
-// .to(schematic,1,{autoAlpha:0, delay:1})
-gsap.fromTo(path552copy, {drawSVG:"0%"}, {duration: 1, drawSVG:"0% 100%"})
+slideAudio.ontimeupdate = function() {
+	slideTl.time(slideAudio.currentTime);
+};
+
+function pausePlayer(){
+	slideAudio.pause();
+	slideTl.time(slideAudio.currentTime);
+}
+//End Audio
+
+var timelineArray = [];
+
+var slideTl = gsap.timeline({paused:"false"});
+
+var doorLockTl = gsap.timeline({paused:"false"});
+timelineArray.push("doorLock_btn")
+timelineArray.push(doorLockTl)
+doorLockTl
+.to("#path2276copy", {duration:1, opacity:1})
+.fromTo("#path2276copy", {drawSVG:'100% 100%'}, {drawSVG: '0% 100%', duration: 3, ease:'none'},0)
+.fromTo("#path2260copy", {drawSVG:'100% 100%'}, {drawSVG: '0% 100%', duration: 3, ease:'none'},0)
+
+
+var waterHeaterTl = gsap.timeline({paused:"false"});
+timelineArray.push("waterHeater_btn")
+timelineArray.push(waterHeaterTl)
+waterHeaterTl
+.fromTo("#path1204copy", {drawSVG:'100% 100%'}, {drawSVG: '0% 100%', duration: 3, ease:'none'},0)
+.fromTo("#path1208copy", {drawSVG:'100% 100%'}, {drawSVG: '0% 100%', duration: 3, ease:'none'},0)

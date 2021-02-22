@@ -6,13 +6,20 @@
     <link rel="icon" type="image/x-icon" href="../../../css/favicon.ico"/>
     <link rel="stylesheet" href="../../../css/interactiveSchematic.css">
     <link rel="stylesheet" href="../../../css/circuitHighlights.css">
-    <script src="../../../JavaScriptLibraries/svgPanZoom.js"></script>
-    <script src="../../../JavaScriptLibraries/jquery-3.2.1.min.js"></script>
-    <script src="../../../JavaScriptLibraries/hammer.min.js"></script>
-
+    <style>
+    .playerControls {
+    position: absolute;
+    left: 0%;
+    bottom:0px;
+    margin: auto;
+    width: 100%;
+  }
+    </style>
   </head>
 <body>
-  <div id="mainWindow"></div>
+  <div id="mainWindow">
+  <audio id='slideAudio' controls='controls' class="playerControls" src="slide.mp3" ></audio>
+</div>
   <span id="uiDiv" class="zoomButtonsClass">
     <button id="zoomInButton" class="uiButton" onclick="gsap.to(schematic, {duration:.25, scaleX: '+=.25', scaleY: '+=.25', ease:'power2'})">+</button>
     <button id="resetButton" class="uiButton" onclick="gsap.to(schematic, {duration:.5, x:0, y:0, scaleX:1, scaleY:1, ease:'power2'})">Reset</button>
