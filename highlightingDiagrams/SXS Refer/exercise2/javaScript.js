@@ -73,7 +73,7 @@ function checkAnswer(){
     // console.log(answerArray)
     alert("Incorrect, please try again.")
   }else{
-    alert("3799")
+    alert("6457")
   }
 }
 

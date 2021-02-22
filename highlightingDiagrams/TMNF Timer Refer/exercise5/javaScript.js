@@ -72,7 +72,7 @@ function checkAnswer(){
   if(answerArray.includes('false')){
     alert("Incorrect, please try again.")
   }else{
-    alert("8359")
+    alert("1768")
   }
 }
 

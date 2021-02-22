@@ -2,6 +2,8 @@ gsap.registerPlugin(DrawSVGPlugin);
 
 document.title = "Washer Dryer Combo"
 
+
+
 var originalLineSize = 1;
 var highlightedWidth = 3;
 
@@ -10,6 +12,7 @@ xhr.open("GET","schematic.svg",false);
 xhr.overrideMimeType("image/svg+xml");
 xhr.send("");
 var schematic = document.getElementById("mainWindow").appendChild(xhr.responseXML.documentElement);
+gsap.set(schematic, {scaleX: .75, scaleY: .75})
 
 var deviceType = "not mobile";
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
@@ -35,7 +38,7 @@ for(i=0; i<diagram1PathsLength; i++){
     // path.setAttribute('onmouseover','wireClicked(this);');
     }else{
       path.setAttribute('onclick','wireClicked(this);');
-      path.setAttribute('onmouseover','this.style.cursor = "default";');
+      path.setAttribute('onmouseover','this.style.cursor = "pointer";');
     }
     path.style['stroke-linecap']="round";
     path.setAttribute("d", diagram1Paths[i].getAttribute("d"));
@@ -48,7 +51,7 @@ for(i=0; i<diagram1PathsLength; i++){
 var diagramButtons = schematic.getElementsByTagName("rect");
 function styleButtons(){
   for(i=0; i<diagramButtons.length; i++){
-    diagramButtons[i].setAttribute('onmouseover','this.style.cursor = "default";');
+    diagramButtons[i].setAttribute('onmouseover','this.style.cursor = "pointer";');
     diagramButtons[i].setAttribute('onclick','buttonClicked(this.id);');
     diagramButtons[i].setAttribute('opacity',0);
     diagramButtons[i].style.opacity = 0;
@@ -208,6 +211,7 @@ window.addEventListener("wheel", event => {
 
 // doorLock_btn.addEventListener('click', doorLockClicked);
 function buttonClicked(e){
+  console.log(e)
   styleButtons();
   slideTl.play(0);
   slideTl.paused(true);
@@ -215,7 +219,8 @@ function buttonClicked(e){
   event.target.style.opacity = .5;
   for(i=0; i<timelineArray.length; i++){
     if(timelineArray[i] == e){
-      slideTl = timelineArray[i+1]
+      slideTl = timelineArray[i+1];
+      slideAudio.src = e + ".mp3";
     }
   }
 }
@@ -249,9 +254,18 @@ var doorLockTl = gsap.timeline({paused:"false"});
 timelineArray.push("doorLock_btn")
 timelineArray.push(doorLockTl)
 doorLockTl
-.to("#path2276copy", {duration:1, opacity:1})
-.fromTo("#path2276copy", {drawSVG:'100% 100%'}, {drawSVG: '0% 100%', duration: 3, ease:'none'},0)
-.fromTo("#path2260copy", {drawSVG:'100% 100%'}, {drawSVG: '0% 100%', duration: 3, ease:'none'},0)
+.set("#path2276copy", {opacity:1, stroke:neutral})
+.set(["#path2260copy", "#path2264copy", "#path1300copy"], {opacity:1, stroke:l1})
+.fromTo("#path2276copy", {drawSVG:'0% 0%'}, {duration: 2.5, drawSVG: '100% 0%', ease:'none', delay:0})
+.set("#path420", {stroke:energizedLoad, strokeWidth: highlightedWidth})
+.from("#imgDiv", {duration:1, autoAlpha:0})
+.to("#imgDiv", {duration:1, autoAlpha:0, delay:3})
+
+.fromTo("#path2264copy", {drawSVG:'0%'}, {duration: 2.5, drawSVG: '0% 100%', ease:'none', delay:2.3})
+// .fromTo("#path1300copy", {drawSVG:'0% 0%'}, {duration: .5, drawSVG: '100% 100%', ease:'none', delay:0})
+// .set(["#path428", "#path428copy"], {stroke:l1, strokeWidth: highlightedWidth})
+.to(["#path428", "#path428copy"], {duration: 1, transformOrigin:"100% 0%", rotation:-40, repeat:3, yoyo:true})
+
 
 
 var waterHeaterTl = gsap.timeline({paused:"false"});
