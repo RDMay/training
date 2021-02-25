@@ -5284,20 +5284,16 @@ style='font-family:Wingdings;color:#0070C0'>•<span style='font:7.0pt "Times Ne
 <a href="javascript:;">click</a> on the Please return defective part Alert</span></p>
 
 <p class=MsoListParagraphCxSpMiddle style='margin-left:1.75in;text-indent:-.25in'><span
-style='font-family:Wingdings'></span><span Once you start running calls in Mobility you no longer
+style='font-family:Wingdings'>•<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span><img width=299 src="wordDoc_files/image002.png"
+align=rig hspace=12></p><p>Once you start running calls in Mobility you no longer
 need to use your Orange stickers when sending parts back to the warehouse, instead
 we will be using the new Yellow stickers for any none Return To Stock parts</p>
 
 <p class=MsoListParagraphCxSpMiddle style='margin-left:1.75in;text-indent:-.25in'><span
-style='color:#0070C0'style='font-family:Wingdings'>•<span style='font:7.0pt "Times New Roman"'>&nbsp;
-</span></span><span style='color:#0070C0'>Here is what they look like &#8594;</span></p>
+style='font-family:Wingdings'>•<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span>Here is what they look like &#8594;</p>
 
-<p class=MsoListParagraphCxSpMiddle style='margin-left:1.75in;text-indent:-.25in'><span
-style='font-family:Wingdings'><span style='font:7.0pt "Times New Roman"'>&nbsp;
-</span></span><img width=299 src="wordDoc_files/image002.png"
-align=rigth hspace=12></p>
-<br>
-<span style='color:#0070C0'>
 <p class=MsoListParagraphCxSpMiddle style='margin-left:1.75in;text-indent:-.25in'><span
 style='font-family:Wingdings'>•<span style='font:7.0pt "Times New Roman"'>&nbsp;
 </span></span>The benefit to the new yellow stickers is that they are no longer
@@ -5320,9 +5316,10 @@ we are calling that FPR and using the 9-digit call number</p>
 style='font-family:Wingdings;color:#0070C0'>•<span style='font:7.0pt "Times New Roman"'>&nbsp;
 </span></span><span style='color:#0070C0'>Read the Alert, then <a href="javascript:;">click</a> Accept and
 Save</span></p>
-</span>
 
-<p class=MsoNormal><b><span style='color:#7030A0'>End of Scenario 1</span></b></p>
+<p class=MsoListParagraphCxSpLast style='margin-left:1.75in;text-indent:-.25in'><span
+style='font-family:Wingdings;color:black'>•<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span><span style='color:black'>End of Scenario</span></p>
 
 <p class=MsoNoSpacing style='margin-left:.25in'>&nbsp;</p>
 
@@ -5931,7 +5928,7 @@ will put a new TimeCard icon on your Desktop that will launch Workday. </p>
 <p class=MsoListParagraph style='margin-left:.25in;text-indent:-.25in'><span
 style='font-family:Symbol'>•<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span></span>TPTP TTC Transactions - Not available in Mobility</p>
-<br><br>
+
 <p class=MsoNormal><b><span style='color:red'>Known Issues - Fix in progress</span></b></p>
 
 <p class=MsoListParagraphCxSpFirst style='margin-left:.25in;text-indent:-.25in'><span
