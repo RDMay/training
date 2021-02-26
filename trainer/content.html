@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Trainers Home Page</title>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="icon" type="image/x-icon" href="../../../css/favicon.ico"/>
+    <!-- <script src="jquery-3.2.1.min.js"></script> -->
+    <script src="robert.js"></script>
+
+    <style>
+    body{
+      overflow: hidden;
+    }
+    ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: #2E74B5;
+}
+
+ul li {
+  display: block;
+  position: relative;
+  float: left;
+  background: #2E74B5;
+}
+
+li ul { display: none; }
+
+ul li a {
+  display: block;
+  padding: 1em;
+  text-decoration: none;
+  white-space: nowrap;
+  color: #fff;
+}
+
+ul li a:hover { background: #2c3e50; }
+
+li:hover > ul {
+  display: block;
+  position: absolute;
+}
+
+li:hover li { float: none; }
+
+li:hover a { background: #2E74B5; }
+
+li:hover li a:hover { background: #2c3e50; }
+
+.main-navigation li ul li { border-top: 0; }
+ul ul ul {
+  left: 100%;
+  top: 0;
+}
+ul:before,
+ul:after {
+  content: " "; /* 1 */
+  display: table; /* 2 */
+}
+
+ul:after { clear: both; }
+
+iframe{
+  width: 100%;
+  height: 90vh;
+}
+    </style>
+  </head>
+<body>
+  <ul class="main-navigation">
+  <li><a href="#" onclick="document.getElementById('myFrame').src = 'trainersHome.html'">Trainer's Home Page</a></li>
+  <li><a href="#">Schematic Highlighting</a>
+    <ul>
+      <li><a href="#">TMNF Timer Refer</a>
+        <ul>
+          <li><a href="#" onclick="document.getElementById('myFrame').src = '../highlightingDiagrams/TMNF Timer Refer/exercise1/content.html'">Evaporator Fan Motor</a></li>
+          <li><a href="#" onclick="document.getElementById('myFrame').src = '../highlightingDiagrams/TMNF Timer Refer/exercise2/content.html'">Condenser Fan Motor</a></li>
+          <li><a href="#" onclick="document.getElementById('myFrame').src = '../highlightingDiagrams/TMNF Timer Refer/exercise3/content.html'">Ice Maker Water Valve</a></li>
+          <li><a href="#" onclick="document.getElementById('myFrame').src = '../highlightingDiagrams/TMNF Timer Refer/exercise4/content.html'">Defrost Heater</a></li>
+          <li><a href="#" onclick="document.getElementById('myFrame').src = '../highlightingDiagrams/TMNF Timer Refer/exercise5/content.html'">Combo Device</a></li>
+        </ul>
+      </li>
+      <li><a href="#">TMNF Electronic Refer</a>
+        <ul>
+          <li><a href="#" onclick="document.getElementById('myFrame').src = '../highlightingDiagrams/TMNF Electronic Refer/exercise1/content.html'">Evaporator Fan Motor</a></li>
+          <li><a href="#" onclick="document.getElementById('myFrame').src = '../highlightingDiagrams/TMNF Electronic Refer/exercise2/content.html'">Condenser Fan Motor</a></li>
+          <li><a href="#" onclick="document.getElementById('myFrame').src = '../highlightingDiagrams/TMNF Electronic Refer/exercise3/content.html'">Ice Maker Water Valve</a></li>
+          <li><a href="#" onclick="document.getElementById('myFrame').src = '../highlightingDiagrams/TMNF Electronic Refer/exercise4/content.html'">Defrost Heater</a></li>
+          <li><a href="#" onclick="document.getElementById('myFrame').src = '../highlightingDiagrams/TMNF Electronic Refer/exercise5/content.html'">L1 & Neutral To Control Board</a></li>
+        </ul>
+      </li>
+      <li><a href="#">SXS Electronic Refer</a>
+        <ul>
+          <li><a href="#" onclick="document.getElementById('myFrame').src = '../highlightingDiagrams/SXS Refer/exercise1/content.html'">L1 & Neutral to Main Control Board</a></li>
+          <li><a href="#" onclick="document.getElementById('myFrame').src = '../highlightingDiagrams/SXS Refer/exercise2/content.html'">Auger Motor</a></li>
+          <li><a href="#" onclick="document.getElementById('myFrame').src = '../highlightingDiagrams/SXS Refer/exercise3/content.html'">Defrost Heater</a></li>
+          <li><a href="#" onclick="document.getElementById('myFrame').src = '../highlightingDiagrams/SXS Refer/exercise4/content.html'">L1 & Neutral to Combo Device</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Electric Dryer Timer (Under Construction)</a>
+        <ul>
+          <li><a href="#">(Under Construction)</a></li>
+          <li><a href="#">(Under Construction)</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#">Schematic Troubleshooting</a>
+    <ul>
+      <li><a href="#">TMNF Timer Exercises</a>
+        <ul>
+          <li><a href="#" onclick="document.getElementById('myFrame').src = '../troubleshootingDiagrams/TMNF Timer Refer/exercise1/content.html'">Exercise 1</a></li>
+          <li><a href="#" onclick="document.getElementById('myFrame').src = '../troubleshootingDiagrams/TMNF Timer Refer/exercise2/content.html'">Exercise 2</a></li>
+          <li><a href="#" onclick="document.getElementById('myFrame').src = '../troubleshootingDiagrams/TMNF Timer Refer/exercise3/content.html'">Exercise 3</a></li>
+          <li><a href="#" onclick="document.getElementById('myFrame').src = '../troubleshootingDiagrams/TMNF Timer Refer/exercise4/content.html'">Exercise 4</a></li>
+          <li><a href="#" onclick="document.getElementById('myFrame').src = '../troubleshootingDiagrams/TMNF Timer Refer/exercise5/content.html'">Exercise 5</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Electric Dryer (Under Construction)</a></li>
+        <ul>
+          <li><a href="#" onclick="document.getElementById('myFrame').src = '../troubleshootingDiagrams/TMNF Timer Refer/exercise1/content.html'">Exercise 1</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <!-- <li><a href="#">Trainer Resources</a></li> -->
+</ul>
+<iframe src="trainersHome.html" id="myFrame">
+</body>
+</html>
