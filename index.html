@@ -6,35 +6,67 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700" rel="stylesheet" />
     <meta name="charset" content="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/x-icon" href="../css/favicon.ico"/>
+    <link rel="icon" type="image/x-icon" href="css/favicon.ico"/>
     <link href="slide-menu.css" rel="stylesheet">
     <link href="menu.css" rel="stylesheet">
   </head>
   <body>
-    <button
+    <div id="mainWindow"></div>
+    <div id="techPage" class="noDisplay">
+      <button
           type="button"
           class="btn slide-menu__control"
           style="position: absolute; top: 0px; right: 10px;"
           data-target="test-menu-right"
           data-action="open"
-        >
-          <img src="../menuIcon.svg">
-        </button>
-        <h2 class="main-navigation"><u>GEAFS Trainer's Page</u></h2>
-        <h4>Service Mobility Resources</h4>
-        <p><a target="_blank" href="../sandBox/emailTest/content.html">Mobility - Default Email Test (Send Link To Tech)</a></p>
+      >
+      <img src="menuIcon.svg">
+      </button>
+      <h2 class="main-navigation"><u>Tech Training Resources</u></h2>
+      <br>
+      <p style="background-color:gray; color:white;">
+        <strong>Schematic Highlighting</strong><br>
+        Includes schematics for multiple products line where you are to highlight various circuits on the diagram. This is great for learning how to identify circuits on complex wiring schematics.
         <br>
-        <p><a target="_blank" href="../sandBox/mobilityGuide/content.html">Mobility Training Script - Highlighting, Formatting & Rewrite</a></p>
-        <p><a target="_blank" href="../sandBox/mobilityGuide/content2.html">Mobility Training Script - Highlighting & Formatting Only</a></p>
-        <p><a target="_blank" href="https://geappliances-my.sharepoint.com/:w:/r/personal/robert_may_geappliances_com/_layouts/15/Doc.aspx?sourcedoc=%7BC7FF1DEE-6F1E-4B77-82C2-8C197D3D7B44%7D&file=Mobility%20Training%20Script%20(10.9.20).docx&action=default&mobileredirect=true">Mobility Training Script (10.9.20) Org</a></p>
-        <p><a target="_blank" href="https://www.getcreditcardnumbers.com">Mobility Credit Card Link</a></p>
+        (Click the Menu on the right to start.)</p>
+      <p style="background-color:gray; color:white;">
+        <strong>Schematic Troubleshooting</strong><br>
+        Includes schematics for multiple products line where you are to highlight various circuits on the diagram. This is great for learning how to identify circuits on complex wiring schematics.
         <br>
-        <p><a target="_blank" href="https://geappliances-my.sharepoint.com/:p:/r/personal/robert_may_geappliances_com/Documents/Mobility%20Resources/Mobility%20Training%20Packet.pptx?d=wba8f7aab2da84c20a150350b9b51f859&csf=1&web=1">Mobility Training Packet</a></p>
+        (Click the Menu on the right to start.)</p>
+      <p style="background-color:gray; color:white;">
+        <strong>Troubleshooting Aids</strong><br>
+        Troubleshooing Aids have special tools to help you read schematics and locate components.
+        <br>
+        (Click the Menu on the right to start.)</p>
+      <br>
+    </div>
 
-
-        <h4>New Hire Training Modules</h4>
-        <p><a target="_blank" href="https://360.articulate.com/review/content/fa4bc22f-3444-481a-9c2d-37f62f4cf37a/review">Basic Electricity - Articulate</a></p>
-        <p><a target="_blank" href="https://360.articulate.com/review/content/83f6e785-6e40-4170-a48d-b2ed82ab6e68/review">4 Hour Basic Elecricity Final Assessment</a></p>
+    <div id="trainerPage" class="noDisplay">
+      <button
+          type="button"
+          class="btn slide-menu__control"
+          style="position: absolute; top: 0px; right: 10px;"
+          data-target="test-menu-right"
+          data-action="open"
+          onclick="openMenu()"
+      >
+      <img src="menuIcon.svg">
+      </button>
+      <h2 class="main-navigation"><u>GEAFS Trainer's Page</u></h2>
+      <h4>Service Mobility Resources</h4>
+      <p><a target="_blank" href="../sandBox/emailTest/content.html">Mobility - Default Email Test (Send Link To Tech)</a></p>
+      <br>
+      <p><a target="_blank" href="../sandBox/mobilityGuide/content.html">Mobility Training Script - Highlighting, Formatting & Rewrite</a></p>
+      <p><a target="_blank" href="../sandBox/mobilityGuide/content2.html">Mobility Training Script - Highlighting & Formatting Only</a></p>
+      <p><a target="_blank" href="https://geappliances-my.sharepoint.com/:w:/r/personal/robert_may_geappliances_com/_layouts/15/Doc.aspx?sourcedoc=%7BC7FF1DEE-6F1E-4B77-82C2-8C197D3D7B44%7D&file=Mobility%20Training%20Script%20(10.9.20).docx&action=default&mobileredirect=true">Mobility Training Script (10.9.20) Org</a></p>
+      <p><a target="_blank" href="https://www.getcreditcardnumbers.com">Mobility Credit Card Link</a></p>
+      <br>
+      <p><a target="_blank" href="https://geappliances-my.sharepoint.com/:p:/r/personal/robert_may_geappliances_com/Documents/Mobility%20Resources/Mobility%20Training%20Packet.pptx?d=wba8f7aab2da84c20a150350b9b51f859&csf=1&web=1">Mobility Training Packet</a></p>
+      <h4>New Hire Training Modules</h4>
+      <p><a target="_blank" href="https://360.articulate.com/review/content/fa4bc22f-3444-481a-9c2d-37f62f4cf37a/review">Basic Electricity - Articulate</a></p>
+      <p><a target="_blank" href="https://360.articulate.com/review/content/83f6e785-6e40-4170-a48d-b2ed82ab6e68/review">4 Hour Basic Elecricity Final Assessment</a></p>
+    </div>
 
 
     <nav class="slide-menu" id="test-menu-left">
@@ -53,6 +85,7 @@
         <button type="button" class="btn slide-menu__control" data-action="close">Close</button>
       </div>
       <ul>
+        <li id="trainersLink"><a href="#" onclick="logIn()">Trainer Log In</a></li>
       <li><a href="#">Schematic Highlighting</a>
         <ul>
           <li><a href="#">TMNF Timer Refer</a>
@@ -112,6 +145,7 @@
     </nav>
 
     <script>
+    mainWindow.innerHTML = techPage.innerHTML;
       function logEvent(id, event) {
         // const events = document.getElementById('events');
         const li = document.createElement('li');
@@ -160,6 +194,15 @@
           menuRight.open(false);
         }
       });
+      function logIn(){
+        var person = prompt("Please enter your name");
+        if (person == "trainer") {
+          console.log("Trainer Logged In")
+        } else {
+          alert("DENIED")
+        }
+      }
+      // trainersLink.style.display = "none"
     </script>
   <script type="text/javascript" src="slide-menu.js"></script></body>
 </html>
