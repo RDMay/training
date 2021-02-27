@@ -146,14 +146,14 @@
 
         const menuLeft = new SlideMenu(menuLeftElem, {
           position: 'left',
-          submenuLinkAfter: ' ⮞',
-          backLinkBefore: '⮜ ',
+          submenuLinkAfter: ' >',
+          backLinkBefore: '< ',
         });
 
         const menuRight = new SlideMenu(menuRightElem, {
           keyClose: 'Escape',
-          submenuLinkAfter: '<span style="margin-left: 1em; font-size: 85%;">⮞</span>',
-          backLinkBefore: '<span style="margin-right: 1em; font-size: 85%;">⮜</span>',
+          submenuLinkAfter: '<span style="margin-left: 1em; font-size: 85%;">></span>',
+          backLinkBefore: '<span style="margin-right: 1em; font-size: 85%;"><</span>',
         });
 
         if (window.innerWidth > 767) {
