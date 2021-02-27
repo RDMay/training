@@ -11,7 +11,7 @@
     <link href="menu.css" rel="stylesheet">
   </head>
   <body>
-    <div id="mainWindow"></div>
+    <div id="mainWindow">Robert</div>
     <div id="techPage" class="noDisplay">
       <button
           type="button"
@@ -145,7 +145,7 @@
     </nav>
 
     <script>
-    mainWindow.innerHTML = techPage.innerHTML;
+    // mainWindow.innerHTML = techPage.innerHTML;
       function logEvent(id, event) {
         // const events = document.getElementById('events');
         const li = document.createElement('li');
@@ -176,6 +176,7 @@
         allEvents.forEach(eventName => {
           menuLeftElem.addEventListener(eventName, event => logEvent('Menu left', event));
           menuRightElem.addEventListener(eventName, event => logEvent('Menu right', event));
+
         });
 
         const menuLeft = new SlideMenu(menuLeftElem, {
@@ -202,6 +203,7 @@
           alert("DENIED")
         }
       }
+
       // trainersLink.style.display = "none"
     </script>
   <script type="text/javascript" src="slide-menu.js"></script></body>
