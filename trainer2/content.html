@@ -1,76 +1,133 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Trainers Home Page</title>
-    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="icon" type="image/x-icon" href="../../../css/favicon.ico"/>
-    <!-- <script src="jquery-3.2.1.min.js"></script> -->
-    <script src="robert.js"></script>
-
-    <style>
-    body{
-      overflow: hidden;
-    }
-    ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  background: #2E74B5;
-  font-size:2vw;
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: "Lato", sans-serif;
 }
 
-ul li {
-  display: block;
-  position: relative;
-  float: left;
-  background: #2E74B5;
-}
-
-li ul { display: none; }
-
-ul li a {
-  display: block;
-  padding: 1em;
-  text-decoration: none;
-  white-space: nowrap;
-  color: #fff;
-}
-
-ul li a:hover { background: #2c3e50; }
-
-li:hover > ul {
-  display: block;
-  position: absolute;
-}
-
-li:hover li { float: none; }
-
-li:hover a { background: #2E74B5; }
-
-li:hover li a:hover { background: #2c3e50; }
-
-.main-navigation li ul li { border-top: 0; }
-ul ul ul {
-  left: 100%;
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
   top: 0;
-}
-ul:before,
-ul:after {
-  content: " "; /* 1 */
-  display: table; /* 2 */
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
 }
 
-ul:after { clear: both; }
-
-iframe{
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
   width: 100%;
-  height: 90vh;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
 }
-    </style>
-  </head>
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color: #f1f1f1;
+}
+
+/* Main content */
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+/* Add an active class to the active dropdown button */
+.active {
+  background-color: green;
+  color: white;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #262626;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
 <body>
+
+<div class="sidenav">
+  <a href="#" onclick="document.getElementById('myFrame').src = 'trainersHome.html'">Trainer's Home Page</a>
+  <a href="#services">Services</a>
+  <a href="#clients">Clients</a>
+  <a href="#contact">Contact</a>
+  <button class="dropdown-btn">Dropdown
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+  </div>
+  <a href="#contact">Search</a>
+</div>
+
+<div class="main">
+  <h2>Sidebar Dropdown</h2>
+  <p>Click on the dropdown button to open the dropdown menu inside the side navigation.</p>
+  <p>This sidebar is of full height (100%) and always shown.</p>
+  <p>Some random text..</p>
+</div>
+
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+  this.classList.toggle("active");
+  var dropdownContent = this.nextElementSibling;
+  if (dropdownContent.style.display === "block") {
+  dropdownContent.style.display = "none";
+  } else {
+  dropdownContent.style.display = "block";
+  }
+  });
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
   <ul class="main-navigation">
-  <li><a href="#" onclick="document.getElementById('myFrame').src = 'trainersHome.html'">Trainer's Home Page</a></li>
+
   <li><a href="#">Schematic Highlighting</a>
     <ul>
       <li><a href="#">TMNF Timer Refer</a>
@@ -127,6 +184,3 @@ iframe{
   </li>
   <li><a href="#">Troubleshooting Aids</a></li>
 </ul>
-<iframe src="trainersHome.html" frameBorder="0" id="myFrame">
-</body>
-</html>
