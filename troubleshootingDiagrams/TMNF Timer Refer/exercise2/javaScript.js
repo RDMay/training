@@ -21,6 +21,14 @@ xhr.overrideMimeType("image/svg+xml");
 xhr.send("");
 var schematic = document.getElementById("mainWindow").appendChild(xhr.responseXML.documentElement);
 
+function closeMenu(){
+  uiDiv.setAttribute('class', 'uiHiddenClass')
+}
+
+function openMenu(){
+  uiDiv.setAttribute('class', 'uiClass')
+}
+
 var neutralPointsLayer;
 for(i=0; i<mainSvg.childNodes.length; i++){
   var myLabel = $(mainSvg.childNodes[i]).attr('inkscape:label');

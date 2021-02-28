@@ -17,6 +17,7 @@
   <div id="mainWindow" class="svg-container"></div>
   <span id="meterDiv" class="meterClass"></span>
   <span id="uiDiv" class="uiClass">
+    <img src="../../../closeIcon.svg" id="closeMenuIcon" width="5%" onclick="closeMenu();">
     <H4>Zoom Controls</H4>
     <center><button id="zoomInButton" class="uiButton">+</button>
     <button id="resetButton" class="uiButton">Reset</button>
@@ -27,6 +28,9 @@
     <br>
     <center><button id="submitButton" class="uiButton" onclick="submitClicked();">Submit</button></center>
 
+  </span>
+  <span id="openMenuIcon">
+    <img src="../../../menuIcon.svg" width="100%" onclick="openMenu();">
   </span>
 </body>
 <script src="javaScript.js"></script>

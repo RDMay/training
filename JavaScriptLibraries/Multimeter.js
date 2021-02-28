@@ -29,14 +29,27 @@ function redLeadClicked(){
   redLead.style.opacity = 1;
 }
 
+TweenMax.set(showMeter_btn, {autoAlpha:0});
+showMeter_btn.style.cursor = 'pointer';
+showMeter_btn.addEventListener("click", function(){
+  TweenMax.to(multimeterGroup, 1, {autoAlpha:1})
+  TweenMax.to(showMeter_btn, 1, {autoAlpha:0})
+  TweenMax.to(meterKnob, .001, {rotation:Vac,transformOrigin: "50% 50%", onComplete:changeMeterFunction, onCompleteParams:["Vac"]})
+})
 off_btn.style.cursor = 'pointer';
+off_btn.addEventListener('mouseover', function(){offBackground.style.fill = "blue"; TweenMax.to(off, .1, {scaleX:1.2, scaleY:1.2})});
+off_btn.addEventListener('mouseout', function(){offBackground.style.fill = "black"; TweenMax.to(off, .1, {scaleX:.25, scaleY:.25})});
 off_btn.addEventListener('click', off_btnClicked);
 function off_btnClicked(){
   TweenMax.to(meterKnob, instant, {rotation:off1,transformOrigin: "50% 50%"});
-	changeMeterFunction(off)
+	changeMeterFunction(off);
+  TweenMax.to(showMeter_btn, 1, {autoAlpha:1});
+  TweenMax.to(multimeterGroup, 1, {autoAlpha:0});
 }
 
 vdc_btn.style.cursor = 'pointer';
+vdc_btn.addEventListener('mouseover', function(){vdcBackground.style.fill = "blue"; TweenMax.to(vdc, .1, {scaleX:1.2, scaleY:1.2})});
+vdc_btn.addEventListener('mouseout', function(){vdcBackground.style.fill = "black"; TweenMax.to(vdc, .1, {scaleX:.25, scaleY:.25})});
 vdc_btn.addEventListener('click', vdc_btnClicked);
 function vdc_btnClicked(){
   TweenMax.to(meterKnob, instant, {rotation:Vdc,transformOrigin: "50% 50%"});
@@ -44,12 +57,13 @@ function vdc_btnClicked(){
 }
 
 vac_btn.style.cursor = 'pointer';
+vac_btn.addEventListener('mouseover', function(){vacBackground.style.fill = "blue"; TweenMax.to(vacText, .1, {scaleX:2, scaleY:2})});
+vac_btn.addEventListener('mouseout', function(){vacBackground.style.fill = "black"; TweenMax.to(vacText, .1, {scaleX:1, scaleY:1})});
 vac_btn.addEventListener('click', vac_btnClicked);
 function vac_btnClicked(){
   TweenMax.to(meterKnob, instant, {rotation:Vac,transformOrigin: "50% 50%"});
 	changeMeterFunction('Vac');
 }
-
 
 
 TweenMax.to(meterKnob, .001, {rotation:Vac,transformOrigin: "50% 50%", onComplete:changeMeterFunction, onCompleteParams:["Vac"]})

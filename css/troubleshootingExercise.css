@@ -55,3 +55,25 @@ ul {
     /* padding-top: 5px; */
     font-size:1.2vw;
   }
+
+  #showMeterIcon{
+    display: none;
+    position: absolute;
+    top: 10px;
+    left: 5px;
+    background-color:#092c74;
+    color:white;
+    font-size:1vw;
+  }
+
+  #openMenuIcon{
+    position: absolute;
+    top: 15px;
+    right: 20px;
+  }
+
+  #closeMenuIcon{
+    position: absolute;
+    top: 5px;
+    right: 20px;
+  }

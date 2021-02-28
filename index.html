@@ -35,7 +35,7 @@
         Includes schematics for multiple products line where you are to highlight various circuits on the diagram. This is great for learning how to identify circuits on complex wiring schematics.
         <br>
         (Click the Menu on the right to start.)</p>
-      <p style="background-color:#213545; color:white;">
+      <p class="underConstruction" style="background-color:#213545; color:white;">
         <strong>Troubleshooting Aids</strong><br>
         Troubleshooing Aids have special tools to help you read schematics and locate components.
         <br>
@@ -197,41 +197,57 @@
       });
 
       var underConstructionList = document.getElementsByClassName("underConstruction");
+
       function logIn(){
         if(logInButton.textContent == "Trainer Log Out" || logInButton.textContent == "Admin Log Out"){
-          logInButton.textContent = "Trainer Log In"
+          person = "Log Out";
         }else{
           var person =prompt( "Enter Log In");
-          logInButton.textContent = person
         }
+
         for(a=0; a<underConstructionList.length; a++){
           gsap.set(underConstructionList[a], {autoAlpha:1});
         }
-        switch(logInButton.textContent) {
-          case 'admin':
+
+        switch(person) {
+        case "admin":
           for(i=0; i<underConstructionList.length; i++){
-            gsap.set(underConstructionList[i], {autoAlpha:1});
-            logInButton.textContent = "Admin Log Out";
-            mainWindow.innerHTML = trainerPage.innerHTML;
-            for(a=0; a<underConstructionList.length; a++){
-              gsap.set(underConstructionList[a], {autoAlpha:1});
+              gsap.set(underConstructionList[i], {autoAlpha:1});
             }
-          }
-          break;
-          case 'trainer':
-          for(i=0; i<underConstructionList.length; i++){
-            gsap.set(underConstructionList[i], {autoAlpha:0})
-            logInButton.textContent = "Trainer Log Out";
             mainWindow.innerHTML = trainerPage.innerHTML;
-          }
-          break;
-          default:
+            logInButton.textContent = "Trainer Log Out"
+        break;
+        case "trainer":
           for(i=0; i<underConstructionList.length; i++){
-            gsap.set(underConstructionList[i], {autoAlpha:0});
+              gsap.set(underConstructionList[i], {autoAlpha:1});
+            }
+            mainWindow.innerHTML = trainerPage.innerHTML;
+            logInButton.textContent = "Trainer Log Out"
+        break;
+        case "Log Out":
+          for(i=0; i<underConstructionList.length; i++){
+              gsap.set(underConstructionList[i], {autoAlpha:1});
+            }
             mainWindow.innerHTML = techPage.innerHTML;
-          }
-        }
+            logInButton.textContent = "Trainer Log In"
+        break;
+        default:
+        alert("Log In Incorrect")
+
+      //   if(person == "trainer") {
+      //     for(i=0; i<underConstructionList.length; i++){
+      //         gsap.set(underConstructionList[i], {autoAlpha:1});
+      //   }
+      //   mainWindow.innerHTML = trainerPage.innerHTML;
+      //   logInButton.textContent = "Trainer Log Out"
+      // }else{
+      //   alert("Log in incorrect!")
+      // }
+    }
+
       }
+
+      // Set Up Under Construction Visibility
       for(i=0; i<underConstructionList.length; i++){
         gsap.set(underConstructionList[i], {autoAlpha:0})
       }
