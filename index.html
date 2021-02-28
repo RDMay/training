@@ -9,6 +9,7 @@
     <link rel="icon" type="image/x-icon" href="css/favicon.ico"/>
     <link href="slide-menu.css" rel="stylesheet">
     <link href="menu.css" rel="stylesheet">
+    <script src="JavaScriptLibraries/gsap.min.js"></script>
   </head>
   <body>
     <div id="mainWindow">This link does not work on Ipads.</div>
@@ -23,7 +24,7 @@
       <img src="menuIcon.svg">
       </button>
       <h2 class="main-navigation"><u>Tech Training Resources</u></h2>
-      <br>
+      <br><br><br>
       <p style="background-color:#213545; color:white;">
         <strong>Schematic Highlighting</strong><br>
         Includes schematics for multiple products line where you are to highlight various circuits on the diagram. This is great for learning how to identify circuits on complex wiring schematics.
@@ -53,17 +54,16 @@
       >
       <img src="menuIcon.svg">
       </button>
-      <h2 class="main-navigation"><u>GEAFS Trainer's Page</u></h2>
-      <h4>Service Mobility Resources</h4>
+      <h1 class="main-navigation">GEAFS Trainer's Page</h1>
+      <h4><u>Service Mobility Resources</u></h4>
       <p><a target="_blank" href="../sandBox/emailTest/content.html">Mobility - Default Email Test (Send Link To Tech)</a></p>
-      <br>
       <p><a target="_blank" href="../sandBox/mobilityGuide/content.html">Mobility Training Script - Highlighting, Formatting & Rewrite</a></p>
       <p><a target="_blank" href="../sandBox/mobilityGuide/content2.html">Mobility Training Script - Highlighting & Formatting Only</a></p>
       <p><a target="_blank" href="https://geappliances-my.sharepoint.com/:w:/r/personal/robert_may_geappliances_com/_layouts/15/Doc.aspx?sourcedoc=%7BC7FF1DEE-6F1E-4B77-82C2-8C197D3D7B44%7D&file=Mobility%20Training%20Script%20(10.9.20).docx&action=default&mobileredirect=true">Mobility Training Script (10.9.20) Org</a></p>
       <p><a target="_blank" href="https://www.getcreditcardnumbers.com">Mobility Credit Card Link</a></p>
-      <br>
       <p><a target="_blank" href="https://geappliances-my.sharepoint.com/:p:/r/personal/robert_may_geappliances_com/Documents/Mobility%20Resources/Mobility%20Training%20Packet.pptx?d=wba8f7aab2da84c20a150350b9b51f859&csf=1&web=1">Mobility Training Packet</a></p>
-      <h4>New Hire Training Modules</h4>
+      <br>
+      <h4><u>New Hire Training Modules</u></h4>
       <p><a target="_blank" href="https://360.articulate.com/review/content/fa4bc22f-3444-481a-9c2d-37f62f4cf37a/review">Basic Electricity - Articulate</a></p>
       <p><a target="_blank" href="https://360.articulate.com/review/content/83f6e785-6e40-4170-a48d-b2ed82ab6e68/review">4 Hour Basic Elecricity Final Assessment</a></p>
     </div>
@@ -85,7 +85,7 @@
         <button type="button" class="btn slide-menu__control" data-action="close">Close</button>
       </div>
       <ul>
-        <li id="trainersLink"><a href="#" onclick="logIn()">Trainer Log In</a></li>
+        <li id="trainersLink"><a href="#" id="logInButton" onclick="logIn()">Trainer Log In</a></li>
       <li><a href="#">Schematic Highlighting</a>
         <ul>
           <li><a href="#">TMNF Timer Refer</a>
@@ -114,10 +114,10 @@
               <li><a target="_blank" href="highlightingDiagrams/SXS Refer/exercise4/content.html">L1 & Neutral to Combo Device</a></li>
             </ul>
           </li>
-          <li><a href="#">Electric Dryer Timer (Under Construction)</a>
+          <li class="underConstruction"><a href="#">Electric Dryer Timer (Under Construction)</a>
             <ul>
-              <li><a target="_blank" href="#">(Under Construction)</a></li>
-              <li><a target="_blank" href="#">(Under Construction)</a></li>
+              <li class="underConstruction"><a target="_blank"  href="#">(Under Construction)</a></li>
+              <li class="underConstruction"><a target="_blank"  href="#">(Under Construction)</a></li>
             </ul>
           </li>
         </ul>
@@ -133,9 +133,9 @@
               <li><a target="_blank" href="troubleshootingDiagrams/TMNF Timer Refer/exercise5/content.html">Exercise 5</a></li>
             </ul>
           </li>
-          <li><a href="#">Electric Dryer (Under Construction)</a></li>
+          <li class="underConstruction"><a href="#">Electric Dryer (Under Construction)</a></li>
             <ul>
-              <li><a target="_blank" href="../troubleshootingDiagrams/TMNF Timer Refer/exercise1/content.html">Exercise 1</a></li>
+              <li class="underConstruction"><a target="_blank" href="../troubleshootingDiagrams/TMNF Timer Refer/exercise1/content.html">Exercise 1</a></li>
             </ul>
           </li>
         </ul>
@@ -195,16 +195,47 @@
           menuRight.open(false);
         }
       });
+
+      var underConstructionList = document.getElementsByClassName("underConstruction");
       function logIn(){
-        var person = prompt("Please enter your name");
-        if (person == "trainer") {
-          console.log("Trainer Logged In")
-        } else {
-          alert("DENIED")
+        if(logInButton.textContent == "Trainer Log Out" || logInButton.textContent == "Admin Log Out"){
+          logInButton.textContent = "Trainer Log In"
+        }else{
+          var person =prompt( "Enter Log In");
+          logInButton.textContent = person
+        }
+        for(a=0; a<underConstructionList.length; a++){
+          gsap.set(underConstructionList[a], {autoAlpha:1});
+        }
+        switch(logInButton.textContent) {
+          case 'admin':
+          for(i=0; i<underConstructionList.length; i++){
+            gsap.set(underConstructionList[i], {autoAlpha:1});
+            logInButton.textContent = "Admin Log Out";
+            mainWindow.innerHTML = trainerPage.innerHTML;
+            for(a=0; a<underConstructionList.length; a++){
+              gsap.set(underConstructionList[a], {autoAlpha:1});
+            }
+          }
+          break;
+          case 'trainer':
+          for(i=0; i<underConstructionList.length; i++){
+            gsap.set(underConstructionList[i], {autoAlpha:0})
+            logInButton.textContent = "Trainer Log Out";
+            mainWindow.innerHTML = trainerPage.innerHTML;
+          }
+          break;
+          default:
+          for(i=0; i<underConstructionList.length; i++){
+            gsap.set(underConstructionList[i], {autoAlpha:0});
+            mainWindow.innerHTML = techPage.innerHTML;
+          }
         }
       }
-
-      // trainersLink.style.display = "none"
+      for(i=0; i<underConstructionList.length; i++){
+        gsap.set(underConstructionList[i], {autoAlpha:0})
+      }
+      logInButton.textContent = "Trainer Log In";
     </script>
   <script type="text/javascript" src="slide-menu.js"></script>
 </body>

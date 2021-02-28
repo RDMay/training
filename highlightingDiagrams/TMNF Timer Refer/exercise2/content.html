@@ -36,15 +36,13 @@
   </span>
   <span id="instructionDiv">
     <span id="openMenuIcon">
-      <img src="../../../menuIcon.svg" width="100%" onclick="openMenu();">
+      <img src="../../../help.svg" width="100%" onclick="openMenu();">
     </span>
     <span id="menuSpan" class="uiClass">
-      <a href="https://www.youtube.com/watch?v=YEfryPX4dyA&feature=youtu.be" target="_blank">Help Tutorial</a>
       <img src="../../../closeIcon.svg" id="closeMenuIcon" width="5%" onclick="closeMenu();">
-      <h3>Highlight the Condenser Fan Motor circuit.</h3>
+      <h4>Highlight the Condenser Fan Motor circuit.</h4>
       <ul style="list-style-type:disc;">
-        <li>Highlight the L1 parts of the circuit with L1 (black).</li>
-        <li>Highlight the Neutral parts of the circuit with Neutral (blue).</li>
+        <li>Potentials are selected from the drop down menu.</li>
         <li>Highlight the load with Energized Load (orange).</li>
         <li>Use the (Move Switch) buttons to reposition switches as needed.</li>
       </ul>
@@ -109,5 +107,6 @@ function schematicRedraw(){
     panZoom.center();
 }
 window.addEventListener("resize", schematicRedraw);
+menuSpan.setAttribute('class', 'uiHiddenClass')
 </script>
 </html>
