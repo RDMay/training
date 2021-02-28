@@ -117,9 +117,11 @@ function redLeadClicked(){
 }
 
 TweenMax.set(showMeter_btn, {autoAlpha:0});
+TweenMax.to(instruct1, 1, {autoAlpha:0, delay:5});
 showMeter_btn.style.cursor = 'pointer';
 showMeter_btn.addEventListener("click", function(){
-  TweenMax.to(multimeterGroup, 1, {autoAlpha:1})
+  // TweenMax.to(multimeterGroup, 1, {autoAlpha:1})
+  TweenMax.to(multimeterGroup, 1, {scaleX:2.72, scaleY:2.72})
   TweenMax.to(showMeter_btn, 1, {autoAlpha:0})
   TweenMax.to(meterKnob, .001, {rotation:Vac,transformOrigin: "50% 50%", onComplete:changeMeterFunction, onCompleteParams:["Vac"]})
 })
@@ -130,8 +132,10 @@ off_btn.addEventListener('click', off_btnClicked);
 function off_btnClicked(){
   TweenMax.to(meterKnob, instant, {rotation:off1,transformOrigin: "50% 50%"});
 	changeMeterFunction(off1);
-  TweenMax.to(showMeter_btn, 1, {autoAlpha:1});
-  TweenMax.to(multimeterGroup, 1, {autoAlpha:0});
+  TweenMax.to(showMeter_btn, .01, {autoAlpha:1, opacity:0});
+  TweenMax.to(showMeter_btn, .01, {opacity:0});
+  // TweenMax.to(multimeterGroup, 1, {autoAlpha:0});
+  TweenMax.to(multimeterGroup, 1, {scaleX:.3, scaleY:.3})
 }
 // console.log(path2677.style.strokeWidth)
 // path2677.style.strokeWidth = 10;
