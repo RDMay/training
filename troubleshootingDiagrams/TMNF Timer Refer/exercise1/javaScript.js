@@ -2,7 +2,6 @@ document.title = "TMNF Timer Troubleshooting 1"
 
 var originalLineSize = "1px";
 var highlightedWidth = "2px";
-var selectedLead = "red";
 
 var deviceType = "not mobile";
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
@@ -10,7 +9,7 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 }
 
 xhr = new XMLHttpRequest();
-xhr.open("GET","../../SVG Meter.svg",false);
+xhr.open("GET","../../../SVG Meter.svg",false);
 xhr.overrideMimeType("image/svg+xml");
 xhr.send("");
 var meters = document.getElementById("meterDiv").appendChild(xhr.responseXML.documentElement);
@@ -95,68 +94,6 @@ for(i=0; i<neutralArray.length; i++){
 }
 for(i=0; i<l1Array.length; i++){
   tpArray.push(l1Array[i]);
-}
-
-var redLeadPot;
-var blackLeadPot;
-var selectedRedLead;
-
-function testPointClicked(){
-  if(redLead.style.opacity == 1){
-    console.log(event.target.id);
-    selectedRedLead = event.target.id;
-    for(i=0; i<tpArray.length; i++){
-      if(tpArray[i].style.stroke != "black"){
-        tpArray[i].style.stroke = "black";
-        tpArray[i].style.fill = "yellow";
-        tpArray[i].style.strokeWidth = 1;
-      }
-    }
-    redLeadPot = event.target.id.split("_");
-    redLeadPot = redLeadPot[0];
-    event.target.style.stroke = "red";
-    event.target.style.fill = "red";
-    event.target.style.strokeWidth = 5;
-  }
-
-  if(redLead.style.opacity == 0){
-    console.log(event.target.id)
-    selectedBlackLead = event.target.id;
-    for(i=0; i<tpArray.length; i++){
-      if(tpArray[i].style.stroke != "red"){
-        tpArray[i].style.stroke = "black";
-        tpArray[i].style.fill = "yellow";
-        tpArray[i].style.strokeWidth = 1;
-      }
-    }
-    blackLeadPot = event.target.id.split("_");
-    blackLeadPot = blackLeadPot[0];
-    event.target.style.stroke = "black";
-    event.target.style.fill = "black";
-    event.target.style.strokeWidth = 5;
-  }
-  readMeter();
-}
-
-function readMeter(){
-  switch(redLeadPot + blackLeadPot) {
-    case "l1neutral":
-      showReading('1_2_0_0_c_VAC');
-      meterVoltagePrefix.textContent = "";
-    break;
-    case "neutrall1":
-    showReading('1_2_0_0_c_VAC');
-    meterVoltagePrefix.textContent = "";
-    break;
-    case "neutralneutral":
-    showReading('0_0_0_0_c_VAC');
-    meterVoltagePrefix.textContent = "m";
-    break;
-    case "l1l1":
-    showReading('0_0_0_0_c_VAC');
-    meterVoltagePrefix.textContent = "m";
-    break;
-  }
 }
 
 function submitClicked(){

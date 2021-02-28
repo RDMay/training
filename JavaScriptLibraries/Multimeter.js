@@ -17,6 +17,93 @@ var amps=215;
 var off2=235;
 var readingType;
 
+var redLeadPot;
+var blackLeadPot;
+var selectedRedLead = 'none';
+var selectedBlackLead = 'none';
+
+function testPointClicked(){
+  if(redLead.style.opacity == 1){
+    console.log(event.target.id);
+    selectedRedLead = event.target.id;
+    for(i=0; i<tpArray.length; i++){
+      if(tpArray[i].style.stroke != "black"){
+        tpArray[i].style.stroke = "black";
+        tpArray[i].style.fill = "yellow";
+        tpArray[i].style.strokeWidth = 1;
+      }
+    }
+    redLeadPot = event.target.id.split("_");
+    redLeadPot = redLeadPot[0];
+    event.target.style.stroke = "red";
+    event.target.style.fill = "red";
+    event.target.style.strokeWidth = 5;
+  }
+
+  if(redLead.style.opacity == 0){
+    console.log(event.target.id)
+    selectedBlackLead = event.target.id;
+    for(i=0; i<tpArray.length; i++){
+      if(tpArray[i].style.stroke != "red"){
+        tpArray[i].style.stroke = "black";
+        tpArray[i].style.fill = "yellow";
+        tpArray[i].style.strokeWidth = 1;
+      }
+    }
+    blackLeadPot = event.target.id.split("_");
+    blackLeadPot = blackLeadPot[0];
+    event.target.style.stroke = "black";
+    event.target.style.fill = "black";
+    event.target.style.strokeWidth = 5;
+  }
+  readMeter();
+}
+
+function readMeter(){
+  switch(redLeadPot + blackLeadPot) {
+    case "l1neutral":
+      showReading('1_2_0_0_c_VAC');
+      meterVoltagePrefix.textContent = "";
+    break;
+    case "neutrall1":
+    showReading('1_2_0_0_c_VAC');
+    meterVoltagePrefix.textContent = "";
+    break;
+    case "neutralneutral":
+    showReading('0_0_0_0_c_VAC');
+    meterVoltagePrefix.textContent = "m";
+    break;
+    case "l1l1":
+    showReading('0_0_0_0_c_VAC');
+    meterVoltagePrefix.textContent = "m";
+    break;
+  }
+}
+
+try{
+  openMenuIcon.style.cursor = 'pointer';
+}catch(e){};
+
+try{
+  closeMenuIcon.style.cursor = 'pointer';
+}catch(e){};
+
+try{
+  submitButton.style.cursor = 'pointer';
+}catch(e){};
+try{
+  zoomInButton.style.cursor = 'pointer';
+}catch(e){};
+try{
+  resetButton.style.cursor = 'pointer';
+}catch(e){};
+try{
+  zoomOutButton.style.cursor = 'pointer';
+}catch(e){};
+
+
+
+
 blackLead.addEventListener('click', blackLeadClicked);
 function blackLeadClicked(){
   blackLead.style.opacity = 1;
@@ -37,19 +124,22 @@ showMeter_btn.addEventListener("click", function(){
   TweenMax.to(meterKnob, .001, {rotation:Vac,transformOrigin: "50% 50%", onComplete:changeMeterFunction, onCompleteParams:["Vac"]})
 })
 off_btn.style.cursor = 'pointer';
-off_btn.addEventListener('mouseover', function(){offBackground.style.fill = "blue"; TweenMax.to(off, .1, {scaleX:1.2, scaleY:1.2})});
-off_btn.addEventListener('mouseout', function(){offBackground.style.fill = "black"; TweenMax.to(off, .1, {scaleX:.25, scaleY:.25})});
+off_btn.addEventListener('mouseover', function(){offBackground.style.fill = "blue"; TweenMax.to(offText1, .1, {scaleX:5, scaleY:5})});
+off_btn.addEventListener('mouseout', function(){offBackground.style.fill = "black"; TweenMax.to(offText1, .1, {scaleX:1, scaleY:1})});
 off_btn.addEventListener('click', off_btnClicked);
 function off_btnClicked(){
   TweenMax.to(meterKnob, instant, {rotation:off1,transformOrigin: "50% 50%"});
-	changeMeterFunction(off);
+	changeMeterFunction(off1);
   TweenMax.to(showMeter_btn, 1, {autoAlpha:1});
   TweenMax.to(multimeterGroup, 1, {autoAlpha:0});
 }
+// console.log(path2677.style.strokeWidth)
+// path2677.style.strokeWidth = 10;
+// console.log(path2677.style.strokeWidth)
 
 vdc_btn.style.cursor = 'pointer';
-vdc_btn.addEventListener('mouseover', function(){vdcBackground.style.fill = "blue"; TweenMax.to(vdc, .1, {scaleX:1.2, scaleY:1.2})});
-vdc_btn.addEventListener('mouseout', function(){vdcBackground.style.fill = "black"; TweenMax.to(vdc, .1, {scaleX:.25, scaleY:.25})});
+vdc_btn.addEventListener('mouseover', function(){vdcBackground.style.fill = "blue"; TweenMax.to(vdcText, .1, {scaleX:5, scaleY:5})});
+vdc_btn.addEventListener('mouseout', function(){vdcBackground.style.fill = "black"; TweenMax.to(vdcText, .1, {scaleX:1, scaleY:1})});
 vdc_btn.addEventListener('click', vdc_btnClicked);
 function vdc_btnClicked(){
   TweenMax.to(meterKnob, instant, {rotation:Vdc,transformOrigin: "50% 50%"});
@@ -57,7 +147,7 @@ function vdc_btnClicked(){
 }
 
 vac_btn.style.cursor = 'pointer';
-vac_btn.addEventListener('mouseover', function(){vacBackground.style.fill = "blue"; TweenMax.to(vacText, .1, {scaleX:2, scaleY:2})});
+vac_btn.addEventListener('mouseover', function(){vacBackground.style.fill = "blue"; TweenMax.to(vacText, .1, {scaleX:5, scaleY:5})});
 vac_btn.addEventListener('mouseout', function(){vacBackground.style.fill = "black"; TweenMax.to(vacText, .1, {scaleX:1, scaleY:1})});
 vac_btn.addEventListener('click', vac_btnClicked);
 function vac_btnClicked(){

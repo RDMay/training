@@ -2,7 +2,6 @@ document.title = "TMNF Timer Troubleshooting 2"
 
 var originalLineSize = "1px";
 var highlightedWidth = "2px";
-var selectedLead = "red";
 
 var deviceType = "not mobile";
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
@@ -10,7 +9,7 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 }
 
 xhr = new XMLHttpRequest();
-xhr.open("GET","../../SVG Meter.svg",false);
+xhr.open("GET","../../../SVG Meter.svg",false);
 xhr.overrideMimeType("image/svg+xml");
 xhr.send("");
 var meters = document.getElementById("meterDiv").appendChild(xhr.responseXML.documentElement);

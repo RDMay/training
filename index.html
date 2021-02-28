@@ -39,7 +39,8 @@
         <strong>Troubleshooting Aids</strong><br>
         Troubleshooing Aids have special tools to help you read schematics and locate components.
         <br>
-        (Click the Menu on the right to start.)</p>
+        (Click the Menu on the right to start.)
+      </p>
       <br>
     </div>
 
@@ -56,9 +57,9 @@
       </button>
       <h1 class="main-navigation">GEAFS Trainer's Page</h1>
       <h4><u>Service Mobility Resources</u></h4>
-      <p><a target="_blank" href="../sandBox/emailTest/content.html">Mobility - Default Email Test (Send Link To Tech)</a></p>
-      <p><a target="_blank" href="../sandBox/mobilityGuide/content.html">Mobility Training Script - Highlighting, Formatting & Rewrite</a></p>
-      <p><a target="_blank" href="../sandBox/mobilityGuide/content2.html">Mobility Training Script - Highlighting & Formatting Only</a></p>
+      <p><a target="_blank" href="sandBox/emailTest/content.html">Mobility - Default Email Test (Send Link To Tech)</a></p>
+      <p><a target="_blank" href="sandBox/mobilityGuide/content.html">Mobility Training Script - Highlighting, Formatting & Rewrite</a></p>
+      <p><a target="_blank" href="sandBox/mobilityGuide/content2.html">Mobility Training Script - Highlighting & Formatting Only</a></p>
       <p><a target="_blank" href="https://geappliances-my.sharepoint.com/:w:/r/personal/robert_may_geappliances_com/_layouts/15/Doc.aspx?sourcedoc=%7BC7FF1DEE-6F1E-4B77-82C2-8C197D3D7B44%7D&file=Mobility%20Training%20Script%20(10.9.20).docx&action=default&mobileredirect=true">Mobility Training Script (10.9.20) Org</a></p>
       <p><a target="_blank" href="https://www.getcreditcardnumbers.com">Mobility Credit Card Link</a></p>
       <p><a target="_blank" href="https://geappliances-my.sharepoint.com/:p:/r/personal/robert_may_geappliances_com/Documents/Mobility%20Resources/Mobility%20Training%20Packet.pptx?d=wba8f7aab2da84c20a150350b9b51f859&csf=1&web=1">Mobility Training Packet</a></p>
@@ -140,7 +141,7 @@
           </li>
         </ul>
       </li>
-      <li><a href="#">Troubleshooting Aids</a></li>
+      <li class="underConstruction"><a href="#">Troubleshooting Aids</a></li>
     </ul>
     </nav>
 
@@ -219,14 +220,14 @@
         break;
         case "trainer":
           for(i=0; i<underConstructionList.length; i++){
-              gsap.set(underConstructionList[i], {autoAlpha:1});
+              gsap.set(underConstructionList[i], {autoAlpha:0});
             }
             mainWindow.innerHTML = trainerPage.innerHTML;
             logInButton.textContent = "Trainer Log Out"
         break;
         case "Log Out":
           for(i=0; i<underConstructionList.length; i++){
-              gsap.set(underConstructionList[i], {autoAlpha:1});
+              gsap.set(underConstructionList[i], {autoAlpha:0});
             }
             mainWindow.innerHTML = techPage.innerHTML;
             logInButton.textContent = "Trainer Log In"
