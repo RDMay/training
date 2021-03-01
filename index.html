@@ -31,11 +31,13 @@
       }
       #textBox1{
         position: absolute;
+        width: 100vw;
         top: 0px;
         left: -4px;
       }
       #textBox2{
         position: absolute;
+        width: 100vw;
         top: 0px;
         left: -4px;
       }
@@ -59,18 +61,18 @@
       <p id="troubleshootingPic"><img src="homePageVideos/schematicTroubleshooting.png" alt=""></P>
       <p id="textBox1" style="background-color:#213545; color:white;">
         <strong><u>Schematic Highlighting</u></strong><br>
-        Includes schematics for multiple products line where you are to highlight various circuits on the diagram. This is great for learning how to identify circuits on complex wiring schematics.
-        <br>
+        Schematics for multiple products line where you are to highlight various circuits on the diagram. This is great for learning how to identify circuit paths on complex wiring schematics.
+        <br><br>
         <span style="color:orange">(Click the Menu icon to start.)</span></p>
       <p id="textBox2" style="background-color:#213545; color:white;">
-        <strong><u>Schematic Troubleshooting</u></strong><br>
-        Includes schematics for multiple products line where you are to highlight various circuits on the diagram. This is great for learning how to identify circuits on complex wiring schematics.
-        <br>
+        <strong>Schematic Troubleshooting</strong><br>
+        Schematics with programmed faults. Use the meter to troubleshoot the fault.
+        <br><br>
         <span style="color:orange">(Click the Menu icon to start.)</span></p></p>
         <p id="textBox3" class="trainerMessage" style="background-color:#213545; color:white;">
-          <strong><u>Trainers Log in at menu.</u></strong><br>
+          <strong>Trainers Log in at menu.</strong><br>
           Click the Menu icon, then click "Trainers Log In", then enter password.
-          <br>
+          <br><br>
           <span style="color:orange">(Click the Menu icon to start.)</span></p>
         </p>
       <!-- <p class="underConstruction" style="background-color:#213545; color:white;">
@@ -256,7 +258,7 @@
         .call(menuOpenResize())
         .to(textBox1,{duration:1, y:100, delay:0})
         .to(textBox2,{duration:1, y:260, delay:-1})
-        .to(textBox3,{duration:1, y:420, delay:-1})
+        .to(textBox3,{duration:1, y:395, delay:-1})
         console.log(textBox1.client)
 
 
@@ -330,10 +332,9 @@
         gsap.fromTo(textBox3.style, {width:'100%', left:'0%'}, {width:'70%', left:'1%'});
       }
       function restoreWidth(){
-        console.log('fired')
-        gsap.fromTo(textBox1.style, {width:'70%', left:'1%'}, {width:'100%', left:'0%'});
-        gsap.fromTo(textBox2.style, {width:'70%', left:'1%'}, {width:'100%', left:'0%'});
-        gsap.fromTo(textBox3.style, {width:'70%', left:'1%'}, {width:'100%', left:'0%'});
+        gsap.fromTo(textBox1.style, {width:'70%', left:'1%'}, {width:'98%', left:'0%'});
+        gsap.fromTo(textBox2.style, {width:'70%', left:'1%'}, {width:'98%', left:'0%'});
+        gsap.fromTo(textBox3.style, {width:'70%', left:'1%'}, {width:'98%', left:'0%'});
       }
 
       // Set Up Under Construction Visibility
