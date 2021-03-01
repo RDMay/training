@@ -58,17 +58,17 @@
       <p id="highlightPic"><img src="homePageVideos/sxsSchematic.png" alt=""></P>
       <p id="troubleshootingPic"><img src="homePageVideos/schematicTroubleshooting.png" alt=""></P>
       <p id="textBox1" style="background-color:#213545; color:white;">
-        <strong>Schematic Highlighting</strong><br>
+        <strong><u>Schematic Highlighting</u></strong><br>
         Includes schematics for multiple products line where you are to highlight various circuits on the diagram. This is great for learning how to identify circuits on complex wiring schematics.
         <br>
         <span style="color:orange">(Click the Menu icon to start.)</span></p>
       <p id="textBox2" style="background-color:#213545; color:white;">
-        <strong>Schematic Troubleshooting</strong><br>
+        <strong><u>Schematic Troubleshooting</u></strong><br>
         Includes schematics for multiple products line where you are to highlight various circuits on the diagram. This is great for learning how to identify circuits on complex wiring schematics.
         <br>
         <span style="color:orange">(Click the Menu icon to start.)</span></p></p>
         <p id="textBox3" class="trainerMessage" style="background-color:#213545; color:white;">
-          <strong>Trainers Log in at menu.</strong><br>
+          <strong><u>Trainers Log in at menu.</u></strong><br>
           Click the Menu icon, then click "Trainers Log In", then enter password.
           <br>
           <span style="color:orange">(Click the Menu icon to start.)</span></p>
@@ -255,8 +255,12 @@
         .call(tl.pause())
         .call(menuOpenResize())
         .to(textBox1,{duration:1, y:100, delay:0})
-        .to(textBox2,{duration:1, y:260, delay:-1})
-        .to(textBox3,{duration:1, y:420, delay:-1})
+        .to(textBox2,{duration:1, y:textBox1.top + textBox1.offsetHeight, delay:-1})
+        .to(textBox3,{duration:1, y:textBox2.top + textBox2.offsetHeight, delay:-1})
+        console.log(textBox1.clientHeight)
+
+        var rect = textBox3.getBoundingClientRect();
+        console.log(rect.top, rect.right, rect.bottom, rect.left);
 
 
       }
@@ -318,7 +322,7 @@
     .to(textBox1,{duration:1, y:100, delay:0})
     .to(textBox2,{duration:1, y:260, delay:-1})
     .to(textBox3,{duration:1, y:420, delay:-1})
-    console.log('fired')
+
 
       }
 
