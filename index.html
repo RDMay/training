@@ -47,7 +47,7 @@
       }
     </style>
   </head>
-  <body style="overflow:hidden">
+  <body style="overflow-x:hidden">
     <div id="mainWindow">This link does not work on Ipads.</div>
     <div id="techPage" class="noDisplay">
       <h2 class="main-navigation"><u>Tech Training Resources</u></h2>
@@ -246,11 +246,10 @@
         var endTl = gsap.timeline({repeat:0})
         endTl
         .to([highlightPic,troubleshootingPic], {duration:1, autoAlpha:0})
+        .to([menuButton], {duration:1, autoAlpha:1, delay:-1})
         // .set([textBox1,textBox2,textBox3], {autoAlpha:1})
         .call(tl.pause())
         .call(menuOpenResize())
-
-
         .to(textBox1,{duration:1, y:100, delay:0})
         .to(textBox2,{duration:1, y:260, delay:-1})
         .to(textBox3,{duration:1, y:420, delay:-1})
