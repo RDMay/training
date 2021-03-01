@@ -7,40 +7,86 @@
     <meta name="charset" content="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/x-icon" href="css/favicon.ico"/>
-    <link href="slide-menu.css" rel="stylesheet">
     <link href="menu.css" rel="stylesheet">
+    <!-- <link href="slide-menu.css" rel="stylesheet"> -->
     <script src="JavaScriptLibraries/gsap.min.js"></script>
+    <style>
+      #highlightPic{
+        position: absolute;
+        width: 100%;
+        height: auto;
+        top: 100px;
+        right: 5000;
+      }
+      #troubleshootingPic{
+        position: absolute;
+        width: 100%;
+        height: auto;
+        top: 100px;
+        right: 5000;
+      }
+      #textBox1{
+        position: absolute;
+        top: 0px;
+        left: -4px;
+      }
+      #textBox2{
+        position: absolute;
+        top: 0px;
+        left: -4px;
+      }
+      #textBox3{
+        position: absolute;
+        width: 100vw;
+        top: 0px;
+        left: -4px;
+      }
+      img {
+        width: 100%;
+        height: auto;
+      }
+    </style>
   </head>
-  <body>
+  <body style="overflow:hidden">
     <div id="mainWindow">This link does not work on Ipads.</div>
     <div id="techPage" class="noDisplay">
+      <h2 class="main-navigation"><u>Tech Training Resources</u></h2>
+      <p id="highlightPic"><img src="homePageVideos/sxsSchematic.png" alt=""></P>
+      <p id="troubleshootingPic"><img src="homePageVideos/schematicTroubleshooting.png" alt=""></P>
+      <p id="textBox1" style="background-color:#213545; color:white;">
+        <strong>Schematic Highlighting</strong><br>
+        Includes schematics for multiple products line where you are to highlight various circuits on the diagram. This is great for learning how to identify circuits on complex wiring schematics.
+        <br>
+        <span style="color:orange">(Click the Menu icon to start.)</span></p>
+      <p id="textBox2" style="background-color:#213545; color:white;">
+        <strong>Schematic Troubleshooting</strong><br>
+        Includes schematics for multiple products line where you are to highlight various circuits on the diagram. This is great for learning how to identify circuits on complex wiring schematics.
+        <br>
+        <span style="color:orange">(Click the Menu icon to start.)</span></p></p>
+        <p id="textBox3" class="trainerMessage" style="background-color:#213545; color:white;">
+          <strong>Trainers Log in at menu.</strong><br>
+          Click the Menu icon, then click "Trainers Log In", then enter password.
+          <br>
+          <span style="color:orange">(Click the Menu icon to start.)</span></p>
+        </p>
+      <!-- <p class="underConstruction" style="background-color:#213545; color:white;">
+        <strong>Troubleshooting Aids</strong><br>
+        Troubleshooing Aids have special tools to help you read schematics and locate components.
+        <br>
+        (Click the Menu icon to start.)
+      </p> -->
       <button
           type="button"
+          id = "menuButton"
           class="btn slide-menu__control"
           style="position: absolute; top: 0px; right: 10px;"
           data-target="test-menu-right"
           data-action="open"
+          onclick="openMenu()"
       >
       <img src="menuIcon.svg">
       </button>
-      <h2 class="main-navigation"><u>Tech Training Resources</u></h2>
-      <br><br><br>
-      <p style="background-color:#213545; color:white;">
-        <strong>Schematic Highlighting</strong><br>
-        Includes schematics for multiple products line where you are to highlight various circuits on the diagram. This is great for learning how to identify circuits on complex wiring schematics.
-        <br>
-        (Click the Menu on the right to start.)</p>
-      <p style="background-color:#213545; color:white;">
-        <strong>Schematic Troubleshooting</strong><br>
-        Includes schematics for multiple products line where you are to highlight various circuits on the diagram. This is great for learning how to identify circuits on complex wiring schematics.
-        <br>
-        (Click the Menu on the right to start.)</p>
-      <p class="underConstruction" style="background-color:#213545; color:white;">
-        <strong>Troubleshooting Aids</strong><br>
-        Troubleshooing Aids have special tools to help you read schematics and locate components.
-        <br>
-        (Click the Menu on the right to start.)
-      </p>
+
       <br>
     </div>
 
@@ -51,7 +97,6 @@
           style="position: absolute; top: 0px; right: 10px;"
           data-target="test-menu-right"
           data-action="open"
-          onclick="openMenu()"
       >
       <img src="menuIcon.svg">
       </button>
@@ -83,7 +128,7 @@
     <nav class="slide-menu" id="test-menu-right">
       <div class="controls">
         <button type="button" class="btn slide-menu__control" data-action="back">Back</button>
-        <button type="button" class="btn slide-menu__control" data-action="close">Close</button>
+        <button type="button" class="btn slide-menu__control" data-action="close" onclick="restoreWidth()">Close</button>
       </div>
       <ul>
         <li id="trainersLink"><a href="#" id="logInButton" onclick="logIn()">Trainer Log In</a></li>
@@ -197,6 +242,22 @@
         }
       });
 
+      function openMenu(){
+        var endTl = gsap.timeline({repeat:0})
+        endTl
+        .to([highlightPic,troubleshootingPic], {duration:1, autoAlpha:0})
+        // .set([textBox1,textBox2,textBox3], {autoAlpha:1})
+        .call(tl.pause())
+        .call(menuOpenResize())
+
+
+        .to(textBox1,{duration:1, y:100, delay:0})
+        .to(textBox2,{duration:1, y:260, delay:-1})
+        .to(textBox3,{duration:1, y:420, delay:-1})
+
+
+      }
+
       var underConstructionList = document.getElementsByClassName("underConstruction");
 
       function logIn(){
@@ -248,11 +309,48 @@
 
       }
 
+      function menuOpenResize(){
+        // gsap.to(textBox1.style, {duration: 1, width:'70%'})
+        gsap.fromTo(textBox1.style, {width:'100%', left:'0%'}, {width:'70%', left:'1%'});
+        gsap.fromTo(textBox2.style, {width:'100%', left:'0%'}, {width:'70%', left:'1%'});
+        gsap.fromTo(textBox3.style, {width:'100%', left:'0%'}, {width:'70%', left:'1%'});
+      }
+      function restoreWidth(){
+        console.log('fired')
+        gsap.fromTo(textBox1.style, {width:'70%', left:'1%'}, {width:'100%', left:'0%'});
+        gsap.fromTo(textBox2.style, {width:'70%', left:'1%'}, {width:'100%', left:'0%'});
+        gsap.fromTo(textBox3.style, {width:'70%', left:'1%'}, {width:'100%', left:'0%'});
+      }
+
       // Set Up Under Construction Visibility
       for(i=0; i<underConstructionList.length; i++){
         gsap.set(underConstructionList[i], {autoAlpha:0})
       }
       logInButton.textContent = "Trainer Log In";
+      var tl = gsap.timeline({repeat:-1});
+      tl
+      .from(highlightPic, {duration:2, x:2000, delay:0})
+      .from(textBox1, {duration:.5, y:-300, delay:'-.5'})
+      .to(menuButton, {duration:1, opacity:0, repeat:5, delay:'-.5'})
+      .to(menuButton, {duration:1, opacity:1})
+
+      .to(textBox1, {duration:1, y:-300, immediateRender:false, delay:0})
+      .to(highlightPic, {duration:3, x:-2000, delay:'-.5'})
+
+      .from(troubleshootingPic, {duration:2, x:2000, delay:'-3'})
+      .from(textBox2, {duration:.5, y:-600, delay:'-1.5'})
+      .to(menuButton, {duration:1, opacity:0, repeat:5, delay:'-.5'})
+      .to(menuButton, {duration:1, opacity:1})
+
+      .to(textBox2, {duration:1, y:-600, immediateRender:false, delay:0})
+      .to(troubleshootingPic, {duration:3, x:-2000, delay:'-.5'})
+
+      .from(textBox3, {duration:.5, y:-600, delay:'-1.5'})
+      .to(menuButton, {duration:1, opacity:0, repeat:5, delay:'-.5'})
+      .to(menuButton, {duration:1, opacity:1})
+      .to(textBox3, {duration:1, y:-600, immediateRender:false, delay:0})
+
+
     </script>
   <script type="text/javascript" src="slide-menu.js"></script>
 </body>
