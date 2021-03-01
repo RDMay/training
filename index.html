@@ -12,15 +12,19 @@
     <script src="JavaScriptLibraries/gsap.min.js"></script>
     <style>
       #highlightPic{
+        left: 50% !important;
+        transform: translate(-50%,0);
         position: absolute;
-        width: 100%;
+        width: 70%;
         height: auto;
         top: 100px;
         right: 5000;
       }
       #troubleshootingPic{
+        left: 50% !important;
+        transform: translate(-50%,0);
         position: absolute;
-        width: 100%;
+        width: 70%;
         height: auto;
         top: 100px;
         right: 5000;
@@ -242,8 +246,8 @@
         }
       });
 
+      var endTl = gsap.timeline({repeat:0})
       function openMenu(){
-        var endTl = gsap.timeline({repeat:0})
         endTl
         .to([highlightPic,troubleshootingPic], {duration:1, autoAlpha:0})
         .to([menuButton], {duration:1, autoAlpha:1, delay:-1})
@@ -305,6 +309,16 @@
       //   alert("Log in incorrect!")
       // }
     }
+    var endTl = gsap.timeline({repeat:0})
+    .to([highlightPic,troubleshootingPic], {duration:1, autoAlpha:0})
+    .to([menuButton], {duration:1, autoAlpha:1, delay:-1})
+    // .set([textBox1,textBox2,textBox3], {autoAlpha:1})
+    .call(tl.pause())
+    .call(menuOpenResize())
+    .to(textBox1,{duration:1, y:100, delay:0})
+    .to(textBox2,{duration:1, y:260, delay:-1})
+    .to(textBox3,{duration:1, y:420, delay:-1})
+    console.log('fired')
 
       }
 
