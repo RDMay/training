@@ -255,12 +255,9 @@
         .call(tl.pause())
         .call(menuOpenResize())
         .to(textBox1,{duration:1, y:100, delay:0})
-        .to(textBox2,{duration:1, y:textBox1.top + textBox1.offsetHeight, delay:-1})
-        .to(textBox3,{duration:1, y:textBox2.top + textBox2.offsetHeight, delay:-1})
-        console.log(textBox1.clientHeight)
-
-        var rect = textBox3.getBoundingClientRect();
-        console.log(rect.top, rect.right, rect.bottom, rect.left);
+        .to(textBox2,{duration:1, y:260, delay:-1})
+        .to(textBox3,{duration:1, y:420, delay:-1})
+        console.log(textBox1.client)
 
 
       }
