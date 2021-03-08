@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>loading</title>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="icon" type="image/x-icon" href="../css/favicon.ico"/>
+    <!-- <link rel="stylesheet" href="../css/interactiveSchematic.css"> -->
+    <script src="svgPanZoom.js"></script>
+    <script src="../JavaScriptLibraries/jquery-3.2.1.min.js"></script>
+    <script src="../JavaScriptLibraries/hammer.min.js"></script>
+    <script src="../JavaScriptLibraries/gsap.min.js"></script>
+    <script src="../JavaScriptLibraries/Draggable.min.js"></script>
+    <style>
+    body{
+      overflow: hidden;
+      border: 0px;
+      font-family: arial;
+    }
+
+    .mainWindow{
+      width: 50%;
+      width: 100vw;
+      height: 100vh;
+    }
+    svg{
+      width: 100vw;
+      height: 100vh;
+    }
+    .htmlWindow1{
+      word-wrap: break-word;
+        position: fixed;
+        color:#4d4d4d;
+        border-width: thin;
+        font-size:1vw;
+        width: 70%;
+        padding:10px;
+        max-height: 55%;
+        overflow-y: auto;
+      }
+      .htmlWindow2{
+        word-wrap: break-word;
+          position: absolute;
+          color:#4d4d4d;
+          border-width: thin;
+          font-size:1.5vw;
+          /* width: 70%; */
+        }
+      .htmlWindow1 div{
+        margin:10px;
+        padding:0;
+        color:#4d4d4d;
+      }
+      .htmlWindow1 p{
+        margin:0;
+        padding:0;
+        color:#4d4d4d;
+      }
+      .alert{
+        padding: 5px;
+        background: rgb(105,105,115);
+        background: linear-gradient(90deg, rgba(105,105,105,1) 0%, rgba(255,255,255,1) 100%);
+        color: white;
+      }
+      #cycleHistoryBanner{
+        padding: 5px;
+        background: rgb(105,105,115);
+        background: linear-gradient(90deg, rgba(105,105,105,1) 0%, rgba(255,255,255,1) 100%);
+        color: white;
+        top: -100px;
+      }
+    </style>
+  </head>
+<body>
+  <div id="htmlWindow1" class="htmlWindow1">Some Text</div>
+  <div id="htmlWindow2" class="htmlWindow2"></div>
+  <div id="mainWindow"></div>
+
+
+</body>
+<script src="script.js"></script>
+<script>
+var eventsHandler;
+eventsHandler = {
+  haltEventListeners: ['touchstart', 'touchend', 'touchmove', 'touchleave', 'touchcancel']
+  , init: function(options) {
+    var instance = options.instance
+    , initialScale = 1
+    , pannedX = 0
+    , pannedY = 0
+    this.hammer = Hammer(options.svgElement, {
+    inputClass: Hammer.SUPPORT_POINTER_EVENTS ? Hammer.PointerEventInput : Hammer.TouchInput
+    })
+    this.hammer.get('pinch').set({enable: true})
+    this.hammer.on('doubletap', function(ev){instance.zoomIn()})
+    this.hammer.on('panstart panmove', function(ev){
+    if (ev.type === 'panstart') {
+      pannedX = 0
+      pannedY = 0
+    }
+    instance.panBy({x: ev.deltaX - pannedX, y: ev.deltaY - pannedY})
+    pannedX = ev.deltaX
+    pannedY = ev.deltaY
+    })
+    this.hammer.on('pinchstart pinchmove', function(ev){
+      if (ev.type === 'pinchstart') {
+        initialScale = instance.getZoom()
+        instance.zoomAtPoint(initialScale * ev.scale, {x: ev.center.x, y: ev.center.y})
+        }
+      instance.zoomAtPoint(initialScale * ev.scale, {x: ev.center.x, y: ev.center.y})
+    })
+      options.svgElement.addEventListener('touchmove', function(e){ e.preventDefault(); });
+    }
+    , destroy: function(){
+      this.hammer.destroy()
+    }
+}
+window.panZoom = svgPanZoom(newfi, {
+  zoomEnabled: true
+  , controlIconsEnabled: true
+  , fit: 1
+  , center: 1
+  , customEventsHandler: eventsHandler
+});
+
+function schematicRedraw(){
+  var panZoom = window.panZoom = svgPanZoom(newfi, {
+  zoomEnabled: true,
+  controlIconsEnabled: true,
+  fit: 1,
+  center: 1
+  });
+    panZoom.resize();
+    panZoom.fit();
+    panZoom.center();
+    // htmlWindow1.style.left = notifications_btn.getBoundingClientRect().right +'px';
+    htmlWindow1.style.top = notifications_btn.getBoundingClientRect().top + 'px';
+    htmlWindow1.style.width = rect2161.getBoundingClientRect().right - rect2161.getBoundingClientRect().x - 30  + 'px';
+    htmlWindow2.style.left = newfiAlerts_btn.getBoundingClientRect().right +'px';
+    htmlWindow2.style.top = newfiAlerts_btn.getBoundingClientRect().top + 'px';
+    htmlWindow2.style.width = rect2161.getBoundingClientRect().right - newfiAlerts_btn.getBoundingClientRect().right  + 'px';
+}
+window.addEventListener("resize", schematicRedraw);
+</script>
+</html>

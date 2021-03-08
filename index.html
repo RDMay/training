@@ -8,79 +8,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/x-icon" href="css/favicon.ico"/>
     <link href="menu.css" rel="stylesheet">
-    <!-- <link href="slide-menu.css" rel="stylesheet"> -->
     <script src="JavaScriptLibraries/gsap.min.js"></script>
-    <style>
-      #highlightPic{
-        left: 50% !important;
-        transform: translate(-50%,0);
-        position: absolute;
-        width: 70%;
-        height: auto;
-        top: 100px;
-        right: 5000;
-      }
-      #troubleshootingPic{
-        left: 50% !important;
-        transform: translate(-50%,0);
-        position: absolute;
-        width: 70%;
-        height: auto;
-        top: 100px;
-        right: 5000;
-      }
-      #textBox1{
-        position: absolute;
-        width: 100vw;
-        top: 0px;
-        left: -4px;
-      }
-      #textBox2{
-        position: absolute;
-        width: 100vw;
-        top: 0px;
-        left: -4px;
-      }
-      #textBox3{
-        position: absolute;
-        width: 100vw;
-        top: 0px;
-        left: -4px;
-      }
-      img {
-        width: 100%;
-        height: auto;
-      }
-    </style>
   </head>
   <body style="overflow-x:hidden">
     <div id="mainWindow">This link does not work on Ipads.</div>
     <div id="techPage" class="noDisplay">
-      <h2 class="main-navigation"><u>Tech Training Resources</u></h2>
+      <h1 class="main-navigation"><u>Tech Training Resources</u></h1>
       <p id="highlightPic"><img src="homePageVideos/sxsSchematic.png" alt=""></P>
       <p id="troubleshootingPic"><img src="homePageVideos/schematicTroubleshooting.png" alt=""></P>
       <p id="textBox1" style="background-color:#213545; color:white;">
-        <strong><u>Schematic Highlighting</u></strong><br>
+        <strong><u>Schematic Highlighting</u></strong><br><br>
         Schematics for multiple products line where you are to highlight various circuits on the diagram. This is great for learning how to identify circuit paths on complex wiring schematics.
         <br><br>
-        <span style="color:orange">(Click the Menu icon to start.)</span></p>
+        <span id="textBox1Sub1" style="color:orange">(Click the Menu icon to start.)</span></p>
       <p id="textBox2" style="background-color:#213545; color:white;">
-        <strong>Schematic Troubleshooting</strong><br>
+        <strong>Schematic Troubleshooting</strong><br><br>
         Schematics with programmed faults. Use the meter to troubleshoot the fault.
         <br><br>
-        <span style="color:orange">(Click the Menu icon to start.)</span></p></p>
-        <p id="textBox3" class="trainerMessage" style="background-color:#213545; color:white;">
-          <strong>Trainers Log in at menu.</strong><br>
-          Click the Menu icon, then click "Trainers Log In", then enter password.
-          <br><br>
-          <span style="color:orange">(Click the Menu icon to start.)</span></p>
-        </p>
-      <!-- <p class="underConstruction" style="background-color:#213545; color:white;">
-        <strong>Troubleshooting Aids</strong><br>
-        Troubleshooing Aids have special tools to help you read schematics and locate components.
-        <br>
-        (Click the Menu icon to start.)
-      </p> -->
+        <span id="textBox2Sub1" style="color:orange">(Click the Menu icon to start.)</span></p></p>
+      <p id="textBox3" class="trainerMessage" style="background-color:#213545; color:white;">
+        <strong>Trainers Log in at menu.</strong><br><br>
+        Click the Menu icon, then click "Trainers Log In", then enter password.
+        <br><br>
+        <span id="textBox3Sub1" style="color:orange">(Click the Menu icon to start.)</span></p>
+      </p>
       <button
           type="button"
           id = "menuButton"
@@ -92,7 +43,6 @@
       >
       <img src="menuIcon.svg">
       </button>
-
       <br>
     </div>
 
@@ -108,17 +58,33 @@
       </button>
       <h1 class="main-navigation">GEAFS Trainer's Page</h1>
       <h4><u>Service Mobility Resources</u></h4>
-      <p><a target="_blank" href="sandBox/emailTest/content.html">Mobility - Default Email Test (Send Link To Tech)</a></p>
       <p><a target="_blank" href="sandBox/mobilityGuide/content.html">Mobility Training Script - Highlighting, Formatting & Rewrite</a></p>
-      <p><a target="_blank" href="sandBox/mobilityGuide/content2.html">Mobility Training Script - Highlighting & Formatting Only</a></p>
       <p><a target="_blank" href="https://geappliances-my.sharepoint.com/:w:/r/personal/robert_may_geappliances_com/_layouts/15/Doc.aspx?sourcedoc=%7BC7FF1DEE-6F1E-4B77-82C2-8C197D3D7B44%7D&file=Mobility%20Training%20Script%20(10.9.20).docx&action=default&mobileredirect=true">Mobility Training Script (10.9.20) Org</a></p>
       <p><a target="_blank" href="https://www.getcreditcardnumbers.com">Mobility Credit Card Link</a></p>
-      <p><a target="_blank" href="https://geappliances-my.sharepoint.com/:p:/r/personal/robert_may_geappliances_com/Documents/Mobility%20Resources/Mobility%20Training%20Packet.pptx?d=wba8f7aab2da84c20a150350b9b51f859&csf=1&web=1">Mobility Training Packet</a></p>
+      <p><a target="_blank" href="https://geappliances.sharepoint.com/sites/erpplusit/service/Factory%20Service%20%20Documentation/Forms/AllItems.aspx?id=%2Fsites%2Ferpplusit%2Fservice%2FFactory%20Service%20%20Documentation%2FService%20ERP%2FMobility%20Rollout&p=true&originalPath=aHR0cHM6Ly9nZWFwcGxpYW5jZXMuc2hhcmVwb2ludC5jb20vOmY6L3MvZXJwcGx1c2l0L3NlcnZpY2UvRWxjNURvUERyeGxNdV90S0JkOFkwcFVCOVBOMHotQVlELUFrMG8xdFlnNlBXUT9ydGltZT1Tbnk1RVluZDJFZw">Mobility Documentation</a></p>
       <br>
       <h4><u>New Hire Training Modules</u></h4>
       <p><a target="_blank" href="https://360.articulate.com/review/content/fa4bc22f-3444-481a-9c2d-37f62f4cf37a/review">Basic Electricity - Articulate</a></p>
       <p><a target="_blank" href="https://360.articulate.com/review/content/83f6e785-6e40-4170-a48d-b2ed82ab6e68/review">4 Hour Basic Elecricity Final Assessment</a></p>
+      <br>
+
+
+
     </div>
+    <div id="youTubes" class="instructions">
+    <p id="textBox4">
+      <strong>Circuit Highlighting</strong>
+      <br>
+      <ul>
+      <li>Choose potential from the dropdown menu.</li>
+      <li>Click on each circuit path to highlight with the proper potential.</li>
+      <li>Use the "move switch" buttons to position switches.</li>
+      <li>Click "Submit" to check answer.</li>
+      </ul>
+      <br>
+
+    </p>
+  </div>
 
 
     <nav class="slide-menu" id="test-menu-left">
@@ -138,9 +104,9 @@
       </div>
       <ul>
         <li id="trainersLink"><a href="#" id="logInButton" onclick="logIn()">Trainer Log In</a></li>
-      <li><a href="#">Schematic Highlighting</a>
+      <li><a href="#" onclick="showHighlightDiv()">Schematic Highlighting</a>
         <ul>
-          <li><a href="#">TMNF Timer Refer</a>
+          <li><a href="#" onclick="mainMenuClicked()">TMNF Timer Refer Robert</a>
             <ul>
               <li><a target="_blank" href="highlightingDiagrams/TMNF Timer Refer/exercise1/content.html" >Evaporator Fan Motor</a></li>
               <li><a target="_blank" href="highlightingDiagrams/TMNF Timer Refer/exercise2/content.html">Condenser Fan Motor</a></li>
@@ -193,6 +159,7 @@
         </ul>
       </li>
       <li class="underConstruction"><a href="#">Troubleshooting Aids</a></li>
+      <li class="underConstruction"><a target="_blank" href="newfiSimulator/content.html">Newfi Simulator</a></li>
     </ul>
     </nav>
 
@@ -253,18 +220,21 @@
         endTl
         .to([highlightPic,troubleshootingPic], {duration:1, autoAlpha:0})
         .to([menuButton], {duration:1, autoAlpha:1, delay:-1})
-        // .set([textBox1,textBox2,textBox3], {autoAlpha:1})
         .call(tl.pause())
         .call(menuOpenResize())
         .to(textBox1,{duration:1, y:100, delay:0})
-        .to(textBox2,{duration:1, y:260, delay:-1})
-        .to(textBox3,{duration:1, y:395, delay:-1})
+        .to(textBox2,{duration:1, y:700, delay:-1})
+        .to(textBox3,{duration:1, y:50000, delay:-1})
         console.log(textBox1.client)
 
 
       }
 
       var underConstructionList = document.getElementsByClassName("underConstruction");
+
+      function mainMenuClicked(){
+        gsap.set(youTubes, {autoAlpha:0})
+      }
 
       function logIn(){
         if(logInButton.textContent == "Trainer Log Out" || logInButton.textContent == "Admin Log Out"){
@@ -281,6 +251,7 @@
         case "admin":
           for(i=0; i<underConstructionList.length; i++){
               gsap.set(underConstructionList[i], {autoAlpha:1});
+              gsap.to(youTubes, {duration:1, autoAlpha:0})
             }
             mainWindow.innerHTML = trainerPage.innerHTML;
             logInButton.textContent = "Trainer Log Out"
@@ -301,32 +272,21 @@
         break;
         default:
         alert("Log In Incorrect")
-
-      //   if(person == "trainer") {
-      //     for(i=0; i<underConstructionList.length; i++){
-      //         gsap.set(underConstructionList[i], {autoAlpha:1});
-      //   }
-      //   mainWindow.innerHTML = trainerPage.innerHTML;
-      //   logInButton.textContent = "Trainer Log Out"
-      // }else{
-      //   alert("Log in incorrect!")
-      // }
     }
     var endTl = gsap.timeline({repeat:0})
     .to([highlightPic,troubleshootingPic], {duration:1, autoAlpha:0})
     .to([menuButton], {duration:1, autoAlpha:1, delay:-1})
-    // .set([textBox1,textBox2,textBox3], {autoAlpha:1})
     .call(tl.pause())
     .call(menuOpenResize())
-    .to(textBox1,{duration:1, y:100, delay:0})
-    .to(textBox2,{duration:1, y:260, delay:-1})
-    .to(textBox3,{duration:1, y:420, delay:-1})
-
-
-      }
+    .set(textBox1,{y:100})
+    .set(textBox2,{y:265})
+    .set(textBox3,{y:407})
+    }
 
       function menuOpenResize(){
-        // gsap.to(textBox1.style, {duration: 1, width:'70%'})
+        textBox1Sub1.innerHTML = '<center><iframe width="560" height="315" src="https://www.youtube.com/embed/4vPE70rqeMw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>'
+        textBox2Sub1.innerHTML = '<center><iframe width="560" height="315" src="https://www.youtube.com/embed/4vPE70rqeMw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>'
+        textBox3Sub1.innerHTML = "(Click Trainer Log In)"
         gsap.fromTo(textBox1.style, {width:'100%', left:'0%'}, {width:'70%', left:'1%'});
         gsap.fromTo(textBox2.style, {width:'100%', left:'0%'}, {width:'70%', left:'1%'});
         gsap.fromTo(textBox3.style, {width:'100%', left:'0%'}, {width:'70%', left:'1%'});
@@ -360,10 +320,18 @@
       .to(textBox2, {duration:1, y:-600, immediateRender:false, delay:0})
       .to(troubleshootingPic, {duration:3, x:-2000, delay:'-.5'})
 
-      .from(textBox3, {duration:.5, y:-600, delay:'-1.5'})
-      .to(menuButton, {duration:1, opacity:0, repeat:5, delay:'-.5'})
+      .from(textBox3, {duration:.5, y:-600, delay:'-2.5'})
+      .to(menuButton, {duration:1, opacity:0, repeat:3, delay:'-.5'})
       .to(menuButton, {duration:1, opacity:1})
       .to(textBox3, {duration:1, y:-600, immediateRender:false, delay:0})
+
+      gsap.set(youTubes, {autoAlpha:0})
+      function showHighlightDiv(){
+        gsap.to(textBox1, {duration:1, autoAlpha:0})
+        gsap.to(textBox2, {duration:1, autoAlpha:0})
+        gsap.to(textBox3, {duration:1, autoAlpha:0})
+        gsap.to(youTubes, {duration:1, autoAlpha:1})
+      }
 
 
     </script>

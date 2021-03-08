@@ -1,0 +1,74 @@
+[
+  {
+    "Value": 605,
+    "Count": 88,
+    "TimeStamp": 1579480,
+    "DaysAgo": 49,
+    "CycleCount": 10758,
+    "FcodeIgnored": "False",
+    "IsActive": "Inactive"
+  },
+  {
+    "Value": 203,
+    "Count": 60,
+    "TimeStamp": 1497051,
+    "DaysAgo": 106,
+    "CycleCount": 10635,
+    "FcodeIgnored": "False",
+    "IsActive": "Inactive"
+  },
+  {
+    "Value": 604,
+    "Count": 6,
+    "TimeStamp": 766402,
+    "DaysAgo": 613,
+    "CycleCount": 6092,
+    "FcodeIgnored": "False",
+    "IsActive": "Inactive"
+  },
+  {
+    "Value": 109,
+    "Count": 4,
+    "TimeStamp": 1461454,
+    "DaysAgo": 131,
+    "CycleCount": 10539,
+    "FcodeIgnored": "False",
+    "IsActive": "Inactive"
+  },
+  {
+    "Value": 713,
+    "Count": 6,
+    "TimeStamp": 1407556,
+    "DaysAgo": 168,
+    "CycleCount": 10226,
+    "FcodeIgnored": "False",
+    "IsActive": "Inactive"
+  },
+  {
+    "Value": 103,
+    "Count": 522,
+    "TimeStamp": 1616058,
+    "DaysAgo": 23,
+    "CycleCount": 10810,
+    "FcodeIgnored": "False",
+    "IsActive": "Active"
+  },
+  {
+    "Value": 106,
+    "Count": 1,
+    "TimeStamp": 1475521,
+    "DaysAgo": 121,
+    "CycleCount": 10584,
+    "FcodeIgnored": "False",
+    "IsActive": "Inactive"
+  },
+  {
+    "Value": 714,
+    "Count": 1,
+    "TimeStamp": 1633290,
+    "DaysAgo": 11,
+    "CycleCount": 10836,
+    "FcodeIgnored": "False",
+    "IsActive": "Inactive"
+  }
+]
