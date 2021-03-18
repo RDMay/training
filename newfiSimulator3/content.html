@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Grid / Flexbox Demo</title>
+  <link rel="stylesheet" href="newfiSimulator.css">
+  <script src="../JavaScriptLibraries/gsap.min.js"></script>
+</head>
+<body>
+  <div class="grid-container">
+    <div class="grid-item item-1">
+      <img src="geaLogo.svg" alt="">
+    </div>
+    <div class="grid-item item-2">
+      <p>Model #</p><br>
+      <p>Serial #</p>
+    </div>
+    <div class="grid-item item-3">
+      Mfg. Date
+    </div>
+    <div class="grid-item item-4">
+      <img src="onePartsIcon.png" alt="">
+    </div>
+    <div class="grid-item item-5">
+      <img src="waterFilterIcon.png" alt="">
+    </div>
+    <div class="grid-item item-6">
+      <button type="button" name="button">VIEW<br>DATA</button>
+    </div>
+    <div class="grid-item item-7">
+      <img src="trainingFileIcon.png" alt="">
+    </div>
+    <div class="grid-item item-8">
+      03-11-2021<br>2:46 PM
+    </div>
+    <div class="grid-item item-9">
+      &nbsp
+      <button type="button" name="button">Create<br>Excel</button>
+      <button type="button" name="button">Report<br>Newfi<br>Issue</button>
+      <button type="button" name="button">SESSION<br>DETAILS</button>
+      <button type="button" name="button">X<br>EXIT</button>
+    </div>
+  </div>
+
+  <!-- Watch Window -->
+  <div class="grid-dashBoard">
+    <span class="dashBoard-1">
+      <span class="dashHeading">- -</span>
+      <div><img src="refreshIcon.svg" id="ffEvapRefreshIcon" style="opacity:0;"><span id="ffEvap" class="dashDynamic"></span></div>
+    </span>
+    <span class="dashBoard-2">
+      <span class="dashHeading">FF1 Thermistor</span>
+      <div><img src="refreshIcon.svg" id="ff1RefreshIcon"><span id="ff1Text" class="dashDynamic"></span></div>
+    </span>
+    <span class="dashBoard-3">
+      <span class="dashHeading">FZ Thermistor</span>
+      <div><img src="refreshIcon.svg" id="fzRefreshIcon"><span id="fzText" class="dashDynamic"></span></div>
+    </span>
+    <span class="dashBoard-4">
+      <span class="dashHeading">Ice Box Thermistor</span>
+      <div><img src="refreshIcon.svg" id="iceBoxRefreshIcon"><span id="iceboxText" class="dashDynamic"></span></div>
+    </span>
+    <span class="dashBoard-5">
+      <span class="dashHeading">Deli Pan Thermistor</span>
+      <div><img src="refreshIcon.svg" id="deliPanRefreshIcon"><span id="deliPanText" class="dashDynamic"></span></div>
+    </span>
+    <span class="dashBoard-6">
+      <span class="dashHeading">Ambient Humidity</span>
+      <div><img src="refreshIcon.svg" id="ambientHumidityRefreshIcon"><span id="ambientHumidityText" class="dashDynamic"></span></div>
+    </span>
+    <span class="dashBoard-7">
+      <span class="dashHeading">Sabbath Mode</span>
+      <div><img src="refreshIcon.svg" id="sabbathRefreshIcon"><span id="sabbathText" class="dashDynamic"></span></div>
+    </span>
+
+    <span class="dashBoard-8">
+      <span class="dashHeading">- -</span>
+      <div><img src="refreshIcon.svg" style="opacity:0;"><span class="dashDynamic"></span></div>
+    </span>
+    <span class="dashBoard-9">
+      <span class="dashHeading">FF Evap Thermistor</span>
+      <div><img src="refreshIcon.svg" id="ffEvapRefreshIcon"><span id="ffEvapText" class="dashDynamic"></span></div>
+    </span>
+    <span class="dashBoard-10">
+      <span class="dashHeading">FZ Evap Thermistor</span>
+      <div><img src="refreshIcon.svg" id="fzEvapRefreshIcon"><span id="fzEvapText" class="dashDynamic"></span></div>
+    </span>
+    <span class="dashBoard-11">
+      <span class="dashHeading">IM (DR) Mold Thermistor</span>
+      <div><img src="refreshIcon.svg" id="doorMoldRefreshIcon"><span id="imDrMoldBodyText" class="dashDynamic"></span></div>
+    </span>
+    <span class="dashBoard-12">
+      <span class="dashHeading">- -</span>
+      <div><img src="refreshIcon.svg" style="opacity:0;"><span class="dashDynamic"></span></div>
+    </span>
+    <span class="dashBoard-13">
+      <span class="dashHeading">Ambient Temperature</span>
+      <div><img src="refreshIcon.svg" id="ambientRefreshIcon"><span id="ambientTempText" class="dashDynamic"></span></div>
+    </span>
+    <span class="dashBoard-14">
+      <span class="dashHeading">System Mode</span>
+      <div><img src="refreshIcon.svg" id="systemRefreshIcon"><span id="systemText" class="dashDynamic"></span></div>
+    </span>
+    <div class="dashBoard-15"></div>
+  </div>
+
+  <!-- Main -->
+  <div id="buttons" class="buttons">
+    <span id="mainButtons" class="mainButtons">
+      <button type="button" id="notifications_btn" class="notifications_btn" onclick="mainMenuClicked('notifications_btn')"><img id="notificationsIcon" src="notificationsIcon.svg"></button>
+      <button type="button" id="faultCodes_btn" class="faultCodes_btn" onclick="mainMenuClicked('faultCodes_btn')"><img id="faultCodesIcon" src="faultCodesIcon.svg" width="90%"></button>
+      <button type="button" id="cycleHistory_btn" class="cycleHistory_btn" onclick="mainMenuClicked('cycleHistory_btn')"><img id="cycleHistoryIcon" src="cycleHistoryIcon.svg" width="90%"></button>
+      <button type="button" id="infoAndSettings_btn" class="infoAndSettings_btn" onclick="mainMenuClicked('infoAndSettings_btn')"><img id="infoAndSettingsIcon" src="infoAndSettingsIcon.svg" width="100%"></button>
+      <button type="button" id="loadStatus_btn" class="loadStatus_btn" onclick="mainMenuClicked('loadStatus_btn')"><img id="loadStatusIcon" src="loadStatusIcon.svg" width="100%"></button>
+      <button type="button" id="operateLoads_btn" class="operateLoads_btn" onclick="mainMenuClicked('operateLoads_btn')"><img id="operateLoadsIcon" src="operateLoadsIcon.svg" width="100%"></button>
+      <button type="button" id="diagnosticTests_btn" class="diagnosticTests_btn" onclick="mainMenuClicked('diagnosticTests_btn')"><img id="diagnosticTestsIcon" src="diagnosticTestsIcon.svg"></button>
+      <button type="button" id="applianceLiterature_btn" class="applianceLiterature_btn" onclick="mainMenuClicked('applianceLiterature_btn')"><img id="applianceLiteratureIcon" src="applianceLiteratureIcon.svg"></button>
+      <div type="div" class="firstRowFiller"></div>
+    </span>
+
+    <!-- Notification Buttons --><!-- Notification Buttons --><!-- Notification Buttons --><!-- Notification Buttons -->
+    <span id="notificationsButtons">
+      <button type="button" id="newfiAlerts_btn" onclick="notificationsClicked('newfiAlerts_btn')">Newfi Alerts</button>
+      <button type="button" id="softwareUpdates_btn" onclick="notificationsClicked('softwareUpdates_btn')">Software<br>Updates</button>
+      <button type="button" id="cloudDiagnostics_btn" onclick="notificationsClicked('cloudDiagnostics_btn')">Cloud<br>Diagnostics</button>
+    </span>
+
+    <!-- Info And Settings Buttons --><!-- Info And Settings Buttons --><!-- Info And Settings Buttons -->
+    <span id="infoAndSettingsButtons" class="infoAndSettings">
+      <button type="button" id="applianceIdentity_btn" onclick="mainMenuClicked()">Appliance<br>Identity</button>
+      <button type="button" id="setPoints_btn" onclick="mainMenuClicked()">Set Points</button>
+      <button type="button" id="states_btn" onclick="mainMenuClicked()">States</button>
+      <button type="button" id="status_btn" onclick="mainMenuClicked()">Status</button>
+      <button type="button" id="demoSabbath_btn" onclick="mainMenuClicked()">Demo, Sabbath</button>
+    </span>
+
+    <!-- Load Status Buttons --><!-- Load Status Buttons --><!-- Load Status Buttons --><!-- Load Status Buttons -->
+    <span id="loadStatusButtons" class="loadStatus">
+      <button type="button" id="fans_btn" onclick="mainMenuClicked()">Fans</button>
+      <button type="button" id="heaters_btn" onclick="mainMenuClicked()">Heaters</button>
+      <button type="button" id="coolingSystem_btn" onclick="mainMenuClicked()">Cooling System</button>
+      <button type="button" id="doorsAndLights_btn" onclick="mainMenuClicked()">Doors<br>Lights</button>
+      <button type="button" id="dispenser_btn" onclick="mainMenuClicked()">Dispenser</button>
+      <button type="button" id="iceMaker_btn" onclick="mainMenuClicked()">Ice Maker(s)</button>
+    </span>
+
+    <!-- Operate Loads Buttons --><!-- Operate Loads Buttons --><!-- Operate Loads Buttons --><!-- Operate Loads Buttons -->
+    <span id="operateLoadsButtons" class="operateLoads">
+      <button type="button" id="fansOperate_btn" onclick="mainMenuClicked()">Fans</button>
+      <button type="button" id="heatersOperate_btn" onclick="mainMenuClicked()">Heaters</button>
+      <button type="button" id="coolingSystemOperate_btn" onclick="mainMenuClicked()">Cooling System</button>
+      <button type="button" id="doorsAndLights_btn" onclick="mainMenuClicked()">Doors<br>Lights</button>
+      <button type="button" id="dispenserOperate_btn" onclick="mainMenuClicked()">Dispenser</button>
+      <button type="button" id="iceMakerOperate_btn" onclick="mainMenuClicked()">Ice Maker(s)</button>
+    </span>
+
+    <!-- diagnostic Tests Buttons -->
+    <span id="diagnosticTestsButtons" class="diagnosticTests">
+      <button type="button" id="coolingTest_btn" onclick="mainMenuClicked()">Cooling Test</button>
+      <button type="button" id="extendedModes_btn" onclick="mainMenuClicked()">Extended Modes</button>
+      <button type="button" id="iceMakerTest_btn" onclick="mainMenuClicked()">Ice Maker(s)<br>Test</button>
+    </span>
+
+    <!-- Appliance Literature Buttons -->
+    <span id="applianceLiteratureButtons" class="applianceLiterature">
+      <button type="button" id="coolingTest_btn" onclick="mainMenuClicked()">F-Code<br>Mini Manual</button>
+      <button type="button" id="demoMOde_btn" onclick="mainMenuClicked()">Demo Mode</button>
+      <button type="button" id="serviceLiterature_btn" onclick="mainMenuClicked()">Service<br>Literature</button>
+    </span>
+
+    <!-- Alerts -->
+    <span id="viewWindow" class="viewWindowSmall">
+      <div id="windowHeader">Alerts</div>
+    </span>
+</div>
+</body>
+<script src="script.js"></script>
+</html>

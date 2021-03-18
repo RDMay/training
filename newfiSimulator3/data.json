@@ -19051,5 +19051,180 @@
     "Ice Box Target Temp (NA if absent)": 19,
     "Deli Pan Max Temp (NA if absent)": 41,
     "Deli Pan Min Temp (NA if absent)": 37
+  },
+  {
+    "Key": "Session Id",
+    "Value": "2855e065-69e0-4451-a2a6-87a926f3ba58",
+    "InFileName": "TRUE"
+  },
+  {
+    "Key": "Git Commit Id",
+    "Value": "",
+    "InFileName": "TRUE"
+  },
+  {
+    "Key": "Appliance Hash",
+    "Value": "856da230758599568c67a55f0ea7446e",
+    "InFileName": "FALSE"
+  },
+  {
+    "Key": "Gea3 Communication",
+    "Value": "False",
+    "InFileName": "FALSE"
+  },
+  {
+    "Key": "productline",
+    "Value": "Refrigerator",
+    "InFileName": "FALSE"
+  },
+  {
+    "Key": "mainaddress",
+    "Value": "0x00",
+    "InFileName": "FALSE"
+  },
+  {
+    "Key": "address2",
+    "Value": "",
+    "InFileName": "FALSE"
+  },
+  {
+    "Key": "diagversion",
+    "Value": 1.03,
+    "InFileName": "FALSE"
+  },
+  {
+    "Key": "hardwareid",
+    "Value": "0100",
+    "InFileName": "FALSE"
+  },
+  {
+    "Key": "imageid",
+    "Value": "0600",
+    "InFileName": "FALSE"
+  },
+  {
+    "Key": "apiversion",
+    "Value": "",
+    "InFileName": "FALSE"
+  },
+  {
+    "Key": "diagnosticentitymaplocation",
+    "Value": "",
+    "InFileName": "FALSE"
+  },
+  {
+    "Key": "diagnosticentitycount",
+    "Value": "",
+    "InFileName": "FALSE"
+  },
+  {
+    "Key": "actualgroup",
+    "Value": "",
+    "InFileName": "FALSE"
+  },
+  {
+    "Key": "fcode_template",
+    "Value": "RQST_FaultCode_Eagle_1.03",
+    "InFileName": "FALSE"
+  },
+  {
+    "Key": "fault_sequence_template",
+    "Value": "RQST_FaultSequence_Eagle_1.03",
+    "InFileName": "FALSE"
+  },
+  {
+    "Key": "fault_snapshots_template",
+    "Value": "RQST_FaultSnaphots_Eagle_1.03",
+    "InFileName": "FALSE"
+  },
+  {
+    "Key": "DistributedArchitecture",
+    "Value": "False",
+    "InFileName": "FALSE"
+  },
+  {
+    "Key": "device",
+    "Value": "DEVICE-EAGLE-PFE29PSDASS.geac",
+    "InFileName": "FALSE"
+  },
+  {
+    "Key": "impersonation",
+    "Value": "PFE29PSDCSS",
+    "InFileName": "TRUE"
+  },
+  {
+    "Key": "timestamp",
+    "Value": "2021-03-01-04-09-31-PM",
+    "InFileName": "FALSE"
+  },
+  {
+    "Key": "tptp region",
+    "Value": 109,
+    "InFileName": "FALSE"
+  },
+  {
+    "Key": "tptp zone",
+    "Value": "07",
+    "InFileName": "FALSE"
+  },
+  {
+    "Key": "tptp call number",
+    "Value": 306834,
+    "InFileName": "FALSE"
+  },
+  {
+    "Key": "tptp model",
+    "Value": "PFE29PSDCSS",
+    "InFileName": "FALSE"
+  },
+  {
+    "Key": "tptp serial",
+    "Value": "LA507191",
+    "InFileName": "FALSE"
+  },
+  {
+    "Key": "tptp consumer complaint",
+    "Value": "NOT COOLING / NO COOL",
+    "InFileName": "FALSE"
+  },
+  {
+    "Key": "cyclehistory_template",
+    "Value": "RQST_CycleHistory_Eagle_1.03",
+    "InFileName": "FALSE"
+  },
+  {
+    "Key": "UpdateEligible",
+    "Value": true,
+    "InFileName": "FALSE"
+  },
+  {
+    "Key": "user entered model",
+    "Value": "",
+    "InFileName": "FALSE"
+  },
+  {
+    "Key": "user entered serial",
+    "Value": "",
+    "InFileName": "FALSE"
+  },
+  {
+    "Key": "user entered region",
+    "Value": "",
+    "InFileName": "FALSE"
+  },
+  {
+    "Key": "user entered zone",
+    "Value": "",
+    "InFileName": "FALSE"
+  },
+  {
+    "Key": "user entered call number",
+    "Value": "",
+    "InFileName": "FALSE"
+  },
+  {
+    "Key": "Notes",
+    "Value": "",
+    "InFileName": "FALSE"
   }
 ]

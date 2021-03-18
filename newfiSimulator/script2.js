@@ -44,91 +44,9 @@ function leaveButton(e){
     }
   }
 }
-//History Data
-var historyData;
-var xmlhttp = new XMLHttpRequest();
-xmlhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-    historyData = JSON.parse(this.responseText);
-    // ff1ThermistorText.textContent = historyData[0]["FF Min Temp"] + " °F";
-    // ffEvapThermistorText.textContent = historyData[0]["FF Evap Min Temp"] + " °F";
-    // fzThermistorText.textContent = historyData[0]["FZ Evap Min Temp"] + " °F";
-    // fzEvapThermistorText.textContent = historyData[0]["FZ Evap Min Temp"] + " °F";
-  }
-};
-xmlhttp.open("GET", "history.json", true);
-xmlhttp.send();
 
-//Real Time Data
-var realTimeData;
-var xmlhttp = new XMLHttpRequest();
-xmlhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-    realTimeData = JSON.parse(this.responseText);
-    for(i=0; i<realTimeData.length; i++){
-      switch(realTimeData[i]["SerialName"]) {
-        case "0x2200.FF1_THERM_INSTANT":
-        ff1ThermistorText.textContent = realTimeData[i]["SerialNumberValue"] + " °F";
-        break;
-        case "0x2202.FFEVAP_THERM_INSTANT":
-        ffEvapThermistorText.textContent = realTimeData[i]["SerialNumberValue"] + " °F";
-        break;
-        case"0x2203.FZ_THERM_INSTANT":
-        fzThermistorText.textContent = realTimeData[i]["SerialNumberValue"] + " °F";
-        break;
-        case"0x2204.FZEVAP_THERM_INSTANT":
-        fzEvapThermistorText.textContent = realTimeData[i]["SerialNumberValue"] + " °F";
-        break;
-        case"3x36.ALL_DOORBOARD_INFO_ICE_CAB_THERMISTOR":
-        iceBoxThermistorText.textContent = realTimeData[i]["SerialNumberValue"] + " °F";
-        break;
-        case"3x3609.ALL_DOORBOARD_INFO_ICEMAKER_MOLD_HEATER":
-        imDrMoldBodyThermistor.textContent = realTimeData[i]["SerialNumberValue"] + " °F";
-        break;
-        case"0x35.ALL_THERMISTOR_DELI_PAN":
-        deliPanThermistor.textContent = realTimeData[i]["SerialNumberValue"] + " °F";
-        break;
-        case"0x2206.HUMIDITY_THERM_INSTANT":
-        ambientHumidity.textContent = realTimeData[i]["SerialNumberValue"] + " %";
-        break;
-        case"0x2205.AMBTEMP_THERM_INSTANT":
-        ambientTempThermistor.textContent = realTimeData[i]["SerialNumberValue"] + " °F";
-        break;
-      }
-    }
+gsap.to(softwareUpdate_bg, {duration:2, fill:'#77dd77', repeat:-1, yoyo:true, delay:2});
 
-  }
-};
-xmlhttp.open("GET", "currentData.json", true);
-xmlhttp.send();
-
-//Alerts Data
-var alertsData = [];
-var xmlhttp = new XMLHttpRequest();
-xmlhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-    alertsData = JSON.parse(this.responseText);
-  }
-  gsap.set([cloudDiagnostics_btn, softwareUpdate_btn, newfiAlerts_btn], {autoAlpha:1});
-  gsap.set(viewWindow, {x:190});
-  viewWindow.style.backgroundColor = 'red';
-  viewWindow.innerHTML = "<div class='alertsHeader'>Alerts</div>"
-  +"<div id='scrollable' style='background-color:#fff; height:100vh; left:500px; overflow:auto; padding:20px 0px;'>Robert</div>"
-  for(i=0; i<alertsData.length; i++){
-    console.log(alertsData[i]['Alert Fired'])
-    if(alertsData[i]['Alert Fired'] == 'TRUE'){
-      scrollable.innerHTML +=
-      "<div style='background-color:#eeeeee; position:relative; font-size: 20px; padding:0px;'>"
-        +"<div style='background-color:#d7d7d7; position:relative; font-size: 35px; padding:20px; margin-top:10px;'>"
-          +"<p><strong>"+ alertsData[i]['Alert Name'] + "</strong></p>"
-        +"</div>"
-      + "</div>";
-    }
-  }
-  gsap.to(softwareUpdate_bg, {duration:2, fill:'#77dd77', repeat:-1, yoyo:true, delay:2});
-};
-xmlhttp.open("GET", "alerts.json", true);
-xmlhttp.send();
 
 //FCode Data
 var fCodeData = [];
@@ -136,6 +54,37 @@ var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
     fCodeData = JSON.parse(this.responseText);
+    for(i=0; i<fCodeData.length; i++){
+      switch(fCodeData[i]["SerialName"]) {
+        case "0x2200.FF1_THERM_INSTANT":
+        ff1ThermistorText.textContent = fCodeData[i]["SerialNumberValue"] + " °F";
+        break;
+        case "0x2202.FFEVAP_THERM_INSTANT":
+        ffEvapThermistorText.textContent = fCodeData[i]["SerialNumberValue"] + " °F";
+        break;
+        case"0x2203.FZ_THERM_INSTANT":
+        fzThermistorText.textContent = fCodeData[i]["SerialNumberValue"] + " °F";
+        break;
+        case"0x2204.FZEVAP_THERM_INSTANT":
+        fzEvapThermistorText.textContent = fCodeData[i]["SerialNumberValue"] + " °F";
+        break;
+        case"3x36.ALL_DOORBOARD_INFO_ICE_CAB_THERMISTOR":
+        iceBoxThermistorText.textContent = fCodeData[i]["SerialNumberValue"] + " °F";
+        break;
+        case"3x3609.ALL_DOORBOARD_INFO_ICEMAKER_MOLD_HEATER":
+        imDrMoldBodyThermistor.textContent = fCodeData[i]["SerialNumberValue"] + " °F";
+        break;
+        case"0x35.ALL_THERMISTOR_DELI_PAN":
+        deliPanThermistor.textContent = fCodeData[i]["SerialNumberValue"] + " °F";
+        break;
+        case"0x2206.HUMIDITY_THERM_INSTANT":
+        ambientHumidity.textContent = fCodeData[i]["SerialNumberValue"] + " %";
+        break;
+        case"0x2205.AMBTEMP_THERM_INSTANT":
+        ambientTempThermistor.textContent = fCodeData[i]["SerialNumberValue"] + " °F";
+        break;
+      }
+    }
   }
 };
 xmlhttp.open("GET", "fCodes.json", true);
@@ -184,11 +133,10 @@ function buttonClicked(target){
   case 'notifications_btn':
     gsap.set([cloudDiagnostics_btn, softwareUpdate_btn, newfiAlerts_btn], {autoAlpha:1});
     gsap.set(viewWindow, {x:190});
-    viewWindow.style.backgroundColor = 'red';
+    // viewWindow.style.backgroundColor = 'red';
     viewWindow.innerHTML = "<div class='alertsHeader'>Alerts</div>"
     +"<div id='scrollable' style='background-color:#fff; height:100vh; left:500px; overflow:auto; padding:20px 0px;'>Robert</div>"
     for(i=0; i<fCodeData.length; i++){
-      console.log(fCodeData[i]['Alert Fired'])
       if(fCodeData[i]['Alert Fired'] == 'TRUE'){
         scrollable.innerHTML +=
         "<div style='background-color:#eeeeee; position:relative; font-size: 20px; padding:0px;'>"
@@ -244,36 +192,42 @@ function buttonClicked(target){
 
     case 'cycleHistory_btn':
     gsap.set([cloudDiagnostics_btn, softwareUpdate_btn, newfiAlerts_btn], {autoAlpha:0});
-    // gsap.to(htmlWindow1, {autoAlpha:1});
-    // htmlWindow1.innerHTML = "";
+    var historyData = [];
     viewWindow.innerHTML = "<div class='windowHeader'><div id='cycleHistoryBanner'>Cycle History Data (Cycle = Compressor Off-Off)</div></div>"
-    for(i=0; i<fCodeData.length; i++){
-      var div = document.createElement('div');
-      viewWindow.innerHTML +=
-      "<div style='border-bottom: solid; border-width: thin; position:fixed'>"
-        +"<div>"
-          +"<p><strong>"+ historyData[i]['Time Ago (Days - Hours)'] + "</strong></p>"
-          +"<p>Days Ago</p>"
-        +"</div>"
 
-      + "</div>";
-      div.style.color = 'red';
-      div.setAttribute('class', 'myclass');
-      document.body.appendChild(div);
-      break;
+    for(i=0; i<fCodeData.length; i++){
+      // console.log(Object.keys(fCodeData[i])[0]);S
+      name = Object.keys(fCodeData[i])[0];
+      console.log(name)
+      var keyNames = Object.keys(name);
+        if(name == 'Time Ago (Days - Hours)'){
+
+          // var values = Object.keys(fCodeData[i]).map(function (key) { return fCodeData[i][key]; });
+          // console.log(values)
+      }
     }
+
+    var x = document.createElement("TABLE");
+    x.setAttribute("id", "myTable");
+    viewWindow.appendChild(x);
+
+    var y = document.createElement("TR");
+    y.setAttribute("id", "myTr");
+    document.getElementById("myTable").appendChild(y);
+
+    var z = document.createElement("TD");
+    var t = document.createTextNode("cellular");
+    z.appendChild(t);
+    document.getElementById("myTr").appendChild(z);
+      break;
+
   }
 }
 
-// alertsHeader.style.left = notifications_btn.getBoundingClientRect().right +'px';
-// alertsHeader.style.top = notifications_btn.getBoundingClientRect().top +'px';
 
-// htmlWindow1.style.left = rect2161.getBoundingClientRect().x +'px';
-// htmlWindow.style.top = rect2161.getBoundingClientRect().y + 'px';
-// htmlWindow1.innerHTML = "<div><button>Clear All Codes</button></div>";
-// htmlWindow1.style.left = notifications_btn.getBoundingClientRect().right -20 +'px';
-// htmlWindow1.style.top = notifications_btn.getBoundingClientRect().top - 20 + 'px';
-// htmlWindow1.style.width = rect2161.getBoundingClientRect().right - rect2161.getBoundingClientRect().x + 'px';
-// htmlWindow2.style.left = newfiAlerts_btn.getBoundingClientRect().right +'px';
-// htmlWindow2.style.top = newfiAlerts_btn.getBoundingClientRect().top + 'px';
-// htmlWindow2.style.width = rect2161.getBoundingClientRect().right - newfiAlerts_btn.getBoundingClientRect().right  + 'px';
+var json = '{ "foo": 1, "bar": 2, "baz": 3 }';
+var obj = JSON.parse(json);
+var values = Object.keys(obj).map(function (key) { return obj[key]; });
+
+var keyNames = Object.keys(obj);
+console.log(keyNames)

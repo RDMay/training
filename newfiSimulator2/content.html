@@ -4,117 +4,168 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <style>
-  /* * {
-    margin:0;
-    padding:0;
-    box-sizing: border-box;
-    font-family: arial;
-    font-size: 1vw;
-    color: white;
-  } */
-  button{
-    background-color: r#dddddd;
-    color: #4d4d4d;
-    padding: 1vw 1vw;
-    font-size: 1vw;
-    text-align: center;
-    width: 50px;
-    height: 50px;
-    max-width: 100%;
-    max-height: 100%
-    white-space: normal;
-  }
-  img{
-    max-width: 100%;
-    max-height:100%;
-  }
-  .grid-container{
-    height: 100vh;
-    /* border:10 px solid #14a76c; */
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(12, 1fr);
-  }
-  .grid-item{
-    background-color: #225780;
-    border: 1px solid #4d4d4d;
-    padding-left: 0px;
-  }
-  .item-1{
-    background-color: #4d4d4d;
-    grid-column: 1/16;
-    padding-top: 0px;
-  }
-  .item-2{
-    background-color: #e7e7e7;
-    grid-column: 1/3;
-  }
-  .item-3{
-    background-color: #e7e7e7;
-    grid-column: 3/6;
-  }
-  .item-4{
-    grid-column: 5/5;
-  }
-
-  .item-5{
-    grid-column: 6/6;
-  }
-  .item-6{
-    grid-column: 7/9;
-  }
-  .item-7{
-    grid-column: 9/10;
-  }
-  .item-8{
-    grid-column: 10/16;
-  }
-</style>
   <title>Grid / Flexbox Demo</title>
+  <link rel="stylesheet" href="newfiSimulator.css">
+  <script src="../JavaScriptLibraries/gsap.min.js"></script>
 </head>
 <body>
   <div class="grid-container">
     <div class="grid-item item-1">
-      <img src="newfiHeader.png" width="100%">
-      <!-- <button style="position:absolute; top:5%; right:11%;">Create Excel</button> -->
-
+      <img src="geaLogo.svg" alt="">
     </div>
-    <div style="display: inline-block">
-    <img src="createExcel.png" width="4.2%"; height:auto; style="display:inline-block; position:absolute; top:2.6vw; right:16.1vw;">
-  </div>
     <div class="grid-item item-2">
-
-      <!-- <p>Model:</p>
-      <p>Serial:</p> -->
+      <p>Model #</p><br>
+      <p>Serial #</p>
     </div>
     <div class="grid-item item-3">
       Mfg. Date
     </div>
     <div class="grid-item item-4">
-      OneParts
+      <img src="onePartsIcon.png" alt="">
     </div>
     <div class="grid-item item-5">
-      <p>Water</p>
-      <p>Filter</p>
-      <p>OK</p>
+      <img src="waterFilterIcon.png" alt="">
     </div>
     <div class="grid-item item-6">
-      History File View
+      <button type="button" name="button">VIEW<br>DATA</button>
     </div>
     <div class="grid-item item-7">
-      Date
+      <img src="trainingFileIcon.png" alt="">
     </div>
     <div class="grid-item item-8">
-
-      <button><p>Report</p><p>Newfi</p><p>Issues</p></button>
-      <button>SESSION DETAILS</button>
-      <button>Create Excel</button>
+      03-11-2021<br>2:46 PM
     </div>
-    <div class="grid-item item-1">
-      Date
+    <div class="grid-item item-9">
+      &nbsp
+      <button type="button" name="button">Create<br>Excel</button>
+      <button type="button" name="button">Report<br>Newfi<br>Issue</button>
+      <button type="button" name="button">SESSION<br>DETAILS</button>
+      <button type="button" name="button">X<br>EXIT</button>
     </div>
+    <div class="grid-item item-10"></div>
   </div>
+
+  <!-- Watch Window -->
+  <div class="grid-watchWindow">
+    <span class="watchwindow-1">
+      <span>- -</span>
+      <div><img src="refreshIcon.svg" id="ffEvapRefreshIcon" style="opacity:0;"><span id="ffEvap"></span></div>
+    </span>
+    <span class="watchwindow-2">
+      <span>FF1 Thermistor</span>
+      <div><img src="refreshIcon.svg" id="ff1RefreshIcon"><span id="ff1Text"></span></div>
+    </span>
+    <span class="watchwindow-3">
+      <span>FZ Thermistor</span>
+      <div><img src="refreshIcon.svg" id="fzRefreshIcon"><span id="fz"></span></div>
+    </span>
+    <span class="watchwindow-4">
+      <span>Ice Box Thermistor</span>
+      <div><img src="refreshIcon.svg" id="iceBoxRefreshIcon"><span id="iceboxText"></span></div>
+    </span>
+    <span class="watchwindow-5">
+      <span>Deli Pan Thermistor</span>
+      <div><img src="refreshIcon.svg" id="deliPanRefreshIcon"><span id="deliPanText"></span></div>
+    </span>
+    <span class="watchwindow-6">
+      <span>Ambient Humidity</span>
+      <div><img src="refreshIcon.svg" id="ambientHumidityRefreshIcon"><span id="ambientHumidityText"></span></div>
+    </span>
+    <span class="watchwindow-7">
+      <span>Sabbath Mode</span>
+      <div><img src="refreshIcon.svg" id="sabbathRefreshIcon"><span id="sabbathText"></span></div>
+    </span>
+
+    <span class="watchwindow-8">
+      <span>- -</span>
+      <div><img src="refreshIcon.svg" style="opacity:0;"><span></span></div>
+    </span>
+    <span class="watchwindow-9">
+      <span>FF Evap Thermistor</span>
+      <div><img src="refreshIcon.svg" id="ffEvapRefreshIcon"><span id="ffEvapText"></span></div>
+    </span>
+    <span class="watchwindow-10">
+      <span>FZ Evap Thermistor</span>
+      <div><img src="refreshIcon.svg" id="fzEvapRefreshIcon"><span id="fzEvapText"></span></div>
+    </span>
+    <span class="watchwindow-11">
+      <span>IM (DR) Mold Thermistor</span>
+      <div><img src="refreshIcon.svg" id="doorMoldRefreshIcon"><span id="imDrMoldBodyText"></span></div>
+    </span>
+
+    <span class="watchwindow-12">
+      <span>- -</span>
+      <div><img src="refreshIcon.svg" style="opacity:0;"><span></span></div>
+    </span>
+    <span class="watchwindow-13">
+      <span>Ambient Temperature</span>
+      <div><img src="refreshIcon.svg" id="ambientRefreshIcon"><span id="ambientTempText"></span></div>
+    </span>
+    <span class="watchwindow-14">
+      <span>System Mode</span>
+      <div><img src="refreshIcon.svg" id="systemRefreshIcon"><span id="systemText"></span></div>
+    </span>
+  </div>
+
+  <!-- Main -->
+  <div class="buttons">
+  <span id="mainButtons" class="main-buttons">
+    <button type="button" id="notifications_btn" onclick="mainMenuClicked()"><img id="bellIcon" src="bellIcon.svg" width="17%">Notifications</button>
+    <button type="button" id="faultCodes_btn" onclick="mainMenuClicked()"><img id="faultCodesIcon" src="faultCodesIcon.svg" width="17%">Fault Codes</button>
+    <button type="button" id="cycleHistory_btn" onclick="mainMenuClicked()"><img id="cycleHistoryIcon" src="cycleHistoryIcon.svg" width="17%">Cycle History</button>
+    <button type="button" id="infoAndSettings_btn" onclick="mainMenuClicked()"><img id="infoAndSettingsIcon" src="infoAndSettingsIcon.svg" width="17%">Info and Settings</button>
+    <button type="button" id="loadStatus_btn" onclick="mainMenuClicked()"><img id="loadStatusIcon" src="loadStatusIcon.svg" width="18%">Load Status</button>
+    <button type="button" id="operateLoads_btn" onclick="mainMenuClicked()"><img id="operateLoadsIcon" src="operateLoadsIcon.svg" width="18%">Operate Loads</button>
+    <button type="button" id="diagnosticTests_btn" onclick="mainMenuClicked()"><img id="diagnosticTestsIcon" src="diagnosticTestsIcon.svg" width="18%">Diagnostic Tests</button>
+    <button type="button" id="applianceLiterature_btn" onclick="mainMenuClicked()"><img id="applianceLiteratureIcon" src="applianceLiteratureIcon.svg" width="18%">Appliance Literature</button>
+  </span>
+  <span id="notifications" class="notifications">
+    <button type="button" id="newfiAlerts_btn" onclick="notificationsClicked()">Newfi Alerts</button>
+    <button type="button" id="softwareUpdates_btn" onclick="notificationsClicked()">Software Updates</button>
+    <button type="button" id="cloudDiagnostics_btn" onclick="notificationsClicked()">Cloud Diagnostics</button>
+  </span>
+  <span id="infoAndSettings" class="infoAndSettings">
+    <button type="button" id="applianceIdentity_btn" onclick="mainMenuClicked()">Appliance Identity</button>
+    <button type="button" id="setPoints_btn" onclick="mainMenuClicked()">Set Points</button>
+    <button type="button" id="states_btn" onclick="mainMenuClicked()">States</button>
+    <button type="button" id="status_btn" onclick="mainMenuClicked()">Status</button>
+    <button type="button" id="demoSabbath_btn" onclick="mainMenuClicked()">Demo, Sabbath</button>
+  </span>
+  <span id="loadStatus" class="loadStatus">
+    <button type="button" id="fans_btn" onclick="mainMenuClicked()">Fans</button>
+    <button type="button" id="heaters_btn" onclick="mainMenuClicked()">Heaters</button>
+    <button type="button" id="coolingSystem_btn" onclick="mainMenuClicked()">Cooling System</button>
+    <button type="button" id="dispenser_btn" onclick="mainMenuClicked()">Dispenser</button>
+    <button type="button" id="iceMaker_btn" onclick="mainMenuClicked()">Ice Maker(s)</button>
+  </span>
+  <span id="operateLoads" class="operateLoads">
+    <button type="button" id="fansOperate_btn" onclick="mainMenuClicked()">Fans</button>
+    <button type="button" id="heatersOperate_btn" onclick="mainMenuClicked()">Heaters</button>
+    <button type="button" id="coolingSystemOperate_btn" onclick="mainMenuClicked()">Cooling System</button>
+    <button type="button" id="dispenserOperate_btn" onclick="mainMenuClicked()">Dispenser</button>
+    <button type="button" id="iceMakerOperate_btn" onclick="mainMenuClicked()">Ice Maker(s)</button>
+  </span>
+  <span id="diagnosticTests" class="diagnosticTests">
+    <button type="button" id="coolingTest_btn" onclick="mainMenuClicked()">Cooling Test</button>
+    <button type="button" id="extendedModes_btn" onclick="mainMenuClicked()">Extended Modes</button>
+    <button type="button" id="iceMakerTest_btn" onclick="mainMenuClicked()">Ice Maker(s) Test</button>
+  </span>
+  <span id="applianceLiterature" class="applianceLiterature">
+    <button type="button" id="coolingTest_btn" onclick="mainMenuClicked()">F-Code Mini Manual</button>
+    <button type="button" id="demoMOde_btn" onclick="mainMenuClicked()">Demo Mode</button>
+    <button type="button" id="serviceLiterature_btn" onclick="mainMenuClicked()">Service Literature</button>
+  </span>
+
+<!-- Alerts -->
+<span id="alertBanner" class="alertBanner">
+  <div style="width:100%; background-color:brown; padding:10px;">Alert</div>
+  <div>F-Code Mini Manual</div>
+  <div>F-Code Mini Manual</div>
+  <div>F-Code Mini Manual</div>
+  <div>F-Code Mini Manual</div>
+
+</span>
+</div>
 </body>
-</body>
+<script src="script.js"></script>
 </html>
