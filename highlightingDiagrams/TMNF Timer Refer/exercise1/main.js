@@ -1,7 +1,7 @@
-document.title = "TMNF Highlight Exercise 1"
+document.title = "Robert"
 
 var originalLineSize = 1;
-var highlightedWidth = 3;
+var highlightedWidth = 35;
 
 var deviceType = "not mobile";
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
